@@ -22,3 +22,5 @@ int main()
     }
     return 0;
 }
+//其他方法
+//(a^(phi(b)-1))%b
