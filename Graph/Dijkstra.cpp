@@ -3,7 +3,7 @@ using namespace std;
 #define INF 2100000000
 #define maxn 1000
 typedef pair<int,int> pii;
-void Dijkstra(int n,vector<pii> G[],int d[],int s,int t=-1)
+void Dijkstra(int n, vector<pii> G[], int d[], int s, int t = -1)
 {
     for(int i=1; i<=n; i++)
         d[i] = INF;
