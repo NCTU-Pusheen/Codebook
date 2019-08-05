@@ -1,3 +1,4 @@
+//單點修改 區間查詢
 #include<bits/stdc++.h>
 using namespace std;
 class BIT
