@@ -29,6 +29,7 @@
 - [ ] Suffix Array
 - [ ] BWT
 - [ ] LPS
+- [ ] LCPS
 ### DP
 - [ ] 1D/1D
 - [ ] 有限背包
