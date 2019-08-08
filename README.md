@@ -24,7 +24,7 @@
 ### String
 - [x] Trie（Luke）
 - [ ] AC自動機
-- [ ] KMP
+- [x] KMP
 - [ ] Z-Value
 - [ ] Suffix Array
 - [ ] BWT
