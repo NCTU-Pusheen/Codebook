@@ -24,8 +24,8 @@
 ### String
 - [x] Trie（Luke）
 - [ ] AC自動機
-- [x] KMP
-- [ ] Z-Value
+- [x] KMP（Luke）
+- [x] Z-Value（Luke）
 - [ ] Suffix Array
 - [ ] BWT
 - [ ] LPS
