@@ -7,7 +7,7 @@
 - [x] SP - SPFA（Luke）
 - [ ] 找負環
 - [x] MST - Prim（Luke）
-- [ ] MST - Kruskal
+- [x] MST - Kruskal
 - [ ] Tarjan
 - [ ] LCS
 - [ ] Min mean cycle
