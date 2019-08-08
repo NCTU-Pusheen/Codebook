@@ -1,6 +1,6 @@
 //抄日月卦長
 //Knuth-Morris-Pratt algorithm
-//問s有沒有在t出現
+//問s在t出現幾次
 #include<iostream>
 #include<string.h>
 using namespace std;
