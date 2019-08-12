@@ -24,8 +24,8 @@ struct FenwickTree {
             index += index & -index;
         }
     }
-    // Queries sum in [left_inc, right_inc], where left_inc and right_inc in [0, n).
+    // Queries sum in [left_inc, right_inc], where left_inc and right_inc in [1, n].
     ll query(int left_inc, int right_inc) { return query(right_inc) - query(left_inc - 1); }
-    // Increases all elements in [left_inc, right_inc] by val, where left_inc and right_inc in [0, n).
+    // Increases all elements in [left_inc, right_inc] by val, where left_inc and right_inc in [1, n].
     void add(int left_inc, int right_inc, ll val) { add(left_inc, val), add(right_inc + 1, -val); }
 };
