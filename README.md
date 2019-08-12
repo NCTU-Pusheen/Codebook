@@ -7,6 +7,7 @@
 - [x] SP - SPFA（Luke）
 - [x] MST - Prim（Luke）
 - [x] MST - Kruskal
+- [ ] TreeDiameter
 - [ ] Tarjan
 - [ ] LCS
 - [ ] Min mean cycle
