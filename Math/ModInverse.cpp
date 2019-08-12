@@ -1,26 +1,15 @@
-//用輾轉相除法求模逆元
-#include<bits/stdc++.h>
-using namespace std;
-int exgcd(int a,int b,int &x,int &y)
-{
-    if(b)
-    {
-        int tmp = exgcd(b,a%b,y,x);
-        y -= a/b*x;
-        return tmp;
+// Queries value x such that (ax == 1) mod m.
+ll modinv(ll a, ll m) {
+    if (m == 1) return 0;
+    ll m0 = m, y = 0, x = 1;
+    while (a > 1) {
+        ll q = a / m;
+        ll t = m;
+        m = a % m, a = t;
+        t = y;
+        y = x - q * y;
+        x = t;
     }
-    x = 1, y = 0;
-    return a;
+    if (x < 0) x += m0;
+    return x;
 }
-int main()
-{
-    int a,b,x,y;
-    while(cin >> a >> b)
-    {
-        exgcd(a,b,x,y);
-        cout << (x%b+b)%b << endl;
-    }
-    return 0;
-}
-//其他方法
-//(a^(phi(b)-1))%b

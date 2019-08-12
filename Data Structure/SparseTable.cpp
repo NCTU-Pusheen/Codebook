@@ -1,37 +1,21 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define maxn 500005
-#define lgn 20
-int a[maxn];
-int ST[lgn][maxn];
-void buildST(int n)
-{
-    for(int i=1; i<=n; i++)
-        ST[0][i] = a[i];
-    for(int i=1; (1<<i)<=n; i++)
-    {
-        int k = n-(1<<i)+1;
-        for(int j=1; j<=k; j++)
-            ST[i][j] = max( ST[i-1][j] , ST[i-1][j+(1<<(i-1))] );
+struct SparseTable {
+    const int N;
+    vector<vector<ll>> bitarray;
+    // Constructs a sparse table with size same as vec.
+    SparseTable(const vector<ll>& vec) : N(vec.size()) {
+        bitarray.assign(__lg(N) + 1, vector<ll>(N));
+        bitarray[0] = vec;
+        for (int i = 1; (1 << i) <= N; i++) {
+            int k = N - (1 << i);
+            for (int j = 0; j < k; j++) {
+                // Comparator may be needed.
+                bitarray[i][j] = max(bitarray[i - 1][j], bitarray[i - 1][j + (1 << (i - 1))]);
+            }
+        }
     }
-}
-inline int query(int l,int r)
-{
-    int k = __lg(r-l+1);
-    return max( ST[k][l] , ST[k][r-(1<<k)+1] );
-}
-int main()
-{
-    int n,q;
-    scanf("%d%d",&n,&q);
-    for(int i=1; i<=n; i++)
-        scanf("%d",&a[i]);
-    buildST(n);
-    while(q--)
-    {
-        int l,r;
-        scanf("%d%d",&l,&r);
-        printf("%d\n",query(l,r));
+    // Queries the maximum element in [left_inc, right_inc] where left_inc and right_inc in [0, n).
+    ll query(int left_inc, int right_inc) {
+        int k = __lg(right_inc - left_inc + 1);
+        return max(bitarray[k][left_inc], bitarray[k][right_inc - (1 << k) + 1]);
     }
-    return 0;
-}
+};

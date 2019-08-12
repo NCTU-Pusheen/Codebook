@@ -1,47 +1,51 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define INF 2100000000
-#define maxn 1000
-typedef pair<int,int> pii;
-void Dijkstra(int n, vector<pii> G[], int d[], int s, int t = -1)
-{
-    for(int i=1; i<=n; i++)
-        d[i] = INF;
-    d[s] = 0;
-    priority_queue<pii> pq;
-    pq.push({0,s});
-    while(!pq.empty())
-    {
-        int u = pq.top().second;
-        pq.pop();
-        if(u==t)return;
-        for(pii e:G[u])
-        {
-            int v = e.first;
-            int w = e.second;
-            if( d[v] > d[u]+w )
-            {
-                d[v] = d[u]+w;
-                pq.push({d[v],v});
+// Queries mininum path from src to dest in a graph where src and dest are connected.
+// The n vertices are supposed to be marked [0, n); edge should have size n.
+int dijkstra(int src, int dest, const vector<vector<pii>>& edge) {
+    const int N = edge.size();
+    bool nvis[N] = {0};
+    // A comparator may be required.
+    priority_queue<pii, vector<pii>, greater<pii>> q;
+    q.emplace(0, src);
+    while (!q.empty()) {
+        int v = q.top().second;
+        int d = q.top().first;
+        q.pop();
+        if (v == dest) return d;
+        if (nvis[v]) continue;
+        nvis[v] = true;
+        for (auto& e : edge[v]) {
+            if (!nvis[e.second]) {
+                // Fit the comparator
+                q.emplace(d + e.first, e.second);
             }
         }
     }
+    throw "src and dest are not connected.";
 }
-int main()
-{
-    vector<pii> G[maxn];
-    int d[maxn];
-    int n,m;
-    cin >> n >> m;
-    for(int i=1;i<=m;i++)
-    {
-        int a,b,w;
-        cin >> a >> b >> w;
-        G[a].push_back({b,w});
+
+// Queries minuimum path from src to all the other vertices in a graph where all vertices are connected.
+// The n vertices are supposed to be marked [0, n); edge should have size n.
+vector<int> dijkstra(int src, const vector<vector<pii>>& edge) {
+    const int N = edge.size();
+    vector<int> mindist(N, -1);
+    int nvis = 0;
+    // A comparator may be required.
+    priority_queue<pii, vector<pii>, greater<pii>> q;
+    q.emplace(0, src);
+    while (nvis < N) {
+        if (q.empty()) throw "Not all vertices connected.";
+        int v = q.top().second;
+        int d = q.top().first;
+        q.pop();
+        if (mindist[v] != -1) continue;
+        mindist[v] = d;
+        nvis++;
+        for (auto& e : edge[v]) {
+            if (mindist[e.second] == -1) {
+                // Fit the comparator
+                q.emplace(d + e.first, e.second);
+            }
+        }
     }
-    int s,t;
-    cin >> s >> t;
-    Dijkstra(n,G,d,s,t);
-    printf("%d\n",d[t]);
-    return 0;
+    return mindist;
 }
