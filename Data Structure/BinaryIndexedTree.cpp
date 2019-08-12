@@ -1,74 +1,19 @@
-//單點修改 區間查詢
-#include<bits/stdc++.h>
-using namespace std;
-class BIT
-{
-public:
-    BIT(int n)
-    {
-        sz = n;
-        bit = new int[sz+1];
-        memset(bit,0,sizeof(int)*(sz+1));
+struct BIT {
+    int N;
+    vector<ll> bitarray;
+    // Constructs a Binary Indexed Tree where n is size of array.
+    BIT(int n) : N(n) { bitarray.assign(N + 1, 0); }
+    ll query(int index) {
+        index++;
+        ll ret = 0;
+        while (index > 0) ret += bitarray[index], index -= index & -index;
+        return ret;
     }
-    ~BIT()
-    {
-        delete [] bit;
+    // Increases element at index by val, where index in [0, n).
+    void add(int index, ll val) {
+        index++;
+        while (index <= N) bitarray[index] += val, index += index & -index;
     }
-private:
-    int* bit;
-    int sz;
-    inline int lowbit(int x)
-    {
-        return x&(-x);
-    }
-    int prefix_sum(int x)
-    {
-        int sum = 0;
-        for(int i=x; i>0; i-=lowbit(i))
-            sum += bit[i];
-        return sum;
-    }
-public:
-    void init(int a[])//注意index
-    {
-        for(int i=1; i<=sz; i++)
-        {
-            bit[i] += a[i];
-            int y = i+lowbit(i);
-            if(y<=sz)
-                bit[y] += bit[i];
-        }
-    }
-    inline int query(int l,int r)
-    {
-        return prefix_sum(r) - prefix_sum(l-1);
-    }
-    void add(int x,int val)
-    {
-        for(int i=x; i<=sz; i+=lowbit(i))
-            bit[i] += val;
-    }
+    // Queries sum in [left_inc, right_inc], where left_inc and right_inc in [0, n).
+    ll query(int left_inc, int right_inc) { return query(right_inc) - query(left_inc - 1); }
 };
-int main()
-{
-    BIT b(5);
-    int a[6] = {0,1,2,3,4,5};
-    b.init(a);
-    string op;
-    while(cin>>op)
-    {
-        if(op=="add")
-        {
-            int x,val;
-            cin >> x >> val;
-            b.add(x,val);
-        }
-        if(op=="sum")
-        {
-            int l,r;
-            cin >> l >> r;
-            cout << b.query(l,r) << endl;
-        }
-    }
-    return 0;
-}
