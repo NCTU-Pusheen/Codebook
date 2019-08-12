@@ -40,6 +40,7 @@
 - [x] Mod Inverse（Luke）
 - [ ] FFT
 - [ ] Miller-Rabin
+- [ ] Matrix
 - [ ] Gaussian Elimination
 - [ ] Pollard Rho
 - [ ] Conjugate Gradient
