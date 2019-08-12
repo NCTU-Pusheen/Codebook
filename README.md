@@ -1,11 +1,11 @@
 # NCTU_Pusheen Codebook
 ## Check List
 ### Graph
-- [x] SP - Dijkstra（Luke）
-- [x] SP - Floyd-Warshall（Luke）
-- [x] SP - Bellman-Ford（Luke）
-- [x] SP - SPFA（Luke）
-- [x] MST - Prim（Luke）
+- [x] SP - Dijkstra
+- [x] SP - Floyd-Warshall
+- [x] SP - Bellman-Ford
+- [x] SP - SPFA
+- [x] MST - Prim
 - [x] MST - Kruskal
 - [ ] TreeDiameter
 - [ ] Tarjan
@@ -23,10 +23,11 @@
 - [ ] Min cost flow
 - [ ] KM
 ### String
-- [x] Trie（Luke）
+- [x] Rolling Hash
+- [x] Trie
 - [ ] AC自動機
-- [x] KMP（Luke）
-- [x] Z-Value（Luke）
+- [x] KMP
+- [x] Z-Value
 - [ ] Suffix Array
 - [ ] BWT
 - [ ] LPS
@@ -36,9 +37,9 @@
 - [ ] 有限背包
 - [ ] 環狀最長共同子序列
 ### Math
-- [x] Fast Power（Luke）
-- [x] Euler's totient function（Luke）
-- [x] Mod Inverse（Luke）
+- [x] Fast Power
+- [x] Euler's totient function
+- [x] Mod Inverse
 - [ ] FFT
 - [ ] Miller-Rabin
 - [ ] Matrix
@@ -57,11 +58,11 @@
 - [ ] Segment Tree(Lazy Tag)
 - [ ] Persistent Segment Tree
 - [ ] KD Tree
-- [x] Fenwick Tree（區間加值）（Luke）
-- [x] Sparse Table（Luke）
+- [x] Fenwick Tree（區間加值）
+- [x] Sparse Table
 - [ ] Treap
 - [ ] Link-Cut Tree
 ### Other
-- [x] gcc-functions（Luke）
+- [x] gcc-functions
 - [ ] SG
 - [ ] BigInt
