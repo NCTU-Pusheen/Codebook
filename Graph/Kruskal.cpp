@@ -8,7 +8,7 @@ typedef pair<int,pii> piii;
 #define y second.second
 #define maxm 100000
 #define maxn 10000
-struct UFT
+struct UFT //Union-Find Tree
 {
     int sz;
     int p[maxn];
@@ -17,13 +17,13 @@ struct UFT
         for(int i=1; i<=sz; i++)
             p[i] = i;
     }
-    inline int par(int a) {
+    inline int par(int a) { //parent
         return p[a] = ( a==p[a] ? a : par(p[a]));
     }
-    inline bool same(int a, int b) {
+    inline bool same(int a, int b) { //check if a and b are in the same set
         return par(a) == par(b);
     }
-    inline void uni(int a, int b) {
+    inline void uni(int a, int b) { //union the sets of a and b
         p[p[a]] = p[b];
     }
 };
@@ -33,7 +33,7 @@ int main()
     int n,m; cin >> n >> m;
     for(int i=0; i<m; i++)
         cin >> e[i].x >> e[i].y >> e[i].w;
-    UFT uft(n); sort(e,e+m);
+    UFT uft(n); sort(e,e+m); //sort the edges
     int cnt = 0, cost = 0;
     for(int i=0; i<m && cnt<n-1; i++)
     {
