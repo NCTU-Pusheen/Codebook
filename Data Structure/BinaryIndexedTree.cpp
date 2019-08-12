@@ -9,11 +9,11 @@ struct BIT {
         while (index > 0) ret += bitarray[index], index -= index & -index;
         return ret;
     }
-    // Increases element at index by val, where index in [0, n).
+    // Increases element at index by val, where index in [1, n].
     void add(int index, ll val) {
         index++;
         while (index <= N) bitarray[index] += val, index += index & -index;
     }
-    // Queries sum in [left_inc, right_inc], where left_inc and right_inc in [0, n).
+    // Queries sum in [left_inc, right_inc], where left_inc and right_inc in [1, n].
     ll query(int left_inc, int right_inc) { return query(right_inc) - query(left_inc - 1); }
 };
