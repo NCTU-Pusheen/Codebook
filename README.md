@@ -17,6 +17,7 @@
 - [ ] Count Spanning Tree
 - [ ] Directed Graph MST
 - [ ] Blossom
+- [ ] Stable Marriage
 ### Flow/Matching
 - [ ] Dinic
 - [ ] Min cost flow
