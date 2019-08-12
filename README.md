@@ -5,7 +5,6 @@
 - [x] SP - Floyd-Warshall（Luke）
 - [x] SP - Bellman-Ford（Luke）
 - [x] SP - SPFA（Luke）
-- [ ] 找負環
 - [x] MST - Prim（Luke）
 - [x] MST - Kruskal
 - [ ] Tarjan
