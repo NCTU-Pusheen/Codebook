@@ -42,7 +42,7 @@
 - [x] Euler's totient function
 - [x] Mod Inverse
 - [ ] FFT
-- [ ] Miller-Rabin
+- [x] Miller-Rabin
 - [ ] Matrix
 - [ ] Gaussian Elimination
 - [ ] Pollard Rho
