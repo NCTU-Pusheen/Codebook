@@ -14,7 +14,7 @@
 - [ ] BCC
 - [ ] 2-Sat
 - [ ] Planer Graph
-- [ ] Count Spanning Tree
+- [ ] Count Spanning Tree - Kirchhoff's thm
 - [ ] Directed Graph MST
 - [ ] Blossom
 - [ ] Stable Marriage
