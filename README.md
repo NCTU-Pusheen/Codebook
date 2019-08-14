@@ -21,7 +21,8 @@
 ### Flow/Matching
 - [ ] Dinic
 - [ ] Min cost flow
-- [ ] KM
+- [ ] Perfect Bipartite Matching - KM
+- [ ] Maximum Cardinality Bipartite Matching - Hopcroft-Karp
 ### String
 - [x] Rolling Hash
 - [x] Trie
