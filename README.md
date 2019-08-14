@@ -36,7 +36,7 @@
 - [ ] 1D/1D
 - [ ] 有限背包
 - [ ] 環狀最長共同子序列
-- [x] LCIS（Longest Increasing Common Subsequense）
+- [x] LCIS（Longest Common Increasing Subsequense）
 ### Math
 - [x] Fast Power
 - [x] Euler's totient function
