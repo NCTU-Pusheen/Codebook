@@ -51,7 +51,7 @@
 ### Geometry
 - [ ] 基本版
 - [ ] Circumcetre
-- [ ] 最近點對
+- [x] 最近點對
 - [ ] Convex Hull
 - [ ] Half Plane Intersection
 - [ ] Smallest Circle (最小覆蓋圓)
