@@ -62,7 +62,7 @@
 - [ ] KD Tree
 - [x] Fenwick Tree（區間加值）
 - [x] Sparse Table
-- [] Treap
+- [x] Treap
 - [ ] Link-Cut Tree
 ### Other
 - [x] gcc-functions
