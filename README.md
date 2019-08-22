@@ -49,13 +49,12 @@
 - [ ] Pollard Rho
 - [ ] Conjugate Gradient
 ### Geometry
-- [ ] 基本版
-- [ ] Circumcetre
+- [x] 基本版
 - [x] 最近點對
-- [ ] Convex Hull
-- [ ] Half Plane Intersection
+- [x] Convex Hull
+- [x] Half Plane Intersection
 - [ ] Smallest Circle (最小覆蓋圓)
-- [ ] Convex Hull 3D
+- [x] Convex Hull 3D
 ### Data Structure
 - [ ] Segment Tree(Lazy Tag)
 - [ ] Persistent Segment Tree
