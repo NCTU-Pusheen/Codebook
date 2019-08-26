@@ -48,6 +48,7 @@
 - [ ] Gaussian Elimination
 - [ ] Pollard Rho
 - [ ] Conjugate Gradient
+- [ ] Find Real Root
 ### Geometry
 - [x] 基本版
 - [x] 最近點對
