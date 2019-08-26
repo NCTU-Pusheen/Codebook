@@ -26,10 +26,10 @@
 ### String
 - [x] Rolling Hash
 - [x] Trie
-- [x] AC自動機
+- [x] AC自動機 `Jinkela`
 - [x] KMP
 - [x] Z-Value
-- [x] Suffix Array
+- [x] Suffix Array `Jinkela`
 - [ ] BWT
 - [ ] LPS
 - [ ] LCPS
@@ -43,31 +43,28 @@
 - [x] Euler's totient function
 - [x] Mod Inverse
 - [ ] FFT
-- [x] Miller-Rabin
-- [x] Matrix
-- [x] Gaussian Elimination
-- [x] 質因數分解(Pollard Rho)
+- [x] Miller-Rabin `Jinkela`
+- [x] Matrix `Jinkela`
+- [x] Gaussian Elimination `Jinkela`
+- [x] 質因數分解(Pollard Rho) `Jinkela`
 - [ ] Conjugate Gradient
-- [x] Find Real Root
-- [x] 外星模運算(多層pow)
+- [x] Find Real Root `Jinkela`
+- [x] 外星模運算(多層pow) `Jinkela`
 ### Geometry
-- [x] 基本版
-- [x] 最近點對
-- [x] Convex Hull
-- [x] Half Plane Intersection
-- [x] Smallest Circle (最小覆蓋圓)
-- [x] Convex Hull 3D
+- [x] 基本版(Convex Hull, 3D...) `Jinkela`
+- [x] 最近點對 `Jinkela`
+- [x] Smallest Circle (最小覆蓋圓)  `Jinkela`
 ### Data Structure
 - [ ] Segment Tree (Lazy Tag)
 - [ ] Persistent Segment Tree
-- [x] KD Tree
+- [x] KD Tree `Jinkela`
 - [x] Fenwick Tree（區間加值）
 - [x] Sparse Table
 - [x] Treap
-- [x] Link-Cut Tree
-- [x] 重鏈剖分
+- [x] Link-Cut Tree `Jinkela`
+- [x] 重鏈剖分 `Jinkela`
 ### Other
 - [x] gcc-functions
 - [ ] SG
 - [ ] BigInt
-- [x] CNF
+- [x] CNF `Jinkela`
