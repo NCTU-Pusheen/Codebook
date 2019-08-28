@@ -8,21 +8,21 @@
 - [x] MST - Prim
 - [x] MST - Kruskal
 - [ ] TreeDiameter
-- [ ] Tarjan
-- [ ] LCS
-- [ ] Min mean cycle
-- [ ] BCC
-- [ ] 2-Sat
+- [ ] **Tarjan**
+- [ ] **LCA**
+- [ ] **Min mean cycle**
+- [ ] **BCC**
+- [ ] **2-Sat**
 - [ ] Planer Graph
 - [x] Count Spanning Tree - Kirchhoff's thm
 - [ ] Directed Graph MST
 - [ ] Blossom
 - [ ] Stable Marriage
 ### Flow/Matching
-- [ ] Dinic
-- [ ] Min cost flow
-- [ ] Perfect Bipartite Matching - KM
-- [ ] Maximum Cardinality Bipartite Matching - Hopcroft-Karp
+- [ ] **Dinic**
+- [ ] **Min cost flow**
+- [ ] **KM**
+- [ ] **Hopcroft-Karp**
 ### String
 - [x] Rolling Hash
 - [x] Trie
@@ -30,11 +30,11 @@
 - [x] KMP
 - [x] Z-Value
 - [x] Suffix Array `Jinkela`
-- [ ] BWT
+- [ ] **BWT**
 - [ ] LPS
 - [ ] LCPS
 ### DP
-- [ ] 1D/1D
+- [ ] **1D/1D**
 - [ ] 有限背包
 - [ ] 環狀最長共同子序列
 - [x] LCIS（Longest Common Increasing Subsequense）
@@ -42,7 +42,7 @@
 - [x] Fast Power
 - [x] Euler's totient function
 - [x] Mod Inverse
-- [ ] FFT
+- [ ] **FFT**
 - [x] Miller-Rabin `Jinkela`
 - [x] Matrix `Jinkela`
 - [x] Gaussian Elimination `Jinkela`
@@ -65,6 +65,6 @@
 - [x] 重鏈剖分 `Jinkela`
 ### Other
 - [x] gcc-functions
-- [ ] SG
-- [ ] BigInt
+- [ ] **SG**
+- [ ] **BigInt**
 - [x] CNF `Jinkela`
