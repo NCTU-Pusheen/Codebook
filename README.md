@@ -17,12 +17,12 @@
 - [x] Count Spanning Tree - Kirchhoff's thm
 - [ ] Directed Graph MST
 - [ ] Blossom
-- [ ] Stable Marriage
 ### Flow/Matching
 - [ ] **Dinic**
 - [ ] **Min cost flow**
 - [ ] **KM**
 - [ ] **Hopcroft-Karp**
+- [ ] Stable Marriage
 ### String
 - [x] Rolling Hash
 - [x] Trie
@@ -68,3 +68,4 @@
 - [ ] **SG**
 - [ ] **BigInt**
 - [x] CNF `Jinkela`
+- [x] 莫隊 - 區間眾數
