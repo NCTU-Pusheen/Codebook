@@ -56,7 +56,7 @@
 - [x] Smallest Circle (最小覆蓋圓)  `Jinkela`
 ### Data Structure
 - [x] Segment Tree (Lazy Tag)
-- [ ] Persistent Segment Tree
+- [x] Persistent Segment Tree
 - [x] KD Tree `Jinkela`
 - [x] Fenwick Tree（區間加值）
 - [x] Sparse Table
