@@ -9,7 +9,7 @@
 - [x] MST - Kruskal
 - [ ] TreeDiameter
 - [ ] **Tarjan**
-- [ ] **LCA**
+- [x] LCA
 - [ ] **Min mean cycle**
 - [ ] **BCC**
 - [ ] **2-Sat**
