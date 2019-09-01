@@ -7,12 +7,11 @@
 - [x] SP - SPFA
 - [x] MST - Prim
 - [x] MST - Kruskal
-- [ ] TreeDiameter
-- [ ] **Tarjan**
+- [x] Tarjan `Fox`
 - [x] LCA
-- [ ] **Min mean cycle**
-- [ ] **BCC**
-- [ ] **2-Sat**
+- [x] Min mean cycle `Jinkela`
+- [x] BCC `Fox`
+- [x] 2-Sat `Fox`
 - [ ] Planer Graph
 - [x] Count Spanning Tree - Kirchhoff's thm
 - [ ] Directed Graph MST
@@ -20,10 +19,11 @@
 ### Flow/Matching
 - [x] Dinic `Ud`
 - [x] Ford Fulkerson `Ud`
-- [ ] **Min cost flow**
-- [ ] **KM**
-- [ ] **Hopcroft-Karp**
-- [ ] Stable Marriage
+- [x] Min cost max flow `Jinkela`
+- [x] KM `Jinkela`
+- [x] Hopcroft-Karp `網路上抄`
+- [x] Stable Marriage `Jinkela`
+- [x] SW Min-Cut `Fox`
 ### String
 - [x] Rolling Hash
 - [x] Trie
@@ -31,12 +31,11 @@
 - [x] KMP
 - [x] Z-Value
 - [x] Suffix Array `Jinkela`
-- [ ] **BWT**
-- [ ] LPS
-- [ ] LCPS
+- [x] BWT `Jaguar`
+- [x] LPS `演算法筆記`
 ### DP
-- [ ] **1D/1D**
-- [ ] 有限背包
+- [x] 1D/1D `Jaguar`
+- [ ] 有限背包 `Morris`
 - [ ] 環狀最長共同子序列
 - [x] LCIS（Longest Common Increasing Subsequense）
 - [x] Edit Distance `Ud`
@@ -44,7 +43,7 @@
 - [x] Fast Power
 - [x] Euler's totient function
 - [x] Mod Inverse
-- [ ] **FFT**
+- [x] FFT `Jinkela`
 - [x] Miller-Rabin `Jinkela`
 - [x] Matrix `Jinkela`
 - [x] Gaussian Elimination `Jinkela`
@@ -52,6 +51,7 @@
 - [ ] Conjugate Gradient
 - [x] Find Real Root `Jinkela`
 - [x] 外星模運算(多層pow) `Jinkela`
+- [x] SG `Jaguar`
 ### Geometry
 - [x] 基本版(Convex Hull, 3D...) `Jinkela`
 - [x] 最近點對 `Jinkela`
@@ -68,7 +68,6 @@
 - [x] 重鏈剖分 `Jinkela`
 ### Other
 - [x] gcc-functions
-- [ ] **SG**
-- [ ] **BigInt**
+- [ ] BigInt
 - [x] CNF `Jinkela`
 - [x] 莫隊 - 區間眾數 `Ud`
