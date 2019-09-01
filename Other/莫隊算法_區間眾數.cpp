@@ -1,62 +1,48 @@
-//ZJ b417: 區間眾數
-#define maxn 100005
-#define maxq 1000005
-struct Qry { int l, r, lid, id; };
-bool cmp(const Qry &a, const Qry &b) {
-    if(a.lid==b.lid)return a.r<b.r;
-    return a.lid < b.lid;
+using namespace std;
+const int maxn = 1e6 + 10;
+struct query {
+    int id, bk, l, r;
+};
+int arr[maxn], cnt[maxn], d[maxn], n, m, bk, mx;
+pair<int,int> ans[maxn];
+vector<query> q;
+bool cmp(query x,query y) {
+    return (x.bk < y.bk || (x.bk == y.bk) && x.r < y.r);
 }
-Qry qry[maxq];
-int ans[maxq][2];
-int main() {
-    int a[maxn];
-    int t[maxn] = {};
-    int cnt[maxn] = {};
-    int n,q;
-    scanf("%d%d",&n,&q);
-    for(int i=1; i<=n; i++)
-        scanf("%d",&a[i]);
-    int k = sqrt(n);
-    for(int i=0; i<q; i++) {
-        scanf("%d%d",&qry[i].l,&qry[i].r);
-        qry[i].id = i;
-        qry[i].lid = qry[i].l / k;
+void add(int pos) {
+    d[cnt[arr[pos]]]--;
+    cnt[arr[pos]]++;
+    d[cnt[arr[pos]]]++;
+    if(d[mx + 1] > 0) mx++;
+}
+void del(int pos) { 
+    d[cnt[arr[pos]]]--; 
+    cnt[arr[pos]]--;
+    d[cnt[arr[pos]]]++;
+    if(d[mx] == 0) mx--;
+}
+void mo(int n, int m) {
+    sort(q.begin(), q.end(), cmp);
+    for(int i = 0, cl = 1, cr = 0; i < m; i++) {
+        while(cr < q[i].r) add(++cr);
+        while(cl > q[i].l) add(--cl);
+        while(cr > q[i].r) del(cr--);
+        while(cl < q[i].l) del(cl++);
+        ans[q[i].id] = make_pair(mx, d[mx]);
     }
-    sort(qry,qry+q,cmp);
-    int l = qry[0].l+1, r = qry[0].l;
-    int max_t = 0;
-    for(int i=0; i<q; i++) {
-        while(r<qry[i].r) {
-            r++;
-            cnt[t[a[r]]]--;
-            t[a[r]]++;
-            cnt[t[a[r]]]++;
-            max_t = max(max_t,t[a[r]]);
-        }
-        while(qry[i].l<l) {
-            l--;
-            cnt[t[a[l]]]--;
-            t[a[l]]++;
-            cnt[t[a[l]]]++;
-            max_t = max(max_t,t[a[l]]);
-        }
-        while(qry[i].l>l) {
-            cnt[t[a[l]]]--;
-            t[a[l]]--;
-            cnt[t[a[l]]]++;
-            l++;
-            if(!cnt[max_t])max_t--;
-        }
-        while(r>qry[i].r) {
-            cnt[t[a[r]]]--;
-            t[a[r]]--;
-            cnt[t[a[r]]]++;
-            r--;
-            if(!cnt[max_t])max_t--;
-        }
-        ans[qry[i].id][0] = max_t;
-        ans[qry[i].id][1] = cnt[max_t];
+}
+int main(){
+    cin >> n >> m;
+    bk = (int)sqrt(n + 0.5);
+    for(int i = 1; i <= n; i++)
+        cin >> arr[i];
+    q.resize(m);
+    for(int i = 0; i < m; i++) {
+        cin >> q[i].l >> q[i].r;
+        q[i].id = i,q[i].bk = (q[i].l - 1) / bk;
     }
-    for(int i=0; i<q; i++) printf("%d %d\n",ans[i][0],ans[i][1]);
+    mo(n, m);
+    for(int i = 0; i < m; i++)
+        cout << ans[i].first << ' ' << ans[i].second << '\n';
     return 0;
 }
