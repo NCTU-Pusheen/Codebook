@@ -35,7 +35,7 @@
 - [x] LPS `演算法筆記`
 ### DP
 - [x] 1D/1D `Jaguar`
-- [ ] 有限背包 `Morris`
+- [x] 有限背包 `Morris`
 - [ ] 環狀最長共同子序列
 - [x] LCIS（Longest Common Increasing Subsequense）
 - [x] Edit Distance `Ud`
