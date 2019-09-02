@@ -16,6 +16,7 @@
 - [x] Count Spanning Tree - Kirchhoff's thm
 - [ ] Directed Graph MST
 - [ ] Blossom
+- [ ] 次小生成樹
 ### Flow/Matching
 - [x] Dinic `Ud`
 - [x] Ford Fulkerson `Ud`
@@ -71,3 +72,4 @@
 - [ ] BigInt
 - [x] CNF `Jinkela`
 - [x] 莫隊 - 區間眾數 `Ud`
+- [x] 提醒事項
