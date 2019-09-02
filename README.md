@@ -16,6 +16,7 @@
 - [x] Count Spanning Tree - Kirchhoff's thm
 - [ ] Directed Graph MST
 - [ ] Blossom
+- [ ] k短路
 - [ ] 次小生成樹
 ### Flow/Matching
 - [x] Dinic `Ud`
