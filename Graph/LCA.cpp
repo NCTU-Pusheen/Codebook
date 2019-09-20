@@ -1,10 +1,9 @@
-// Tarjan
+// SsadpTarjan (fastest but space comsuming)
 // Time Complexity: O(N+Q)
 // Space Complexity: O(N^2)
-
-class Tarjan {
+class SsadpTarjan {
    private:
-    const int N;
+    const int n;
     vector<int> par;
     vector<int> dep;
     vector<vector<int>> ca;
@@ -12,7 +11,7 @@ class Tarjan {
     int dfs(int u, const vector<vector<int>>& edge, int d) {
         dep[u] = d;
 
-        for (int a = 0; a < N; a++)
+        for (int a = 0; a < n; a++)
             if (dep[a] != -1) ca[a][u] = ca[u][a] = parent(a);
 
         for (int a : edge[u]) {
@@ -28,29 +27,25 @@ class Tarjan {
     }
 
    public:
-    Tarjan(const vector<vector<int>>& edge, int root) : N(edge.size()) {
-        dep.assign(N, -1);
-        par.resize(N);
-        ca.assign(N, vector<int>(N));
+    SsadpTarjan(const vector<vector<int>>& edge, int root) : n(edge.size()) {
+        dep.assign(n, -1);
+        par.resize(n);
+        ca.assign(n, vector<int>(n));
 
-        for (int i = 0; i < N; i++) par[i] = i;
+        for (int i = 0; i < n; i++) par[i] = i;
         dfs(root, edge, 0);
     }
 
     int lca(int a, int b) { return ca[a][b]; }
 
-    int dist(int a, int b) {
-        int acc = ca[a][b];
-        return dep[a] - dep[acc] + dep[b] - dep[acc];
-    }
+    int dist(int a, int b) { return dep[a] + dep[b] - 2 * dep[ca[a][b]]; }
 };
 
-// HakkaTarjan
+// OfflineTarjan (fastest and space saving but offline required)
 // Time Complexity: O(N+Q)
 // Space Complexity: O(N+Q)
 // OFFLINE REQUIRED
-
-class HakkaTarjan {
+class OfflineTarjan {
    private:
     vector<int> par;
     vector<int> anc;
@@ -59,7 +54,7 @@ class HakkaTarjan {
     vector<int> ans;
     vector<int> rank;
 
-    const int N;
+    const int n;
     const vector<vector<int>>& edge;
     const int root;
 
@@ -92,14 +87,14 @@ class HakkaTarjan {
     }
 
     void solve(const vector<pii>& query) {
-        dep.assign(N, -1);
-        rank.assign(N, 0);
-        par.resize(N);
-        anc.resize(N);
-        for (int i = 0; i < N; i++) anc[i] = par[i] = i;
+        dep.assign(n, -1);
+        rank.assign(n, 0);
+        par.resize(n);
+        anc.resize(n);
+        for (int i = 0; i < n; i++) anc[i] = par[i] = i;
 
         ans.resize(query.size());
-        qry.resize(N);
+        qry.resize(n);
         for (int i = 0; i < query.size(); i++) {
             auto& q = query[i];
             qry[q.first].emplace_back(q.second, i);
@@ -110,8 +105,7 @@ class HakkaTarjan {
     }
 
    public:
-    // O(1)
-    HakkaTarjan(const vector<vector<int>>& edge, int root) : N(edge.size()), edge(edge), root(root) {}
+    OfflineTarjan(const vector<vector<int>>& edge, int root) : n(edge.size()), edge(edge), root(root) {}
 
     // O(N+Q)
     vector<int> lca(const vector<pii>& query) {
@@ -119,6 +113,7 @@ class HakkaTarjan {
         return ans;
     }
 
+    // O(N+Q)
     vector<int> dist(const vector<pii>& query) {
         solve(query);
         for (int i = 0; i < query.size(); i++) {
@@ -127,4 +122,51 @@ class HakkaTarjan {
         }
         return ans;
     }
+};
+
+// SparseTableTarjan (eclectic and somehow slower)
+// Time Complexity: O(N+QlogN)
+// Space complexity: O(NlogN)
+class SparseTableTarjan {
+   private:
+    const int maxlg;
+    const int n;
+    vector<vector<int>> anc;
+    vector<int> dep;
+
+    void dfs(int u, const vector<vector<int>>& edge, int d) {
+        dep[u] = d;
+        for (int i = 1; i < maxlg; i++)
+            if (anc[u][i - 1] < 0)
+                anc[u][i] = -1;
+            else
+                anc[u][i] = anc[anc[u][i - 1]][i - 1];
+        for (int a : edge[u]) {
+            if (dep[a] != -1) continue;
+            anc[a][0] = u;
+            dfs(a, edge, d + 1);
+        }
+    }
+
+   public:
+    SparseTableTarjan(const vector<vector<int>>& edge, int root) : n(edge.size()), maxlg(__lg(n)) {
+        anc.assign(n, vector<int>(maxlg));
+        dep.assign(n, -1);
+        dfs(root, edge, 0);
+    }
+
+    // O(logN)
+    int lca(int a, int b) {
+        if (dep[a] > dep[b]) swap(a, b);
+        for (int k = 0; k < maxlg; k++)
+            if ((dep[b] - dep[a]) >> k & 1) b = anc[b][k];
+
+        if (a == b) return a;
+        for (int k = maxlg - 1; k >= 0; k--)
+            if (anc[a][k] != anc[b][k]) a = anc[a][k], b = anc[b][k];
+        return anc[a][0];
+    }
+
+    // O(logN)
+    int dist(int a, int b) { return dep[a] + dep[b] - 2 * dep[lca(a, b)]; }
 };
