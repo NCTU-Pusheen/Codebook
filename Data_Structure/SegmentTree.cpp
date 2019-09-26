@@ -1,15 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef pair<double, double> pdd;
-const double PI = acos(-1);
-#define x first
-#define y second
-#define iter(c) c.begin(), c.end()
-#define ms(a) memset(a, 0, sizeof(a))
 /**
- * Support single element setting and range sum/min/max/product/gcd/lcm/etc query.
+ * Support single element setting and range query.
  *
  * Time Complexity: O(QlogN)
  * Space Complexity: O(N)
@@ -18,10 +8,11 @@ class SegmentTree {
    private:
     /**
      * Set DF to:
-     *   0    for sum/gcd query
+     *   0    for sum/gcd/or/xor query
      *   1    for product/lcm query
      *   inf  for min query
      *   -inf for max query
+     *   -1   for and query
      */
     static const int DF = 0;
     vector<ll> a;
@@ -65,7 +56,7 @@ class SegmentTree {
         i--;  // comment this line to 0-based
         set(0, 0, n - 1, i, v);
     }
-    // Queries range sum/min/max/gcd etc, whre l and r in [1, n]
+    // Queries range calculation, whre l and r in [1, n]
     ll query(int l, int r) {
         l--, r--;  // comment this line to 0-based
         return query(0, 0, n - 1, l, r);
