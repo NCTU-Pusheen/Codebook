@@ -1,14 +1,17 @@
-// SsadpTarjan (fastest but space comsuming)
-// Time Complexity: O(N+Q)
-// Space Complexity: O(N^2)
+/**
+ * Support fatest online query but consume more spaces. 0- or 1-based are both safe and no needs to modify any codes.
+ *
+ * Time Complexity: O(N+Q)
+ * Space Complexity: O(N^2)
+ */
 class SsadpTarjan {
    private:
-    const int n;
+    int n;
     vector<int> par;
     vector<int> dep;
     vector<vector<int>> ca;
 
-    int dfs(int u, const vector<vector<int>>& edge, int d) {
+    int dfs(int u, vector<vector<int>>& edge, int d) {
         dep[u] = d;
 
         for (int a = 0; a < n; a++)
@@ -27,7 +30,10 @@ class SsadpTarjan {
     }
 
    public:
-    SsadpTarjan(const vector<vector<int>>& edge, int root) : n(edge.size()) {
+    // Constructs a tarjan by adjacent edge information.
+    // The vector in edge[i] gives indices of all adjacent vertex of node of index i.
+    // Size of edge is unlimited, but on 1-based cases, effective information should be placed in range [1, n]; 0-based [0, n)
+    SsadpTarjan(vector<vector<int>>& edge, int root) : n(edge.size()) {
         dep.assign(n, -1);
         par.resize(n);
         ca.assign(n, vector<int>(n));
@@ -36,15 +42,12 @@ class SsadpTarjan {
         dfs(root, edge, 0);
     }
 
+    // Queries least commom ancestor of node a and b.
     int lca(int a, int b) { return ca[a][b]; }
 
+    // Queries minimal distance from node a to b.
     int dist(int a, int b) { return dep[a] + dep[b] - 2 * dep[ca[a][b]]; }
 };
-
-// OfflineTarjan (fastest and space saving but offline required)
-// Time Complexity: O(N+Q)
-// Space Complexity: O(N+Q)
-// OFFLINE REQUIRED
 class OfflineTarjan {
    private:
     vector<int> par;
@@ -54,9 +57,9 @@ class OfflineTarjan {
     vector<int> ans;
     vector<int> rank;
 
-    const int n;
-    const vector<vector<int>>& edge;
-    const int root;
+    // You can set this to non-reference type for safety reasons
+    vector<vector<int>>& edge;
+    int root, n;
 
     void merge(int a, int b) {
         a = parent(a), b = parent(b);
@@ -86,7 +89,7 @@ class OfflineTarjan {
         return par[x] = parent(par[x]);
     }
 
-    void solve(const vector<pii>& query) {
+    void solve(vector<pii>& query) {
         dep.assign(n, -1);
         rank.assign(n, 0);
         par.resize(n);
@@ -105,16 +108,21 @@ class OfflineTarjan {
     }
 
    public:
-    OfflineTarjan(const vector<vector<int>>& edge, int root) : n(edge.size()), edge(edge), root(root) {}
+    // Constructs a tarjan by adjacent edge information.
+    // The vector in edge[i] gives indices of all adjacent vertex of node of index i.
+    // Size of edge is unlimited, but on 1-based cases, effective information should be placed in range [1, n]; 0-based [0, n)
+    OfflineTarjan(vector<vector<int>>& edge, int root) : edge(edge), root(root), n(edge.size()) {}
 
-    // O(N+Q)
-    vector<int> lca(const vector<pii>& query) {
+    // Given a data set of lca requests, queries least commom ancestors of pairs of nodes. The result set has same order to the data
+    // set.
+    vector<int> lca(vector<pii>& query) {
         solve(query);
         return ans;
     }
 
-    // O(N+Q)
-    vector<int> dist(const vector<pii>& query) {
+    // Given a data set of minimal distance requests, queries minimal distance within a pair of nodes in each set. The result set has
+    // same order to the data set.
+    vector<int> dist(vector<pii>& query) {
         solve(query);
         for (int i = 0; i < query.size(); i++) {
             auto& q = query[i];
@@ -124,17 +132,19 @@ class OfflineTarjan {
     }
 };
 
-// SparseTableTarjan (eclectic and somehow slower)
-// Time Complexity: O(N+QlogN)
-// Space complexity: O(NlogN)
+/**
+ * Support a little slower query and save spaces.
+ *
+ * Time Complexity: O(N+QlogN)
+ * Space complexity: O(NlogN)
+ */
 class SparseTableTarjan {
    private:
-    const int maxlg;
-    const int n;
+    int maxlg;
     vector<vector<int>> anc;
     vector<int> dep;
 
-    void dfs(int u, const vector<vector<int>>& edge, int d) {
+    void dfs(int u, vector<vector<int>>& edge, int d) {
         dep[u] = d;
 
         for (int i = 1; i < maxlg; i++)
@@ -142,7 +152,7 @@ class SparseTableTarjan {
                 break;
             else
                 anc[u][i] = anc[anc[u][i - 1]][i - 1];
-       
+
         for (int a : edge[u]) {
             if (dep[a] != -1) continue;
             anc[a][0] = u;
@@ -151,13 +161,18 @@ class SparseTableTarjan {
     }
 
    public:
-    SparseTableTarjan(const vector<vector<int>>& edge, int root) : n(edge.size()), maxlg(__lg(n)) {
+    // Constructs a tarjan by adjacent edge information.
+    // The vector in edge[i] gives indices of all adjacent vertex of node of index i.
+    // Size of edge is unlimited, but on 1-based cases, effective information should be placed in range [1, n]; 0-based [0, n)
+    SparseTableTarjan(vector<vector<int>>& edge, int root) {
+        int n = edge.size();
+        maxlg = ceil(log2(n));
         anc.assign(n, vector<int>(maxlg, -1));
         dep.assign(n, -1);
         dfs(root, edge, 0);
     }
 
-    // O(logN)
+    // Queries least commom ancestor of node a and b.
     int lca(int a, int b) {
         if (dep[a] > dep[b]) swap(a, b);
         for (int k = 0; dep[b] - dep[a]; k++)
@@ -169,6 +184,6 @@ class SparseTableTarjan {
         return anc[a][0];
     }
 
-    // O(logN)
+    // Queries minimal distance from node a to b.
     int dist(int a, int b) { return dep[a] + dep[b] - 2 * dep[lca(a, b)]; }
 };
