@@ -2,7 +2,7 @@
 
 ## BIT and Segment Tree
 ### Manipulation
-| class | Single setting | Single increment | Range set | Range increment |
+| class | Single setting | Single increment | Range setting | Range increment |
 | --- | :---: | :---: | :---: | :---: |
 | BIT            | X | V | X | X | 
 | RangeUpdateBIT | X | V | X | V |
