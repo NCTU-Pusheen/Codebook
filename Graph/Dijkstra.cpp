@@ -1,51 +1,46 @@
-// Queries mininum path from src to dest in a graph where src and dest are connected.
-// The n vertices are supposed to be marked [0, n); edge should have size n.
-int dijkstra(int src, int dest, const vector<vector<pii>>& edge) {
-    const int N = edge.size();
-    bool nvis[N] = {0};
-    // A comparator may be required.
+/**
+ * Queries mininum path from src to dest in a graph where src and dest are connected. 0- or 1-based are safe without any changes. Value
+ * pairs put in the edge vector are of format {edge length, adjacent vertex}. If ll type is required for path length, replaces pii with
+ * pair<ll, int> and return type with ll.
+ */
+int dijkstra(int src, int dest, vector<vector<pii>>& edge) {  // return type may be int or ll
+    int n = edge.size();
+    bool nvis[n];
+    memset(nvis, 0, sizeof(nvis));
     priority_queue<pii, vector<pii>, greater<pii>> q;
     q.emplace(0, src);
-    while (!q.empty()) {
+    while (1) {
         int v = q.top().second;
-        int d = q.top().first;
+        auto d = q.top().first;  // may be int or ll
         q.pop();
         if (v == dest) return d;
         if (nvis[v]) continue;
         nvis[v] = true;
-        for (auto& e : edge[v]) {
-            if (!nvis[e.second]) {
-                // Fit the comparator
-                q.emplace(d + e.first, e.second);
-            }
-        }
+        for (auto& e : edge[v])
+            if (!nvis[e.second]) q.emplace(d + e.first, e.second);
     }
-    throw "src and dest are not connected.";
+    // Reach here indicates src and dest are not connected
 }
 
-// Queries minuimum path from src to all the other vertices in a graph where all vertices are connected.
-// The n vertices are supposed to be marked [0, n); edge should have size n.
-vector<int> dijkstra(int src, const vector<vector<pii>>& edge) {
-    const int N = edge.size();
-    vector<int> mindist(N, -1);
+/**
+ * Queries minuimum path from src to all the other vertices in a graph where all vertices are connected. Arg n is count of vertices in
+ * the graph, while 0- or 1-based are both safe without any changes.  Value pairs put in the edge vector are of format {edge length,
+ * adjacent vertex}. If ll type is required for edge length, replaces pii with pair<ll, int> and vector<int> with vector<ll>.
+ */
+vector<int> dijkstra(int src, vector<vector<pii>>& edge, int n) {  // return type may be int or ll
     int nvis = 0;
-    // A comparator may be required.
+    vector<int> mindist(edge.size(), -1);  // may be int or ll
     priority_queue<pii, vector<pii>, greater<pii>> q;
     q.emplace(0, src);
-    while (nvis < N) {
-        if (q.empty()) throw "Not all vertices connected.";
+    while (nvis < n) {
         int v = q.top().second;
-        int d = q.top().first;
+        auto d = q.top().first;  // may be int or ll
         q.pop();
         if (mindist[v] != -1) continue;
         mindist[v] = d;
         nvis++;
-        for (auto& e : edge[v]) {
-            if (mindist[e.second] == -1) {
-                // Fit the comparator
-                q.emplace(d + e.first, e.second);
-            }
-        }
+        for (auto& e : edge[v])
+            if (mindist[e.second] == -1) q.emplace(d + e.first, e.second);
     }
     return mindist;
 }
