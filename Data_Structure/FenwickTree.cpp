@@ -12,20 +12,24 @@ class BIT {
     ll sum(int i) {
         i++;
         ll r = 0;
-        while (i > 0) r += a[i], i -= i & -i;
+        while (i > 0) assert(0 <= i && i < a.size()), r += a[i], i -= i & -i;
         return r;
     }
 
    public:
     // Constructs an binary indexed tree with all values initialized to 0, where n is size of array.
     BIT(int n) : n(n) { a.resize(n + 1); }
-    // Increases element at index i by value v, where i in [1, n].
+    // Increases element at index i by value v.
     void add(int i, ll v) {
+        i--;  // comment this line to 0-based
         i++;
-        while (i <= n) a[i] += v, i += i & -i;
+        while (i <= n) assert(0 <= i && i < a.size()), a[i] += v, i += i & -i;
     }
-    // Queries sum in [l, r], where l and r in [1, n].
-    ll sum(int l, int r) { return sum(r) - sum(l - 1); }
+    // Queries sum in [l, r].
+    ll sum(int l, int r) {
+        l--, r--;  // comment this line to 0-based
+        return sum(r) - sum(l - 1);
+    }
 };
 
 /**
@@ -61,11 +65,17 @@ class RangeUpdateBIT {
    public:
     // Constructs an empty Fenwick Tree where n is size of array.
     RangeUpdateBIT(int n) : n(n) {
-        d.resize(n + 2);
-        dd.resize(n + 2);
+        d.resize(n + 1);
+        dd.resize(n + 1);
     }
-    // Queries sum in [l, r], where l and r in [1, n].
-    ll sum(int l, int r) { return sum(r) - sum(l - 1); }
-    // Increases all elements in [l, r] by value v, where l and r in [1, n].
-    void add(int l, int r, ll v) { add(l, v), add(r + 1, -v); }
+    // Queries sum in [l, r].
+    ll sum(int l, int r) {
+        l--, r--;  // comment this line to 0-based
+        return sum(r) - sum(l - 1);
+    }
+    // Increases all elements in [l, r] by value v.
+    void add(int l, int r, ll v) {
+        l--, r--;  // comment this line to 0-based
+        add(l, v), add(r + 1, -v);
+    }
 };
