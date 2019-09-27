@@ -18,7 +18,7 @@ class SegmentTree {
     vector<ll> a;
     int n;
 
-    inline ll cal(int a, int b) {
+    inline ll cal(ll a, ll b) {
         /**
          * Replace with:
          *   a + b      for sum query
