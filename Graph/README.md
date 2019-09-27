@@ -4,6 +4,6 @@ All three LCA Tarjan classes supports querying least commom ancestor and minimal
 
 | class | Time complexity | Space complexity | Offline required |
 | --- | --- | --- | :---: |
-| SsadpTarjan   | O(N + Q)       | O(N ^ 2)   | No  |
-| OfflineTarjan | O(N + Q)       | O(N + Q)   | Yes |
-| RmqTarjan     | O(N + Q log N) | O(N log N) | No  |
+| SsadpTarjan                          | O(N + Q)       | O(N ^ 2)   | No  |
+| OfflineTarjan                        | O(N + Q)       | O(N + Q)   | Yes |
+| SparseTableTarjan (Ud commonly used) | O(N + Q log N) | O(N log N) | No  |

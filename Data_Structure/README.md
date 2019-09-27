@@ -4,15 +4,15 @@
 ### Manipulation
 | class | Single setting | Single increment | Range setting | Range increment |
 | --- | :---: | :---: | :---: | :---: |
-| BIT            | X | V | X | X | 
-| RangeUpdateBIT | X | V | X | V |
-| BIT2D          | V | X | X | X |
-| SegmentTree    | V | X | X | X |
+| BIT            | No | Yes | No | No | 
+| RangeUpdateBIT | No | Yes | No | Yes |
+| BIT2D          | No | Yes | No | No |
+| SegmentTree    | Yes | No | No | No |
 
 ### Query
-| class | Sum | Product | Gcd | Lcm | Min | Max | And | Or | Xor |
+| class | Sum | Product | GCD | LCM | MIN | MAX | AND | OR | XOR |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| BIT            | V | X | X | X | X | X | X | X | X |
-| RangeUpdateBIT | V | X | X | X | X | X | X | X | X |
-| BIT2D          | V | X | X | X | X | X | X | X | X |
-| SegmentTree    | V | V | V | V | V | V | V | V | V |
+| BIT            | Yes | No | No | No | No | No | No | No | No |
+| RangeUpdateBIT | Yes | No | No | No | No | No | No | No | No |
+| BIT2D          | Yes | No | No | No | No | No | No | No | No |
+| SegmentTree    | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
