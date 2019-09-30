@@ -1,63 +1,80 @@
-const int maxn = 1e5 + 10;
-const int INF = 1e9;
-const long long INF64 = 1e18;
-struct edge{
-    int to, cap, rev;
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<double, double> pdd;
+const double PI = acos(-1);
+#define x first
+#define y second
+#define iter(c) c.begin(), c.end()
+#define ms(a) memset(a, 0, sizeof(a))
+#define mss(a) memset(a, -1, sizeof(a))
+#define mp(e, f) make_pair(e, f)
+
+class dinic {
+    struct edge {
+        int dst;
+        ll cap;
+        int rev;
+        edge(int d, ll c, int r) : dst(d), cap(c), rev(r){};
+    };
+
+   private:
+    vector<vector<edge>> adj;
+    vector<int> level;
+    vector<int> vis_edge;
+    int n;
+
+    bool judge_level(int src, int dst) {
+        level.assign(n, -1);
+        queue<int> q;
+        q.push(src);
+        level[src] = 0;
+        while (!q.empty()) {
+            int v = q.front();
+            q.pop();
+            for (auto& e : adj[v]) {
+                if (e.cap == 0 || level[e.dst] != -1) continue;
+                level[e.dst] = level[v] + 1;
+                q.push(e.dst);
+            }
+        }
+        return level[dst] > 0;
+    }
+
+    ll flow(int v, ll f, int dst) {
+        if (v == dst) return f;
+        for (; vis_edge[v] < adj[v].size(); vis_edge[v]++) {
+            edge& e = adj[v][vis_edge[v]];
+            if (level[e.dst] != level[v] + 1 || e.cap == 0) continue;
+            ll sent = flow(e.dst, min(f, e.cap), dst);
+            if (sent > 0) {
+                e.cap -= sent;
+                adj[e.dst][e.rev].cap += sent;
+                return sent;
+            }
+        }
+        return 0;
+    }
+
+   public:
+    dinic(int n) : n(n + 1) { clear(); }
+
+    void clear() { adj.assign(n, vector<edge>()); }
+
+    void add_edge(int src, int dst, ll cap) {
+        edge s(dst, cap, adj[dst].size()); 
+        edge d(src, 0, adj[src].size());
+        adj[src].push_back(s);
+        adj[dst].push_back(d);
+    }
+
+    ll maxflow(int src, int dst) {
+        ll ret = 0;
+        while (judge_level(src, dst)) {
+            vis_edge.assign(n, 0);
+            while (ll f = flow(src, 1e18, dst)) ret += f;
+        }
+        return ret;
+    }
 };
-vector<edge> G[maxn];
-int n, m, s, t, a, b, c, iter[maxn], level[maxn];
-void bfs(int s) {
-    memset(level, -1, sizeof(level));
-    queue<int> q;
-    level[s] = 0;
-    q.push(s);
-    while (q.size()) {
-        int u = q.front(); q.pop();
-        for (edge e: G[u]) {
-            if (e.cap > 0 && level[e.to] < 0) {
-                level[e.to] = level[u] + 1;
-                q.push(e.to);
-            }
-        }
-    }
-}
-int dfs(int v, int t, int f) {
-    if (v == t) return f;
-    for (int &i = iter[v]; i < G[v].size(); i++) {
-        edge &e = G[v][i];
-        if (e.cap > 0 && level[v] < level[e.to]) {
-            int d = dfs(e.to, t, min(f, e.cap));
-            if (d > 0) {
-                e.cap -= d;
-                G[e.to][e.rev].cap += d;
-                return d;
-            }
-        }
-    }
-    return 0;
-}
-int dinic(int s, int t) {
-    int flow = 0;
-    while (true) {
-        bfs(s);
-        if (level[t] < 0) return flow;
-        memset(iter, 0, sizeof(iter));
-        int f;
-        while ((f = dfs(s, t, INF)) > 0)
-            flow += f;
-    }
-}
-void init(int n) {
-    for (int i = 0; i < n; i++) G[i].clear();
-}
-int main() {
-    cin >> n >> m >> s >> t;
-    init(n);
-    while (m--) {
-        cin >> a >> b >> c;
-        G[a].push_back((edge){b, c, (int)G[b].size()});
-        G[b].push_back((edge){a, 0, (int)G[a].size() - 1});
-    }
-    cout << dinic(s, t) << '\n';
-    return 0;
-}
