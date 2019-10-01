@@ -2,6 +2,7 @@
 ## Dinic
 ### Complexity
 Though Dinic seems to have large complexity, the actual time comsumed is much less.
+
 | Graph Type   | Time Complexity                             | Space Complexity |
 | ------------ | ------------------------------------------- | ---------------- |
 | General      | much less than O( EV^2 )                    | O( V + E )       |
