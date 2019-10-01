@@ -2,6 +2,7 @@
 
 ## BIT and Segment Tree
 ### Manipulation supports
+
 | class          | Single setting | Single increment | Range setting | Range increment |
 | -------------- | :------------: | :--------------: | :-----------: | :-------------: |
 | BIT            |    Feasible    |       Yes        |      No       |       No        |
