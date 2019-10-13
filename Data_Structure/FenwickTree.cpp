@@ -12,7 +12,7 @@ class BIT {
     ll sum(int i) {
         i++;
         ll r = 0;
-        while (i > 0) assert(0 <= i && i < a.size()), r += a[i], i -= i & -i;
+        while (i > 0) r += a[i], i -= i & -i;
         return r;
     }
 
@@ -23,7 +23,7 @@ class BIT {
     void add(int i, ll v) {
         i--;  // comment this line to 0-based
         i++;
-        while (i <= n) assert(0 <= i && i < a.size()), a[i] += v, i += i & -i;
+        while (i <= n) a[i] += v, i += i & -i;
     }
     // Queries sum in [l, r].
     ll sum(int l, int r) {
