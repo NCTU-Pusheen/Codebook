@@ -3,21 +3,21 @@
  * pairs put in the edge vector are of format {edge weight, adjacent vertex}.
  */
 typedef pair<ll, int> pii;
-ll dijkstra(int src, int dst, vector<vector<pii>>& edge) {  // return type may be int or ll
+ll dijkstra(int src, int dst, vector<vector<pii>>& edge) {
     vector<bool> vis(edge.size());
     priority_queue<pii, vector<pii>, greater<pii>> q;
     q.emplace(0, src);
-    while (1) {
+    while (q.size()) {
         int v = q.top().second;
-        auto d = q.top().first;  // may be int or ll
+        ll d = q.top().first;
         q.pop();
         if (v == dst) return d;
         if (vis[v]) continue;
-        vis[v] = true;
+        vis[v] = 1;
         for (auto& e : edge[v])
             if (!nvis[e.second]) q.emplace(d + e.first, e.second);
     }
-    // Reach here indicates src and dst are not connected
+    return -1;
 }
 
 /**
@@ -26,11 +26,11 @@ ll dijkstra(int src, int dst, vector<vector<pii>>& edge) {  // return type may b
  * adjacent vertex}.
  */
 typedef pair<ll, int> pii;
-vector<ll> dijkstra(int src, vector<vector<pii>>& edge) {  // return type may be int or ll
+vector<ll> dijkstra(int src, vector<vector<pii>>& edge) {
     vector<ll> sum(edge.size(), -1);
     priority_queue<pii, vector<pii>, greater<pii>> q;
     q.emplace(0, src);
-    while (!q.empty()) {
+    while (q.size()) {
         int v = q.top().second;
         ll d = q.top().first;
         q.pop();
