@@ -1,0 +1,14 @@
+測機 (test on C++ and Python)
+AC：好好寫
+WA：cout << "0\n" / 結尾多印一行;
+RE：空間越界/除0
+TLE：while(true);
+CE：empty code
+OLE：瘋狂Hello World
+NO Output：default code
+待測：stack深度、judge速度、陣列MAX
+開賽
+1. bash.rc打ac
+2. 調gedit設定
+3. 打default_code
+4. 測試ac
