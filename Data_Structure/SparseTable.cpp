@@ -7,7 +7,7 @@ struct SparseTable {
         a[0] = data;
         for (int i = 1; (1 << i) <= n; i++) {
             int k = n - (1 << i);
-            for (int j = 0; j < k; j++) {
+            for (int j = 0; j <= k; j++) {
                 a[i][j] = max(a[i - 1][j], a[i - 1][j + (1 << (i - 1))]);
             }
         }
