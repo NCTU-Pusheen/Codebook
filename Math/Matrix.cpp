@@ -1,36 +1,42 @@
 class Matrix {
     const int r, c;
     vector<vector<ll>> m;
-    Matrix(int r, int c) : r(r), c(c), m(r, vector<ll>(c)) {}
+    Matrix(int r, int c)
+        : r(r), c(c), m(r, vector<ll>(c)) {}
 
     // Element access operator
     vector<ll> &operator[](int i) { return m[i]; }
     // Performs increment
-    Matrix operator+(const Matrix &a) const {
+    Matrix operator+(const Matrix &a) {
         Matrix rev(r, c);
         for (int i = 0; i < r; ++i)
-            for (int j = 0; j < c; ++j) rev[i][j] = m[i][j] + a.m[i][j];
+            for (int j = 0; j < c; ++j)
+                rev[i][j] = m[i][j] + a.m[i][j];
         return rev;
     }
     // Performs substraction
-    Matrix operator-(const Matrix &a) const {
+    Matrix operator-(const Matrix &a) {
         Matrix rev(r, c);
         for (int i = 0; i < r; ++i)
-            for (int j = 0; j < c; ++j) rev[i][j] = m[i][j] - a.m[i][j];
+            for (int j = 0; j < c; ++j)
+                rev[i][j] = m[i][j] - a.m[i][j];
         return rev;
     }
     // Performs multiplication
-    Matrix operator*(const Matrix &a) const {
+    Matrix operator*(const Matrix &a) {
         Matrix rev(r, a.c);
         Matrix tmp(a.c, a.r);
         for (int i = 0; i < a.r; ++i)
-            for (int j = 0; j < a.c; ++j) tmp[j][i] = a.m[i][j];
+            for (int j = 0; j < a.c; ++j)
+                tmp[j][i] = a.m[i][j];
         for (int i = 0; i < r; ++i)
             for (int j = 0; j < a.c; ++j)
-                for (int k = 0; k < c; ++k) rev.m[i][j] += m[i][k] * tmp[j][k];
+                for (int k = 0; k < c; ++k)
+                    rev.m[i][j] += m[i][k] * tmp[j][k];
         return rev;
     }
-    // Queries inverse of this matrix. If this matrix is not inversible, an empty matrix is returned.
+    // Queries inverse of this matrix. If this matrix is not
+    // inversible, an empty matrix is returned.
     Matrix inverse() const {
         Matrix t(r, r + c);
         for (int y = 0; y < r; y++) {
@@ -41,10 +47,13 @@ class Matrix {
 
         Matrix ret(c, r);
         for (int y = 0; y < r; y++)
-            for (int x = 0; x < c; ++x) ret[y][x] = t.m[y][c + x] / t.m[y][y];
+            for (int x = 0; x < c; ++x)
+                ret[y][x] = t.m[y][c + x] / t.m[y][y];
         return ret;
     }
-    // Queires det value and runs gauss elimination in O(n^3). If this matrix is not a square, the returned value not works.
+    // Queires det value and runs gauss elimination in
+    // O(n^3). If this matrix is not a square, the returned
+    // value not works.
     ll gauss() {
         vector<ll> lazy(r, 1);
         bool sign = false;
@@ -60,7 +69,9 @@ class Matrix {
                 if (i == j) continue;
                 lazy[j] = lazy[j] * m[i][i];
                 ll mx = m[j][i];
-                for (int k = 0; k < c; ++k) m[j][k] = m[j][k] * m[i][i] - m[i][k] * mx;
+                for (int k = 0; k < c; ++k)
+                    m[j][k] =
+                        m[j][k] * m[i][i] - m[i][k] * mx;
             }
         }
         ll det = sign ? -1 : 1;

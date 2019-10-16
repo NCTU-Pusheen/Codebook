@@ -17,7 +17,8 @@ class BIT {
     }
 
    public:
-    // Constructs an binary indexed tree with all values initialized to 0, where n is size of array.
+    // Constructs an binary indexed tree with all values
+    // initialized to 0, where n is size of array.
     BIT(int n) : n(n) { a.resize(n + 1); }
     // Increases element at index i by value v.
     void add(int i, ll v) {
@@ -63,7 +64,8 @@ class RangeUpdateBIT {
     }
 
    public:
-    // Constructs an empty Fenwick Tree where n is size of array.
+    // Constructs an empty Fenwick Tree where n is size of
+    // array.
     RangeUpdateBIT(int n) : n(n) {
         d.resize(n + 1);
         dd.resize(n + 1);

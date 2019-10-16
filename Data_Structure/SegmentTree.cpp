@@ -4,17 +4,18 @@
  * Time Complexity: O(QlogN)
  * Space Complexity: O(N)
  */
+
+/**
+ * Set DF to:
+ *   0    for sum/gcd/or/xor query
+ *   1    for product/lcm query
+ *   inf  for min query
+ *   -inf for max query
+ *   -1   for and query
+ */
+const int DF = 0;
 class SegmentTree {
    private:
-    /**
-     * Set DF to:
-     *   0    for sum/gcd/or/xor query
-     *   1    for product/lcm query
-     *   inf  for min query
-     *   -inf for max query
-     *   -1   for and query
-     */
-    static const int DF = 0;
     vector<ll> a;
     int n;
 
@@ -39,7 +40,8 @@ class SegmentTree {
         ll r = set(i * 2 + 2, m + 1, curr, tar, v);
         return a[i] = cal(l, r);
     }
-    ll query(int i, int curl, int curr, int tarl, int tarr) {
+    ll query(int i, int curl, int curr, int tarl,
+             int tarr) {
         if (curr < tarl || curl > tarr) return DF;
         if (tarl <= curl && curr <= tarr) return a[i];
         int m = (curl + curr) / 2;
@@ -49,9 +51,11 @@ class SegmentTree {
     }
 
    public:
-    // Constructs an empty segment tree with all values 0; n represeting count of elements
+    // Constructs an empty segment tree with all values 0; n
+    // represeting count of elements
     SegmentTree(int n) : n(n) { a.assign(n * 4, DF); }
-    // Sets element located at index i to value v, where i in [1, n]
+    // Sets element located at index i to value v, where i
+    // in [1, n]
     void set(int i, ll v) {
         i--;  // comment this line to 0-based
         set(0, 0, n - 1, i, v);
@@ -62,4 +66,3 @@ class SegmentTree {
         return query(0, 0, n - 1, l, r);
     }
 };
-
