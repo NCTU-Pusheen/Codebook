@@ -1,12 +1,10 @@
-[Max-Flow]
-    Dinic : O(V^2E)
-    Ford-Fulkerson : O((V+E)F)
-[二分途匹配]
-    Hopcroft-Karp : O(sqrt(V)E)
-    KM : O(V^3)~O(V^4)
-[Min-Cut]
-    Stoer-Wagner : O(V^3)
-
+Debug List:
+1. Long Long !!
+2. python3 整數除法 "//"
+3. connected / unconnected
+4. 範圍看清楚
+5. eps夠小嗎！！
+-------------------------------------------------------
 Lucas's Theorem
     For non-negative integer n,m and prime P,
     C(m,n) mod P = C(m/M,n/M) * C(m%M,n%M) mod P
@@ -54,3 +52,8 @@ construct a solution:
 Burnside's lemma
 |G| * |X/G|  = sum( |X^g| ) where g in G
 總方法數: 每一種旋轉下不動點的個數總和 除以 旋轉的方法數
+-------------------------------------------------------
+線性代數
+trace： tr(A) = 對角線和
+eigen vector： Ax = cx  =>  (A-cI)x = 0
+
