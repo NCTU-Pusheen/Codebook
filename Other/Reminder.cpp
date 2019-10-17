@@ -53,7 +53,10 @@ Burnside's lemma
 |G| * |X/G|  = sum( |X^g| ) where g in G
 總方法數: 每一種旋轉下不動點的個數總和 除以 旋轉的方法數
 -------------------------------------------------------
-線性代數
+Linear Algebra
 trace： tr(A) = 對角線和
 eigen vector： Ax = cx  =>  (A-cI)x = 0
-
+-------------------------------------------------------
+Josephus Problem
+f(n,k) = (f(n-1,k)+k)(mod n)
+f(1,k) = 0
