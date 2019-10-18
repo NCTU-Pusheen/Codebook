@@ -1,3 +1,6 @@
+//[l,r] = [0,n-1]
+//i = 0
+//[ql,qr] = [{0,n-1},{0,n-1}]
 #define INF 2147483647
 struct Node {
     int add_tag, chg_tag, Max, sum;
