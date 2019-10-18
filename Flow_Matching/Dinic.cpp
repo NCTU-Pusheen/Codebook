@@ -1,6 +1,8 @@
 /**
- * A dinic can find maximal count of flows in O(EV^2) in general, while in biparitite O(E * sqrt(v)). All arguments in this class
- * are safe for both 0- and 1-based cases without any changes.
+ * A dinic can find maximal count of flows in O(EV^2) in
+ * general, while in biparitite O(E * sqrt(v)). All
+ * arguments are safe for both 0- and 1-based cases without
+ * any changes.
  */
 class Dinic {
     struct edge {
@@ -32,12 +34,12 @@ class Dinic {
         return lv[d] > 0;
     }
 
-    ll flow(int v, ll f, int d) {
+    ll aug(int v, ll f, int d) {
         if (v == d) return f;
         for (; ve[v] < adj[v].size(); ve[v]++) {
             auto& e = adj[v][ve[v]];
             if (lv[e.d] != lv[v] + 1 || !e.c) continue;
-            ll sent = flow(e.d, min(f, e.c), d);
+            ll sent = aug(e.d, min(f, e.c), d);
             if (sent > 0) {
                 e.c -= sent;
                 adj[e.d][e.r].c += sent;
@@ -48,14 +50,18 @@ class Dinic {
     }
 
    public:
-    // Constructs a graph who has at most n vertices, inclusive of source and sink. This graph has no edges until you call add_edge
-    // function. Noted that all vertices, including source and sink, should have indcies in range [0, n].
+    // Constructs a graph who has at most n vertices,
+    // inclusive of source and sink. This graph has no edges
+    // until you call add_edge function. Noted that all
+    // vertices, including source and sink, should have
+    // indcies in range [0, n].
     Dinic(int n) : n(n + 1) { clear(); }
 
     // Removes all edges from this graph.
     void clear() { adj.assign(n, vector<edge>()); }
 
-    // Adds a directed edge into the graph, where arg s indicates source, d destination, c capacity.
+    // Adds a directed edge into the graph, where arg s
+    // indicates source, d destination, c capacity.
     void add_edge(int s, int d, ll c) {
         edge ss(d, c, adj[d].size());
         edge dd(s, 0, adj[s].size());
@@ -63,12 +69,13 @@ class Dinic {
         adj[d].push_back(dd);
     }
 
-    // Queries the maximal count of flows. Args s and d are source and destination (sink).
+    // Queries the maximal count of flows. Args s and d are
+    // source and destination (sink).
     ll max_flow(int s, int d) {
         ll ret = 0;
         while (mklv(s, d)) {
             ve.assign(n, 0);
-            while (ll f = flow(s, LLONG_MAX, d)) ret += f;
+            while (ll f = aug(s, LLONG_MAX, d)) ret += f;
         }
         return ret;
     }

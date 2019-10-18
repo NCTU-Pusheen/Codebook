@@ -1,68 +1,70 @@
-template<typename TP>
-struct MCMF{
-    static const int MAXN=440;
-    static const TP INF=999999999;
-    struct edge{
-        int v,pre;
-        TP r,cost;
-        edge(int v,int pre,TP r,TP cost):v(v),pre(pre),r(r),cost(cost){}
+// 0- and 1-based insensitive min-cost-max-flow class
+class MCMF {
+   private:
+    struct edge {
+        int to, r;
+        ll rest, c;
     };
-    int n,S,T;
-    TP dis[MAXN],PIS,ans;
-    bool vis[MAXN];
-    vector<edge> e;
-    int g[MAXN];
-    void init(int _n){
-        memset(g,-1,sizeof(int)*((n=_n)+1));
-        e.clear();
-    }
-    void add_edge(int u,int v,TP r,TP cost,bool directed=false){
-        e.push_back(edge(v,g[u],r,cost));
-        g[u]=e.size()-1;
-        e.push_back(
-        edge(u,g[v],directed?0:r,-cost));
-        g[v]=e.size()-1;
-    }
-    TP augment(int u,TP CF){
-        if(u==T||!CF)return ans+=PIS*CF,CF;
-        vis[u]=1;
-        TP r=CF,d;
-        for(int i=g[u];~i;i=e[i].pre){
-            if(e[i].r&&!e[i].cost&&!vis[e[i].v]){
-                d=augment(e[i].v,min(r,e[i].r));
-                e[i].r-=d;
-                e[i^1].r+=d;
-                if(!(r-=d))break;
+    int n;
+    vector<vector<edge>> g;
+    ll f = 0, c = 0;
+    vector<int> pre, prel;
+
+    bool run(int s, int t) {
+        vector<ll> dis(n, inf);
+        vector<bool> vis(n);
+        dis[s] = 0;
+        queue<int> q;
+        q.push(s);
+        while (q.size()) {
+            int u = q.front();
+            q.pop();
+            vis[u] = 0;
+            for (int i = 0; i < g[u].size(); i++) {
+                int v = g[u][i].to;
+                ll w = g[u][i].c;
+                if (g[u][i].rest <= 0 ||
+                    dis[v] <= dis[u] + w)
+                    continue;
+                pre[v] = u;
+                prel[v] = i;
+                dis[v] = dis[u] + w;
+                if (!vis[v]) vis[v] = 1, q.push(v);
             }
         }
-        return CF-r;
-    }
-    bool modlabel(){
-        for(int u=0;u<=n;++u)dis[u]=INF;
-        static deque<int>q;
-        dis[T]=0,q.push_back(T);
-        while(q.size()){
-            int u=q.front();q.pop_front();
-            TP dt;
-            for(int i=g[u];~i;i=e[i].pre){
-                if(e[i^1].r&&(dt=dis[u]-e[i].cost)<dis[e[i].v]){
-                    if((dis[e[i].v]=dt)<=dis[q.size()?q.front():S]){
-                        q.push_front(e[i].v);
-                    }else q.push_back(e[i].v);
-                }
-            }
+
+        if (dis[t] == inf) return 0;
+
+        ll tf = inf;
+        for (int v = t, u, l; v != s; v = u) {
+            u = pre[v];
+            l = prel[v];
+            tf = min(tf, g[u][l].rest);
         }
-        for(int u=0;u<=n;++u)
-            for(int i=g[u];~i;i=e[i].pre)
-                e[i].cost+=dis[e[i].v]-dis[u];
-        return PIS+=dis[S], dis[S]<INF;
+        for (int v = t, u, l; v != s; v = u) {
+            u = pre[v];
+            l = prel[v];
+            g[u][l].rest -= tf;
+            g[v][g[u][l].r].rest += tf;
+        }
+        c += tf * dis[t];
+        f += tf;
+        return 1;
     }
-    TP mincost(int s,int t){
-        S=s,T=t;
-        PIS=ans=0;
-        while(modlabel()){
-            do memset(vis,0,sizeof(bool)*(n+1));
-            while(augment(S,INF));
-        }return ans;
+
+   public:
+    // Constructs an empty graph.
+    MCMF(int n)
+        : n(n + 1), g(n + 1), pre(n + 1), prel(n + 1) {}
+    // Adds an edge into the graph.
+    void add_edge(int u, int v, ll cap, ll cost) {
+        g[u].push_back({v, (int)g[v].size(), cap, cost});
+        g[v].push_back({u, (int)g[u].size() - 1, 0, -cost});
+    }
+    // Queries the minimal cost and maximal flow.
+    pair<ll, ll> query(int s, int t) {
+        while (run(s, t))
+            ;
+        return {f, c};
     }
 };

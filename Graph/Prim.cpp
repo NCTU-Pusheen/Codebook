@@ -1,26 +1,30 @@
-// Queries minimum path of spanning tree of a graph, where all vertices are connected, using Prim's algorithm. Arg n is the count of
-// vertices in the graph, while 0- or 1-based are both safe without any cahanges. The n vertices are supposed to be marked [0, n); edge
-// should have size n. Value pairs put in edge vectors are of format {edge length, adjacent vertex}. If distance may have type ll,
-// replace pii with pair<ll, int> and return type with ll.
-int minpath(vector<vector<pii>>& edge, int n) {  // return type may be int or ll
-    bool vis[edge.size()];
+/**
+ * Queries minimum path of spanning tree of a graph using
+ * Prim's algorithm. If the graph is disconnected, -1 is
+ * returned. Arg n is the count of vertices in the graph,
+ * while 0- or 1-based are both safe without any changes.
+ * Value pairs put in edge vectors are of format {edge
+ * weight, adjacent vertex}.
+ */
+typedef pair<ll, int> pii;
+ll minpath(vector<vector<pii>>& edge, int n) {
+    vector<bool> vis(n + 1);
     priority_queue<pii, vector<pii>, greater<pii>> q;
+    q.emplace(0, 1);
+    ll ret = 0;
+    int nvis = 0;
 
-    vis[0] = true;
-    int nvis = 1;
-    for (auto& e : edge[0]) q.push(e);
-
-    while (nvis < n) {
-        auto d = q.top().first;  // may be int or ll
+    while (nvis < n && q.size()) {
+        ll d = q.top().first;
         int v = q.top().second;
         q.pop();
         if (vis[v]) continue;
-        cout << d << endl;
-        vis[v] = true;
-        if (++nvis == n) return d;
+        vis[v] = 1;
+        ret += d;
+        if (++nvis == n) return ret;
         for (auto& e : edge[v]) {
-            if (!vis[e.second]) q.emplace(d + e.first, e.second);
+            if (!vis[e.second]) q.push(e);
         }
     }
-    // Reach here indicates src and dest are not connected
+    return -1;
 }
