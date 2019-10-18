@@ -1,12 +1,10 @@
-class Matrix {
-    const int r, c;
+struct Matrix {
+    int r, c;
     vector<vector<ll>> m;
     Matrix(int r, int c)
         : r(r), c(c), m(r, vector<ll>(c)) {}
 
-    // Element access operator
     vector<ll> &operator[](int i) { return m[i]; }
-    // Performs increment
     Matrix operator+(const Matrix &a) {
         Matrix rev(r, c);
         for (int i = 0; i < r; ++i)
@@ -14,7 +12,6 @@ class Matrix {
                 rev[i][j] = m[i][j] + a.m[i][j];
         return rev;
     }
-    // Performs substraction
     Matrix operator-(const Matrix &a) {
         Matrix rev(r, c);
         for (int i = 0; i < r; ++i)
@@ -22,7 +19,6 @@ class Matrix {
                 rev[i][j] = m[i][j] - a.m[i][j];
         return rev;
     }
-    // Performs multiplication
     Matrix operator*(const Matrix &a) {
         Matrix rev(r, a.c);
         Matrix tmp(a.c, a.r);
@@ -35,6 +31,7 @@ class Matrix {
                     rev.m[i][j] += m[i][k] * tmp[j][k];
         return rev;
     }
+
     // Queries inverse of this matrix. If this matrix is not
     // inversible, an empty matrix is returned.
     Matrix inverse() const {
@@ -51,9 +48,10 @@ class Matrix {
                 ret[y][x] = t.m[y][c + x] / t.m[y][y];
         return ret;
     }
-    // Queires det value and runs gauss elimination in
-    // O(n^3). If this matrix is not a square, the returned
-    // value not works.
+
+    // Queries the determine value and runs gauss
+    // elimination in O(n^3). If this matrix is not a
+    // square, the returned value is meaningless.
     ll gauss() {
         vector<ll> lazy(r, 1);
         bool sign = false;
