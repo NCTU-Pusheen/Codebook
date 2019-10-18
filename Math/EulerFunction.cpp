@@ -1,4 +1,5 @@
-// Queries phi(x) value.
+// Queries phi(x) value. That is, the count of number which
+// is coprime to and less than x.
 int phi(int x) {
     int r = x;
     for (int p = 2; p * p <= x; p++) {

@@ -1,4 +1,8 @@
-// 0- and 1-based insensitive min-cost-max-flow class
+
+/**
+ * Queries count of maximal flow. In a tie-break, queries
+ * the minimal cost.
+ */
 class MCMF {
    private:
     struct edge {
@@ -63,8 +67,7 @@ class MCMF {
     }
     // Queries the minimal cost and maximal flow.
     pair<ll, ll> query(int s, int t) {
-        while (run(s, t))
-            ;
+        while (run(s, t));
         return {f, c};
     }
 };

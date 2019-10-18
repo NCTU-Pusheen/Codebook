@@ -10,7 +10,7 @@ int* kmp_fail(string& s) {
     return f;
 }
 
-// Queries the counts sub appears in str.
+/** Queries the counts sub appears in str. */
 int kmp_count(string& str, string& sub) {
     int* fail = kmp_fail(sub);
     int p = -1, ret = 0;
@@ -23,7 +23,10 @@ int kmp_count(string& str, string& sub) {
     return ret;
 }
 
-// Queries the first index where sub appears in str; -1 indicates no matching.
+/**
+ * Queries the first index where sub appears in str; -1
+ * indicates no matching.
+ */
 int kmp(string& str, string& sub) {
     int* fail = kmp_fail(sub);
     int i, j = 0;

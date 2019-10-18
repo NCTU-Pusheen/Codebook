@@ -4,12 +4,8 @@ ll modinv(ll a, ll p) {
     if (p == 1) return 0;
     ll pp = p, y = 0, x = 1;
     while (a > 1) {
-        ll q = a / p;
-        ll t = p;
-        p = a % p, a = t;
-        t = y;
-        y = x - q * y;
-        x = t;
+        ll q = a / p, t = p;
+        p = a % p, a = t, t = y, y = x - q * y, x = t;
     }
     if (x < 0) x += pp;
     return x;
