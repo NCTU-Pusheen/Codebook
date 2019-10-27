@@ -1,42 +1,27 @@
-/**
- * Support single element increment
- * 			and range sum query in 2D.
- * Time Complexity: O(RlogR * ClogC)
- * Space Complexity: O(RC)
- */
-class BIT2D {
-   private:
-    int r, c;
-    vector<vector<ll>> a;
-
+/** 支援單點增值和區間查詢，O((A+Q)*log(A))，A 是矩陣面積。只能
+ * 用於 1-based **/
+const int R, C = ?; // 加速
+struct BIT2D {
+    vector<vector<ll>> a = vector<ll>(R, vector<ll>(C));
     ll sum(int x, int y) {
-        ll r = 0;
+        ll s = 0;
         for (int i = x; i; i -= (i & -i))
-        	for (int j = y; j; j -= (j & -j))
-        		r += a[i][j];
+            for (int j = y; j; j -= (j & -j)) s += a[i][j];
         return r;
     }
-
-   public:
-    // Constructs a 2D BIT with all value initialized to 0;
-	// r/c is count of rows/column of matrix
-    BIT2D(int r, int c) : r(r), c(c) {
-		a.assign(r + 1, vector<ll>(c + 1, 0)); }
-    // Increases element at coordinates (x, y) by value v, 
-	// where x in [1, r] and y in [1, c]
+    // 建立元素都是零的 R*C 大小的矩陣。
+    BIT2D () {}
+    // 單點增值，注意 1-based 。
     void add(int x, int y, ll v) {
-    	for (int i = x; i <= r; i += (i & -i))
-    		for (int j = y; j <= c; j += (j & -j))
-    			a[i][j] += v;
+        for (int i = x; i <= MAXR; i += (i & -i))
+            for (int j = y; j <= MAXC; j += (j & -j))
+                a[i][j] += v;
     }
-    // Queries sum of matrix
-	// from (x0, y0) (inclusive) to(x1, y1) (inclusive) 
-	// where x in [1, r] and y in [1, c]
-	ll sum(int x0, int yo, int x1, int yl) {
-		if (x0 > x1)
-			swap(x0, x1);
-		if (yo > yl)
-			swap(yo, yl);
-		return sum(x1, yl) - sum(x0 - 1, yl)
-			 - sum(x1, yo - 1) + sum(x0 - 1, yo - 1);}
-}; 
+    // 區間和，注意 1-based 。二維都是閉區間。
+    ll sum(int x0, int y0, int x1, int y1) {
+        if (x0 > x1) swap(x0, x1);
+        if (y0 > y1) swap(y0, yl);
+        return sum(x1, y1) - sum(x0 - 1, y1)
+            - sum(x1, y0 - 1) + sum(x0 - 1, y0 - 1);
+    }
+};
