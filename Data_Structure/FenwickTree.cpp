@@ -1,83 +1,45 @@
-/**
- * Support single element increment and range sum query.
- *
- * Time Complexity: O(QlogN)
- * Space Complexity: O(N)
- */
-class BIT {
-   private:
-    int n;
-    vector<ll> a;
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
 
+/** 普通 BIT ，為了加速打字只支援 1-based **/
+const int maxn = ? ;  // 開全域加速打字
+struct BIT {
+    vector<ll> a = vector<ll>(maxn);
     ll sum(int i) {
-        i++;
-        ll r = 0;
-        while (i > 0) r += a[i], i -= i & -i;
+        ll r = 0; while (i > 0) r += a[i], i -= i & -i;
         return r;
     }
-
-   public:
-    // Constructs an binary indexed tree with all values
-    // initialized to 0, where n is size of array.
-    BIT(int n) : n(n) { a.resize(n + 1); }
-    // Increases element at index i by value v.
+    // size = maxn 的空 BIT ，所有元素都是零
+    BIT() {}
+    // 注意 1-based
     void add(int i, ll v) {
-        i--;  // comment this line to 0-based
-        i++;
-        while (i <= n) a[i] += v, i += i & -i;
+        while (i <= maxn) a[i] += v, i += i & -i;
     }
-    // Queries sum in [l, r].
-    ll sum(int l, int r) {
-        l--, r--;  // comment this line to 0-based
-        return sum(r) - sum(l - 1);
-    }
+    // 注意 1-based
+    ll sum(int l, int r) { return sum(r) - sum(l - 1); }
 };
 
-/**
- * Support range elements increment and range sum query.
- *
- * Time Complexity: (QlogN)
- * Space Complexity: O(N)
- */
-class RangeUpdateBIT {
-   private:
-    int n;
-    vector<ll> d, dd;
-
+/** 普通 BIT，為加速打字只支援 1-based。複雜度 O(Q*log(N)) **/
+const int maxn = ? ;  // 開全域加速打字
+struct RangeUpdateBIT {
+    vector<ll> d = vector<ll>(maxn), dd = vector<ll>(maxn);
     ll sum(int i) {
-        i++;
         ll s = 0, ss = 0;
-        int c = i + 1;
-        while (i > 0) {
-            s += d[i], ss += dd[i];
-            i -= i & -i;
-        }
+        int c = i + 1;  // 這行不是打錯！要加！
+        while (i > 0) s += d[i], ss += dd[i], i -= i & -i;
         return c * s - ss;
     }
     void add(int i, ll v) {
-        i++;
         int c = i;
-        while (i <= n) {
-            d[i] += v, dd[i] += c * v;
-            i += i & -i;
-        }
+        while (i <= maxn)
+            d[i] += v, dd[i] += c * v, i += i & -i;
     }
-
-   public:
-    // Constructs an empty Fenwick Tree where n is size of
-    // array.
-    RangeUpdateBIT(int n) : n(n) {
-        d.resize(n + 1);
-        dd.resize(n + 1);
-    }
-    // Queries sum in [l, r].
-    ll sum(int l, int r) {
-        l--, r--;  // comment this line to 0-based
-        return sum(r) - sum(l - 1);
-    }
-    // Increases all elements in [l, r] by value v.
+    // 空 BIT，size = maxn，所有元素都是零，注意 1-based
+    RangeUpdateBIT() {}
+    // 必區間區間求和，注意 1-based
+    ll sum(int l, int r) { return sum(r) - sum(l - 1); }
+    // 必區間區間加值，注意 1-based
     void add(int l, int r, ll v) {
-        l--, r--;  // comment this line to 0-based
-        add(l, v), add(r + 1, -v);
-    }
+        add(l, v), add(r + 1, -v); }
 };

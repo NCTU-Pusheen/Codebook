@@ -1,4 +1,4 @@
-// Queries a ^ p.
+// 問 a ^ p.
 ll fastpow(ll a, int p) {
     ll ret = 1;
     while (p) {
@@ -8,7 +8,7 @@ ll fastpow(ll a, int p) {
     return ret;
 }
 
-// Queries (a ^ p) mod m.
+// 問 (a ^ p) mod m.
 ll fastpow(ll a, ll p, ll m) {
     ll ret = 1;
     while (p) {
