@@ -1,11 +1,9 @@
 oj() {
-  ext=${1##*.}
-  filename=${1##*/}
-  filename=${filename%.*}
+  ext=${1##*.}            #空格敏感
+  filename=${1##*/}       #空格敏感
+  filename=${filename%.*} #空格敏感
   case $ext in
-    c   ) gcc -o "/tmp/$filename" "$1" && "/tmp/$filename" ;;  # Omit this line if C is not needed
-    cpp ) g++ -o "/tmp/$filename" "$1" && "/tmp/$filename" ;;
-    java) javac "$1" -d /tmp/ && java -cp /tmp/ "$filename" ;; # Omit this line if Java is not needed
-    py  ) python3 "$1" ;;
+    cpp ) g++ -o "/tmp/$filename" "$1" && "/tmp/$filename" ;; #空格不敏感
+    py  ) python3 "$1" ;;                                     #空格不敏感
   esac
 }
