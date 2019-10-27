@@ -1,26 +1,26 @@
 #define ls i << 1
 #define rs i << 1 | 1
-const ll r = 0x6891139;  // 亂數
-class SuperSegmentTree {
+const ll rr = 0x6891139;  // 亂數
+class RangeUpdateSegmentTree {
    private:
     // 若不需要區間和，刪除所有含有 .s 的行
     // 若不需要 max/min ，刪除所有含有 .mx/.mn 的行
     struct node {
-        int l, r, inc = 0, mod = r;
+        int l, r, inc = 0, mod = rr;
         ll s = 0, mx = 0, mn = 0;
     };
     vector<node> a;
     int n;
     void push(int i) {
         // 複製貼上行加速
-        if (a[i].mod != r) {
+        if (a[i].mod != rr) {
             a[ls].mod = a[rs].mod = a[i].mod;
             a[ls].inc = a[rs].inc = 0;
             a[ls].mn = a[rs].mn = a[i].mod;
             a[ls].mx = a[rs].mx = a[i].mod;
             a[ls].s = (a[ls].r - a[ls].l + 1) * a[i].mod;
             a[rs].s = (a[rs].r - a[rs].l + 1) * a[i].mod;
-            a[i].mod = r;
+            a[i].mod = rr;
         }
         if (a[i].inc) {
             a[ls].inc += a[i].inc, a[rs].inc += a[i].inc;
@@ -44,7 +44,7 @@ class SuperSegmentTree {
     }
 
    public:
-    SuperSegmentTree(int n) : n(n), a(n << 2) {
+    RangeUpdateSegmentTree(int n) : n(n), a(n << 2) {
         build(1, n, 1);
     }
     void set(int l, int r, ll val, int i = 1) {
