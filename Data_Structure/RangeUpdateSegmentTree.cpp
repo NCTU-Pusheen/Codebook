@@ -1,10 +1,12 @@
+/** 修改功能最強的線段樹，但只能查詢區間和以及極值，所有區間操作都
+ * 是閉區間。只支援 1-based 。 **/
 #define ls i << 1
 #define rs i << 1 | 1
-const ll rr = 0x6891139;  // 亂數
+const ll rr = 0x6891139;  // 亂數，若跟題目碰撞會吃 WA 或 RE
 class RangeUpdateSegmentTree {
    private:
-    // 若不需要區間和，刪除所有含有 .s 的行
-    // 若不需要 max/min ，刪除所有含有 .mx/.mn 的行
+    // 程式碼重複性略高 (已盡力) 若不需要區間和，刪除所有含有 .s 的
+    // 行若不需要 max/min ，刪除所有含有 .mx/.mn 的行
     struct node {
         int l, r, inc = 0, mod = rr;
         ll s = 0, mx = 0, mn = 0;
@@ -39,14 +41,15 @@ class RangeUpdateSegmentTree {
     void build(int l, int r, int i) {
         a[i].l = l, a[i].r = r;
         if (l == r) return;
-        int m = (l + r) >> 1;
-        build(l, m, ls), build(m + 1, r, rs);
+        int mod = (l + r) >> 1;
+        build(l, mod, ls), build(mod + 1, r, rs);
     }
 
    public:
     RangeUpdateSegmentTree(int n) : n(n), a(n << 2) {
         build(1, n, 1);
     }
+    // 注意只支援 1-based
     void set(int l, int r, ll val, int i = 1) {
         if (a[i].l >= l && a[i].r <= r) {
             a[i].s = val * (a[i].r - a[i].l + 1);
@@ -55,11 +58,12 @@ class RangeUpdateSegmentTree {
             return;
         }
         push(i);
-        int m = (a[i].l + a[i].r) >> 1;
-        if (l <= m) set(l, r, val, ls);
-        if (r > m) set(l, r, val, rs);
+        int mod = (a[i].l + a[i].r) >> 1;
+        if (l <= mod) set(l, r, val, ls);
+        if (r > mod) set(l, r, val, rs);
         pull(i);
     }
+    // 注意只支援 1-based
     void add(int l, int r, ll val, int i = 1) {
         if (a[i].l >= l && a[i].r <= r) {
             a[i].s += val * (a[i].r - a[i].l + 1);
@@ -67,40 +71,42 @@ class RangeUpdateSegmentTree {
             return;
         }
         push(i);
-        int m = (a[i].l + a[i].r) >> 1;
-        if (l <= m) add(l, r, val, ls);
-        if (r > m) add(l, r, val, rs);
+        int mod = (a[i].l + a[i].r) >> 1;
+        if (l <= mod) add(l, r, val, ls);
+        if (r > mod) add(l, r, val, rs);
         pull(i);
     }
 
-    // 以下三函數幾乎雷同，請善用複製貼上
+    // 以下三函數幾乎雷同，請善用複製貼上 // 注意只支援 1-based
     ll maxx(int l, int r, int i = 1) {
         if (l <= a[i].l && a[i].r <= r) return a[i].mx;
         push(i);
         ll ret = -9e18;
-        int m = (a[i].l + a[i].r) >> 1;
-        if (l <= m) ret = max(ret, maxx(l, r, ls));
-        if (r > m) ret = max(ret, maxx(l, r, rs));
+        int mod = (a[i].l + a[i].r) >> 1;
+        if (l <= mod) ret = max(ret, maxx(l, r, ls));
+        if (r > mod) ret = max(ret, maxx(l, r, rs));
         pull(i);
         return ret;
     }
+    // 注意只支援 1-based
     ll minn(int l, int r, int i = 1) {
         if (l <= a[i].l && a[i].r <= r) return a[i].mn;
         push(i);
         ll ret = 9e18;
-        int m = (a[i].l + a[i].r) >> 1;
-        if (l <= m) ret = min(ret, minn(l, r, ls));
-        if (r > m) ret = min(ret, minn(l, r, rs));
+        int mod = (a[i].l + a[i].r) >> 1;
+        if (l <= mod) ret = min(ret, minn(l, r, ls));
+        if (r > mod) ret = min(ret, minn(l, r, rs));
         pull(i);
         return ret;
     }
+    // 注意只支援 1-based
     ll sum(int l, int r, int i = 1) {
         if (l <= a[i].l && a[i].r <= r) return a[i].s;
         push(i);
         ll ret = 0;
-        int m = (a[i].l + a[i].r) >> 1;
-        if (l <= m) ret += sum(l, r, ls);
-        if (r > m) ret += sum(l, r, rs);
+        int mod = (a[i].l + a[i].r) >> 1;
+        if (l <= mod) ret += sum(l, r, ls);
+        if (r > mod) ret += sum(l, r, rs);
         pull(i);
         return ret;
     }

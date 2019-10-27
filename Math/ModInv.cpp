@@ -1,5 +1,4 @@
-// Queries value x such that (ax == 1) mod p, where p is
-// prime and a is positive.
+// 解 (ax == 1) mod p 。p 必須是質數，a 是正整數。
 ll modinv(ll a, ll p) {
     if (p == 1) return 0;
     ll pp = p, y = 0, x = 1;
@@ -11,8 +10,7 @@ ll modinv(ll a, ll p) {
     return x;
 }
 
-// Queries value x such that (ax == b) mod p, where p is
-// prime and a, b are positive.
+// 解 (ax == b) mod p 。p 必須是質數，a 和 b 是正整數。
 ll modinv(ll a, ll b, ll p) {
     ll ret = modinv(a, p);
     return ret * b % p;

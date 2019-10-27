@@ -1,14 +1,9 @@
-/**
- * Queires the first index where pat appears in str; -1
- * indicates no matching.
- */
+// 問 sub 在 str 第一次出現的開頭 index 。-1 表示找不到。
 int rollhash(string& str, string& pat) {
-    const int x = 1e6 + 99, m = 1e9 + 9;
-    ll xx = 1;
+    const int x = 1e6 + 99, m = 1e9 + 9; // 隨意大質數
+    ll xx = 1, sh = 0;
     for (int i = 0; i < pat.size(); i++) xx = xx * x % m;
-    ll sh = 0;
     for (char c : pat) sh = (sh * x + c) % m;
-
     vector<ll> hash = {0};
     for (int i = 0; i < str.size(); i++) {
         hash.push_back((hash.back() * x + str[i]) % m);

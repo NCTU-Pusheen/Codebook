@@ -1,11 +1,5 @@
-/**
- * Queries shortest path of spanning tree of a graph using
- * Prim's algorithm. If the graph is disconnected, -1 is
- * returned. Arg n is the count of vertices in the graph,
- * while 0- or 1-based are both safe without any changes.
- * Value pairs put in edge vectors are of format {edge
- * weight, adjacent vertex}.
- */
+/** 0/1-based 安全， n 是節點數量 (必須剛好) 。 edge 格式為
+ * {cost, dest} ，回傳 -1 表示圖不連通。**/
 typedef pair<ll, int> pii;
 ll minpath(vector<vector<pii>>& edge, int n) {
     vector<bool> vis(n + 1);
