@@ -12,7 +12,7 @@ const int maxn = ?;      // 開全域加速打字
 #define ls i << 1        // 加速打字
 #define rs i << 1 | 1
 struct SegmentTree {
-    vector<ll> a = vector<ll>(maxn);
+    vector<ll> a = vector<ll>(maxn << 2);
     inline ll cal(ll a, ll b) {
         /**
          * 把回傳值設為對應的操作，例如 a+b 為區間和，還有像是
@@ -27,9 +27,9 @@ struct SegmentTree {
         if (r < q || l > q) return a[i];
         if (l == r) return a[i] = v;
         int m = (l + r) >> 1;
-        ll rl = set(q, v, ls, l, m);
-        ll rr = set(q, v, rs, m + 1, r);
-        return a[i] = cal(rl, rr);
+        ll lo = set(q, v, ls, l, m);
+        ll ro = set(q, v, rs, m + 1, r);
+        return a[i] = cal(lo, ro);
     }
     // 查詢區間 [l, r] 總和 (或極值等等，看你怎麼寫)。外部呼叫的時
     // 候後三個參數不用填。注意只支援 1-based ！
@@ -38,9 +38,9 @@ struct SegmentTree {
         if (r < ql || l > qr) return df;
         if (ql <= l && r <= qr) return a[i];
         int m = (l + r) >> 1;
-        ll rl = query(ql, qr, ls, l, m);
-        ll rr = query(ql, qr, rs, m + 1, r);
-        return cal(rl, rr);
+        ll lo = query(ql, qr, ls, l, m);
+        ll ro = query(ql, qr, rs, m + 1, r);
+        return cal(lo, ro);
     }
     // 建立 size = maxn 的空線段樹，所有元素都是 0 。注意只支援
     // 1-based ！
