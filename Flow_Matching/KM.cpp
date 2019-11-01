@@ -48,10 +48,10 @@ struct KM {
         return ans;
     }
 
-    // 給他 n*m 的權重表 (n>=m) ，求最大完全匹配權重
+    // 給他 n*m 的權重表 (n<=m) ，求最大完全匹配權重
     // n<m 會無窮迴圈
-    KM(vector<vector<ll>> e) : e(e) {
-        xx = e.size(), yy = e[0].size(); // xx 要 >= yy !!
+    KM(vector<vector<ll>>& e) : e(e) {
+        xx = e.size(), yy = e[0].size(); // xx 要 <= yy !!
         cx.assign(xx, -1), cy.assign(yy, -1);
         wx.assign(xx, 0), wy.assign(yy, 0);
     }
