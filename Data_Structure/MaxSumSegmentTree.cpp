@@ -1,3 +1,5 @@
+/** 計算最大子區間連續和的線段樹，限定 1-based 。
+ * 複雜度 O(Q*log(N)) **/
 #define ls i << 1
 #define rs i << 1 | 1
 class MaxSumSegmentTree {
@@ -47,13 +49,14 @@ class MaxSumSegmentTree {
     }
 
    public:
+    // 單點設值。限定 1-based 。
     void set(int i, ll v) { set(1, 1, n, i, v); }
-    ll query(int ql, int qr) {
-        return query(1, 1, n, ql, qr).ans;
+    // 問必區間 [l, r] 的最大子區間連續和。限定 1-based 。
+    ll query(int l, int r) {
+        return query(1, 1, n, l, r).ans;
     }
     MaxSumSegmentTree(int n) : n(n) {
-        a.resize(n << 2);
-        z.resize(n << 2);
+        a.resize(n << 2), z.resize(n << 2);
         build(1, 1, n);
     }
 };

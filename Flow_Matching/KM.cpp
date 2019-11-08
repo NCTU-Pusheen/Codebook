@@ -1,6 +1,7 @@
 /** 二分圖最大權值匹配 KM 演算法，複雜度 O(n^3)*/
 #define inf 5e18
-struct KM {
+class KM {
+   private:
     const vector<vector<ll>>& e;
     int xx, yy;
     vector<ll> cx, cy, wx, wy;
@@ -24,6 +25,8 @@ struct KM {
         return 0;
     }
 
+   public:
+    // 問最大匹配權重。
     ll max_weight() {
         for (int i = 0; i < xx; i++)
             for (int j = 0; j < yy; j++) {
@@ -48,10 +51,10 @@ struct KM {
         return ans;
     }
 
-    // 給他 n*m 的權重表 (n<=m) ，求最大完全匹配權重
-    // n<m 會無窮迴圈
+    // 給他 n * m 的權重表 (n <= m)，求最大完全匹配權重，權重可以
+    // 是負數。注意 n > m 會導致無窮迴圈。
     KM(vector<vector<ll>>& e) : e(e) {
-        xx = e.size(), yy = e[0].size(); // xx 要 <= yy !!
+        xx = e.size(), yy = e[0].size();  // xx 要 <= yy !!
         cx.assign(xx, -1), cy.assign(yy, -1);
         wx.assign(xx, 0), wy.assign(yy, 0);
     }
