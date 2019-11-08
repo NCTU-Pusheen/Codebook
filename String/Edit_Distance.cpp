@@ -1,8 +1,9 @@
-ll ins = ? ;  // cost of insertion
-ll del = ? ;  // cost of deletion
-ll sst = ? ;  // cost of substitution
-ll edd(string& src, string& dst) {
-    ll dp[src.size() + 1][dst.size() + 1];
+// 問從 src 到 dst 的最小 edit distance
+// ins 插入一個字元的成本
+// del 刪除一個字元的成本
+// sst 替換一個字元的成本
+ll edd(string& src, string& dst, ll ins, ll del, ll sst) {
+    ll dp[src.size() + 1][dst.size() + 1]; // 不用初始化
     for (int i = 0; i <= src.size(); i++) {
         for (int j = 0; j <= dst.size(); j++) {
             if (i == 0) dp[i][j] = ins * j;
