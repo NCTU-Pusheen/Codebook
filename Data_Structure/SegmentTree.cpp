@@ -1,68 +1,48 @@
+/** 普通線段樹，為了加速打字時間，所以只支援 1-based。 **/
 /**
- * Support single element setting and range query.
- *
- * Time Complexity: O(QlogN)
- * Space Complexity: O(N)
+ * 把 df 設為:
+ *   0     for 區間和/gcd/bit-or/bit-xor
+ *   1     for 區間積/lcm
+ *   9e18  for 區間最小值
+ *   -9e18 for 區間最大值
+ *   -1    for 區間 bit-and
  */
-
-/**
- * Set DF to:
- *   0    for sum/gcd/or/xor query
- *   1    for product/lcm query
- *   inf  for min query
- *   -inf for max query
- *   -1   for and query
- */
-const int DF = 0;
-class SegmentTree {
-   private:
-    vector<ll> a;
-    int n;
-
+const ll df = 0;
+const int maxn = ?;      // 開全域加速打字
+#define ls i << 1        // 加速打字
+#define rs i << 1 | 1
+struct SegmentTree {
+    vector<ll> a = vector<ll>(maxn << 2);
     inline ll cal(ll a, ll b) {
         /**
-         * Replace with:
-         *   a + b      for sum query
-         *   a * b      for product query
-         *   gcd(a, b)  for gcd query
-         *   lcm(a, b)  for lcm query
-         *   min(a, b)  for min query
-         *   max(a, b)  for max query
+         * 把回傳值設為對應的操作，例如 a+b 為區間和，還有像是
+         * a*b, min(a,b), max(a,b), gcd(a,b), lcm(a,b),
+         * a|b, a&b, a^b 等等。
          */
         return a + b;
     }
-
-    ll set(int i, int curl, int curr, int tar, ll v) {
-        if (curr < tar || curl > tar) return a[i];
-        if (curl == curr) return a[i] = v;
-        int m = (curl + curr) / 2;
-        ll l = set(i * 2 + 1, curl, m, tar, v);
-        ll r = set(i * 2 + 2, m + 1, curr, tar, v);
-        return a[i] = cal(l, r);
+    // 單點設值。外部呼叫的時候後三個參數不用填。注意只支援 1-based ！
+    ll set(int q, ll v, int i = 1, int l = 1, int r = maxn)
+    {
+        if (r < q || l > q) return a[i];
+        if (l == r) return a[i] = v;
+        int m = (l + r) >> 1;
+        ll lo = set(q, v, ls, l, m);
+        ll ro = set(q, v, rs, m + 1, r);
+        return a[i] = cal(lo, ro);
     }
-    ll query(int i, int curl, int curr, int tarl,
-             int tarr) {
-        if (curr < tarl || curl > tarr) return DF;
-        if (tarl <= curl && curr <= tarr) return a[i];
-        int m = (curl + curr) / 2;
-        ll l = query(i * 2 + 1, curl, m, tarl, tarr);
-        ll r = query(i * 2 + 2, m + 1, curr, tarl, tarr);
-        return cal(l, r);
+    // 查詢區間 [l, r] 總和 (或極值等等，看你怎麼寫)。外部呼叫的時
+    // 候後三個參數不用填。注意只支援 1-based ！
+    ll query(int ql, int qr, int i = 1, int l = 1,
+             int r = maxn) {
+        if (r < ql || l > qr) return df;
+        if (ql <= l && r <= qr) return a[i];
+        int m = (l + r) >> 1;
+        ll lo = query(ql, qr, ls, l, m);
+        ll ro = query(ql, qr, rs, m + 1, r);
+        return cal(lo, ro);
     }
-
-   public:
-    // Constructs an empty segment tree with all values 0; n
-    // represeting count of elements
-    SegmentTree(int n) : n(n) { a.assign(n * 4, DF); }
-    // Sets element located at index i to value v, where i
-    // in [1, n]
-    void set(int i, ll v) {
-        i--;  // comment this line to 0-based
-        set(0, 0, n - 1, i, v);
-    }
-    // Queries range calculation, whre l and r in [1, n]
-    ll query(int l, int r) {
-        l--, r--;  // comment this line to 0-based
-        return query(0, 0, n - 1, l, r);
-    }
+    // 建立 size = maxn 的空線段樹，所有元素都是 0 。注意只支援
+    // 1-based ！
+    SegmentTree() {}
 };

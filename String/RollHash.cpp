@@ -1,18 +1,16 @@
-// Queires the first index where sub appears in str; -1 indicates no matching.
-int rollhash(string& str, string& sub) {
-    const int X = 1e6 + 99, MOD = 1e9 + 9;
-    ll xx = 1;
-    for (int i = 0; i < sub.size(); i++) xx = xx * X % MOD;
-    ll subhash = 0;
-    for (char c : sub) subhash = (subhash * X + c) % MOD;
-
+// 問 sub 在 str 第一次出現的開頭 index 。-1 表示找不到。
+int rollhash(string& str, string& pat) {
+    const int x = 1e6 + 99, m = 1e9 + 9; // 隨意大質數
+    ll xx = 1, sh = 0;
+    for (int i = 0; i < pat.size(); i++) xx = xx * x % m;
+    for (char c : pat) sh = (sh * x + c) % m;
     vector<ll> hash = {0};
     for (int i = 0; i < str.size(); i++) {
-        hash.push_back((hash.back() * X + str[i]) % MOD);
-        if (i >= sub.size()) {
-            ll h = (hash.back() - hash[i - sub.size() + 1] * xx % MOD + MOD) % MOD;
-            if (h == subhash) return i - sub.size() + 1;
-        }
+        hash.push_back((hash.back() * x + str[i]) % m);
+        if (i < pat.size()) continue;
+        ll h = hash.back() - hash[i - pat.size() + 1] * xx;
+        h = (h % m + m) % m;
+        if (h == sh) return i - pat.size() + 1;
     }
     return -1;
 }

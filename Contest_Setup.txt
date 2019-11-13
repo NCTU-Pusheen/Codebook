@@ -1,14 +1,14 @@
-´ú¾÷ (test on C++ and Python)
-AC¡G¦n¦n¼g
-WA¡Gcout << "0\n" / µ²§À¦h¦L¤@¦æ;
-RE¡GªÅ¶¡¶V¬É/°£0
-TLE¡Gwhile(true);
-CE¡Gempty code
-OLE¡GºÆ¨gHello World
-NO Output¡Gdefault code
-«Ý´ú¡Gstack²`«×¡Bjudge³t«×¡B°}¦CMAX
-¶}ÁÉ
-1. bash.rc¥´ac
-2. ½Õgedit³]©w
-3. ¥´default_code
-4. ´ú¸Õac
+æ¸¬æ©Ÿ (test on C++ and Python)
+ACï¼šå¥½å¥½å¯«
+WAï¼šcout << "0\n" / çµå°¾å¤šå°ä¸€è¡Œ;
+REï¼šç©ºé–“è¶Šç•Œ/é™¤0
+TLEï¼šwhile(true);
+CEï¼šempty code
+OLEï¼šç˜‹ç‹‚Hello World
+NO Outputï¼šdefault code
+å¾…æ¸¬ï¼šstackæ·±åº¦ã€judgeé€Ÿåº¦ã€é™£åˆ—MAX
+é–‹è³½
+1. bash.rcæ‰“ac
+2. èª¿geditè¨­å®š
+3. æ‰“default_code
+4. æ¸¬è©¦ac
