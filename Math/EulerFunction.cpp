@@ -10,7 +10,6 @@ int phi(int x) {
     if (x > 1) r -= r / x;
     return r;
 }
-
 // 查詢所有 phi(x) ，且 x in [0, n) 。注意右開區間，回傳陣列。
 vector<int> phi_in(int n) {
     vector<bool> p(n, 1); vector<int> r(n);

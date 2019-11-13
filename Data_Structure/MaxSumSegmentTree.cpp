@@ -47,7 +47,6 @@ class MaxSumSegmentTree {
         ans.ans = max(max(lo.ans, ro.ans), lo.rss + ro.lss);
         return ans;
     }
-
    public:
     // 單點設值。限定 1-based 。
     void set(int i, ll v) { set(1, 1, n, i, v); }

@@ -1,7 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
 class Trie {
-   private:
+private:
     struct Node {
         int cnt = 0;
         int sum = 0;
@@ -12,8 +10,7 @@ class Trie {
         }
     };
     Node *root;
-
-   public:
+public:
     void insert(char *s) {
         Node *ptr = root;
         for (; *s; s++) {
@@ -55,28 +52,3 @@ class Trie {
     Trie() { root = new Node(); }
     ~Trie() { delete root; }
 };
-
-int main() {
-    Trie *trie = new Trie();
-    string op;
-    char s[20];
-    while (cin >> op) {
-        if (op == "END") {
-            delete trie;
-            break;
-        } else if (op == "insert") {
-            cin >> s;
-            trie->insert(s);
-        } else if (op == "erase") {
-            cin >> s;
-            if (trie->erase(s))
-                printf("Success erase");
-            else
-                printf("Fail erase");
-        } else if (op == "count") {
-            cin >> s;
-            printf("%d\n", trie->count(s));
-        }
-    }
-    return 0;
-}
