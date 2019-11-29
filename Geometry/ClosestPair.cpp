@@ -1,44 +1,36 @@
-template<typename T> struct Point
-{
-    T x,y;
-    Point(){}
-    Point(const T &x,const T &y):x(x),y(y){}
-    inline T dist(Point b) {
-        return sqrt((x-b.x)*(x-b.x)+(y-b.y)*(y-b.y));
-    }
-    static bool cmpx(const Point &a,const Point &b) {
-        if(a.x==b.x)return a.y<b.y;
-        return a.x<b.x;
-    }
-    static bool cmpy(const Point &a,const Point &b) {
-        if(a.y==b.y)return a.x<b.x;
-        return a.y<b.y;
-    }
-};
-template<typename T,typename _IT = Point<T>* >
-void DC(T &d, _IT p, _IT t, int L, int R) //Divide and Conquer //NlgN
-{
-    if(L>=R) return;
-    int mid = (L+R)>>1;
-    DC(d,p,t,L,mid);
-    DC(d,p,t,mid+1,R);
-    int N = 0;
-    for(int i=mid; i>=L && p[mid].x-p[i].x<d; i--) t[N++] = p[i];
-    for(int i=mid+1; i<=R && p[i].x-p[mid].x<d; i++) t[N++] = p[i];
-    sort(t,t+N,t->cmpy);
-    for(int i=0; i<N-1; i++)
-        for(int j=1; j<=3 && i+j<N; j++)
-            d = min(d,t[i].dist(t[i+j]));
+typedef pair<ll, ll> pii;
+#define x first
+#define y second
+
+// helper functions ，照抄
+// 算距離平方避免精度遺失
+ll dd(const pii& a, const pii& b) {
+    ll dx = a.x - b.x, dy = a.y - b.y;
+    return dx * dx + dy * dy;
 }
-template<typename T,typename _IT = Point<T>* >
-void closest_pair(T &d,_IT p, _IT t, int n) {
-    sort(p,p+n,p->cmpx); DC(d,p,t,0,n-1);
+
+const ll inf = 1e18;
+ll dac(vector<pii>& p, int l, int r) {
+    if (l >= r) return inf;
+    int m = (l + r) / 2;
+    ll d = min(dac(p, l, m), dac(p, m + 1, r));
+    vector<pii> t;
+    for (int i = m; i >= l && p[m].x - p[i].x < d; i--)
+        t.push_back(p[i]);
+    for (int i = m + 1; i <= r && p[i].x - p[m].x < d; i++)
+        t.push_back(p[i]);
+    sort(t.begin(), t.end(),
+         [](pii& a, pii& b) { return a.y < b.y; });
+    int n = t.size();
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 1; j < 4 && i + j < n; j++)
+            // 這裡可以知道是哪兩點是最小點對
+            d = min(d, dd(t[i], t[i + j]));
+    return d;
 }
-int main() {
-    Point<double> p[maxn],t[maxn];
-    int n; scanf("%d",&n);
-    for(int i=0; i<n; i++) scanf("%lf%lf",&p[i].x,&p[i].y);
-    double d = INF; closest_pair(d,p,t,n);
-    printf("distance = %lf\n",d);
-    return 0;
+
+// 給一堆點，求最近點對的距離平方。
+ll closest_pair(vector<pii>& pp) {
+    sort(pp.begin(), pp.end());
+    return dac(pp, 0, pp.size() - 1);
 }

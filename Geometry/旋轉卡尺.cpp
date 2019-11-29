@@ -37,32 +37,31 @@ vector<pii> makepoly(vector<pii>& pp) {
 }
 
 // (shoelace formula)
-// 給凸包，問其面積。若要問其面積的兩倍，則可以保證整數，請修改回傳值。
-// 若凸包少於三個點，回傳零。
-double area(vector<pii>& poly) {
+// 給凸包，問其面積「的兩倍」。若凸包少於三個點，回傳零。
+ll area(vector<pii>& poly) {
     int n = poly.size();
-    ll ans = 0;
+    ll ret = 0;
     for (int i = 0; i < n; i++)
-        ans += (poly[i].x * poly[ii].y);
+        ret += (poly[i].x * poly[ii].y);
     for (int i = 0; i < n; i++)
-        ans -= (poly[i].y * poly[ii].x);
-    return double(abs(ans)) / 2;
+        ret -= (poly[i].y * poly[ii].x);
+    return ret;
 }
 
-// 給凸包，問其兩點最遠距離。若要問平面上任意個點的兩點最遠距離，請先
-// 轉成凸包。若要問距離平方，則可以保證為整數，請把兩處回傳值的
-// sqrt 去除。若此凸包少於兩個點，這個方法會出錯，請特判。
+// 給凸包，問其兩點最遠距離「的平方」。若要問平面上任意個點的兩點最遠
+// 距離，請先轉成凸包。若凸包少於兩個點，回傳零。
 #define kk (k + 1) % n
 double maxdist(vector<pii>& poly) {
     int k = 1, n = poly.size();
-    if (n == 2) return sqrt(dd(poly[0], poly[1]));
-    ll ans = 0;
+    if (n < 2) return 0;
+    if (n == 2) return dd(poly[0], poly[1]);
+    ll ret = 0;
     for (int i = 0; i < n; i++) {
         while (abs(crzf(poly[kk], poly[i], poly[ii])) >=
                abs(crzf(poly[k], poly[i], poly[ii])))
             k = kk;
-        ans = max(ans, max(dd(poly[i], poly[k]),
+        ret = max(ret, max(dd(poly[i], poly[k]),
                            dd(poly[ii], poly[k])));
     }
-    return sqrt(ans);
+    return ret;
 }
