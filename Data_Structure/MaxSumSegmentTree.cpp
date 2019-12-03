@@ -6,12 +6,10 @@ class MaxSumSegmentTree {
    private:
     struct node {
         ll lss, rss, ss, ans;
-        void set(ll v) {
-            lss = v, rss = v, ss = v, ans = v;
-        }
+        void set(ll v) { lss = rss = ss = ans = v; }
     };
     int n;
-    vector<node> a;
+    vector<node> a;  // 萬萬不可用普通陣列，要用 vector
     vector<ll> z;
     void pull(int i) {
         a[i].ss = a[ls].ss + a[rs].ss;
@@ -28,10 +26,8 @@ class MaxSumSegmentTree {
     void set(int i, int l, int r, int q, ll v) {
         if (l == r) return a[i].set(v), void();
         int m = (l + r) >> 1;
-        if (q <= m)
-            set(ls, l, m, q, v);
-        else
-            set(rs, m + 1, r, q, v);
+        if (q <= m) set(ls, l, m, q, v);
+        else set(rs, m + 1, r, q, v);
         pull(i);
     }
     node query(int i, int l, int r, int ql, int qr) {
@@ -47,15 +43,16 @@ class MaxSumSegmentTree {
         ans.ans = max(max(lo.ans, ro.ans), lo.rss + ro.lss);
         return ans;
     }
+
    public:
+    MaxSumSegmentTree(int n) : n(n) {
+        a.resize(n << 2), z.resize(n << 2);
+        build(1, 1, n);
+    }
     // 單點設值。限定 1-based 。
     void set(int i, ll v) { set(1, 1, n, i, v); }
     // 問必區間 [l, r] 的最大子區間連續和。限定 1-based 。
     ll query(int l, int r) {
         return query(1, 1, n, l, r).ans;
-    }
-    MaxSumSegmentTree(int n) : n(n) {
-        a.resize(n << 2), z.resize(n << 2);
-        build(1, 1, n);
     }
 };

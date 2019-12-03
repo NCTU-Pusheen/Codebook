@@ -7,12 +7,11 @@ const ll rr = 0x6891139;  // 亂數，若跟題目碰撞會吃 WA 或 RE
 class RangeUpdateSegmentTree {
    private:
     // 程式碼重複性略高 (已盡力)。若不需要區間和，刪除所有含有 .s
-    // 的行。若不需要 max/min，刪除所有含有 .x/.ll 的行。
+    // 的行；若不需要 max ，刪除所有含有 .x 的行。
     struct node {
         int l, r, adt = 0, stt = rr; ll s = 0, x = 0;
     };
-    vector<node> a;
-    int n;
+    vector<node> a; // 萬萬不可以用普通陣列，要用 vector
     void push(int i) {
         if (a[i].stt != rr) {
             a[ls].stt = a[rs].stt = a[i].stt;
@@ -42,7 +41,7 @@ class RangeUpdateSegmentTree {
     }
 
    public:
-    RangeUpdateSegmentTree(int n) : n(n), a(n << 2) {
+    RangeUpdateSegmentTree(int n) : a(n << 2) {
         build(1, n, 1);
     }
     // 區間設值。注意只支援 1-based

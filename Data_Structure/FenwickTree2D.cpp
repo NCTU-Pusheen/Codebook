@@ -1,9 +1,9 @@
 /** 支援單點增值和區間查詢，O((A+Q)*log(A))，A
  * 是矩陣面積。只能 用於 1-based **/
 const int R = 256, C = 256;
-typedef vector<vector<ll>> G;
-struct BIT2D {
-    G a = G(R + 1, vector<ll>(C + 1, 0));
+class BIT2D {
+   private:
+    ll a[R + 1][C + 1];
     ll sum(int x, int y) {
         ll ret = 0;
         for (int i = x; i; i -= (i & -i))
@@ -11,8 +11,10 @@ struct BIT2D {
                 ret += a[i][j];
         return ret;
     }
+
+   public:
     // 建立元素都是零的 R*C 大小的矩陣。
-    BIT2D() {}
+    BIT2D() { memset(a, 0, sizeof(a)); }
     // 單點增值，注意 1-based 。
     void add(int x, int y, ll v) {
         for (int i = x; i <= R; i += (i & -i))
