@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 typedef double ll;  // 別用 long long 吧
 typedef pair<double, double> pii;
 #define x first
@@ -27,19 +24,6 @@ inline ll dotf(const pii& o, const pii& a, const pii& b) {
 inline ll dd(const pii& a, const pii& b) {
     ll dx = a.x - b.x, dy = a.y - b.y;
     return dx * dx + dy * dy;
-}
-
-pii ext(const pii& s1, const pii& s2, const pii& q) {
-    double len = dotf(s1, s2, q) / sqrt(dd(s1, s2));
-    double angle = atan2(s2.y - s1.y, s2.x - s1.x);
-    return s1 + pii(len * cos(angle), len * sin(angle));
-}
-
-pii oral(const pii& o, const pii& q) {
-    pii ret = q - o;
-    ret.y *= -1;
-    swap(ret.x, ret.y);
-    return ret + o;
 }
 
 // 給凸包，問其最小覆蓋矩形。注意，這個檔案很多變數可能跟旋轉卡尺撞
