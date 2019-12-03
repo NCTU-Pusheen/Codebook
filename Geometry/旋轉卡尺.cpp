@@ -1,3 +1,7 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
 typedef pair<ll, ll> pii;
 #define x first
 #define y second
@@ -5,24 +9,24 @@ typedef pair<ll, ll> pii;
 inline pii operator-(const pii& a, const pii& b) {
     return {a.x - b.x, a.y - b.y};
 }  // const 不可省略
-inline ll crz(const pii& a, const pii& b) {
+inline ll operator*(const pii& a, const pii& b) {
     return a.x * b.y - a.y * b.x;
 }
 inline ll crzf(const pii& o, const pii& a, const pii& b) {
-    return crz(a - o, b - o);
+    return (a - o) * (b - o)
 }
 inline ll dd(const pii& a, const pii& b) {
     ll dx = a.x - b.x, dy = a.y - b.y;
     return dx * dx + dy * dy;
 }
 
-// 給平面上任意個點，求其凸包。返回順序為逆時針。若含有重複點，這個方
-// 法會出錯，請預先排除。
+// 給平面上任意個點，求其凸包。返回順序為逆時針。此方法會移除重複點。
 #define jud \
     crzf(ret[ret.size() - 2], ret.back(), pp[i]) <= 0
 vector<pii> makepoly(vector<pii>& pp) {
     int n = pp.size();
     sort(pp.begin(), pp.end());
+    pp.erase(unique(pp.begin(), pp.end()), pp.end());
     vector<pii> ret;
     for (int i = 0; i < n; i++) {
         while (ret.size() >= 2 && jud) ret.pop_back();
