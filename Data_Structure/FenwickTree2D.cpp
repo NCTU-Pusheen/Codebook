@@ -1,27 +1,27 @@
-/** 支援單點增值和區間查詢，O((A+Q)*log(A))，A 是矩陣面積。只能
- * 用於 1-based **/
-const int R, C = ?; // 加速
+/** 支援單點增值和區間查詢，O((A+Q)*log(A))，A
+ * 是矩陣面積。只能 用於 1-based **/
+const int R = 256, C = 256;
+typedef vector<vector<ll>> G;
 struct BIT2D {
-    vector<vector<ll>> a = vector<ll>(R, vector<ll>(C));
+    G a = G(R + 1, vector<ll>(C + 1, 0));
     ll sum(int x, int y) {
-        ll s = 0;
+        ll ret = 0;
         for (int i = x; i; i -= (i & -i))
-            for (int j = y; j; j -= (j & -j)) s += a[i][j];
-        return r;
+            for (int j = y; j; j -= (j & -j))
+                ret += a[i][j];
+        return ret;
     }
     // 建立元素都是零的 R*C 大小的矩陣。
-    BIT2D () {}
+    BIT2D() {}
     // 單點增值，注意 1-based 。
     void add(int x, int y, ll v) {
-        for (int i = x; i <= MAXR; i += (i & -i))
-            for (int j = y; j <= MAXC; j += (j & -j))
+        for (int i = x; i <= R; i += (i & -i))
+            for (int j = y; j <= C; j += (j & -j))
                 a[i][j] += v;
     }
     // 區間和，注意 1-based 。二維都是閉區間。
     ll sum(int x0, int y0, int x1, int y1) {
-        if (x0 > x1) swap(x0, x1);
-        if (y0 > y1) swap(y0, yl);
-        return sum(x1, y1) - sum(x0 - 1, y1)
-            - sum(x1, y0 - 1) + sum(x0 - 1, y0 - 1);
+        return sum(x1, y1) - sum(x0 - 1, y1) -
+               sum(x1, y0 - 1) + sum(x0 - 1, y0 - 1);
     }
 };

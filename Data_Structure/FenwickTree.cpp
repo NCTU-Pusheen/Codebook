@@ -20,7 +20,7 @@ struct BIT {
     ll sum(int l, int r) { return sum(r) - sum(l - 1); }
 };
 
-/** 普通 BIT，為加速打字只支援 1-based。複雜度 O(Q*log(N)) **/
+/** 區間加值 BIT，只支援 1-based。複雜度 O(Q*log(N)) **/
 const int maxn = ? ;  // 開全域加速打字
 struct RangeUpdateBIT {
     vector<ll> d = vector<ll>(maxn), dd = vector<ll>(maxn);
