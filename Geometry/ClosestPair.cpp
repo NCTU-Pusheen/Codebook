@@ -3,7 +3,6 @@ typedef pair<ll, ll> pii;
 #define y second
 
 // helper functions ，照抄
-// 算距離平方避免精度遺失
 ll dd(const pii& a, const pii& b) {
     ll dx = a.x - b.x, dy = a.y - b.y;
     return dx * dx + dy * dy;
@@ -29,7 +28,7 @@ ll dac(vector<pii>& p, int l, int r) {
     return d;
 }
 
-// 給一堆點，求最近點對的距離平方。
+// 給一堆點，求最近點對的距離「的平方」。
 ll closest_pair(vector<pii>& pp) {
     sort(pp.begin(), pp.end());
     return dac(pp, 0, pp.size() - 1);

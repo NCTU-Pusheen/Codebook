@@ -51,7 +51,7 @@ ll area(vector<pii>& poly) {
 // 給凸包，問其兩點最遠距離「的平方」。若要問平面上任意個點的兩點最遠
 // 距離，請先轉成凸包。若凸包少於兩個點，回傳零。
 #define kk (k + 1) % n
-double maxdist(vector<pii>& poly) {
+ll maxdist(vector<pii>& poly) {
     int k = 1, n = poly.size();
     if (n < 2) return 0;
     if (n == 2) return dd(poly[0], poly[1]);
