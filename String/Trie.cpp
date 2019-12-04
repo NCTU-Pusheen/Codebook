@@ -1,8 +1,7 @@
 class Trie {
 private:
     struct Node {
-        int cnt = 0;
-        int sum = 0;
+        int cnt = 0, sum = 0;
         Node *tr[128] = {};
         ~Node() {
             for (int i = 0; i < 128; i++)
@@ -29,8 +28,7 @@ public:
         for (; *s; s++) {
             if (!ptr->tr[*s]) return 0;
             ptr = ptr->tr[*s];
-        }
-        return ptr;
+        } return ptr;
     }
     bool erase(char *s) {
         Node *ptr = find(s);

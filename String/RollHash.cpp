@@ -6,7 +6,6 @@ int rollhash(string& str, string& pat) {
     ll xx = 1, sh = 0;
     for (char c : pat)
         sh = (sh * x + c) % m, xx = xx * x % m;
-
     deque<ll> hash = {0};
     int ret = 0;
     for (char c : str) {
@@ -17,6 +16,5 @@ int rollhash(string& str, string& pat) {
         if (h == sh) return ret;
         hash.pop_front();
         ret++;
-    }
-    return -1;
+    } return -1;
 }

@@ -9,7 +9,6 @@ ll modinv(ll a, ll p) {
     if (x < 0) x += pp;
     return x;
 }
-
 // 解 (ax == b) mod p 。p 必須是質數，a 和 b 是正整數。
 ll modinv(ll a, ll b, ll p) {
     ll ret = modinv(a, p);

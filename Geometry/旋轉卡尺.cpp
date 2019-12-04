@@ -15,7 +15,6 @@ inline ll dd(const pii& a, const pii& b) {
     ll dx = a.x - b.x, dy = a.y - b.y;
     return dx * dx + dy * dy;
 }
-
 // 給平面上任意個點，求其凸包。返回順序為逆時針。此方法會移除重複點。
 #define jud \
     crzf(ret[ret.size() - 2], ret.back(), pp[i]) <= 0
@@ -35,7 +34,6 @@ vector<pii> makepoly(vector<pii>& pp) {
     if (n >= 2) ret.pop_back();
     return ret;
 }
-
 // (shoelace formula)
 // 給凸包，問其面積「的兩倍」。若凸包少於三個點，回傳零。
 ll area(vector<pii>& poly) {
@@ -47,7 +45,6 @@ ll area(vector<pii>& poly) {
         ret -= (poly[i].y * poly[ii].x);
     return ret;
 }
-
 // 給凸包，問其兩點最遠距離「的平方」。若要問平面上任意個點的兩點最遠
 // 距離，請先轉成凸包。若凸包少於兩個點，回傳零。
 #define kk (k + 1) % n

@@ -13,15 +13,15 @@ struct FFT{
     void fft(bool is_inv,VT &in,VT &out,int N){
         int bitlen=__lg(N),num=is_inv?-1:1;
         for(int i=0;i<N;++i) out[bit_reverse(i,bitlen)]=in[i];
-        for(int step=2;step<=N;step<<=1){
-            const int mh=step>>1;
-            for(int i=0;i<mh;++i){
-                complex<T> wi=exp(complex<T>(0,i*num*pi/mh));
-                for(int j=i;j<N;j+=step){
-                    int k=j+mh;
-                    complex<T> u=out[j], t=wi*out[k];
-                    out[j]=u+t;
-                    out[k]=u-t;
+        for(int step=2; step<=N; step<<=1){
+            const int mh = step>>1;
+            for(int i=0; i<mh; ++i){
+                complex<T> wi = exp(complex<T>(0,i*num*pi/mh));
+                for(int j=i; j<N; j+=step){
+                    int k = j+mh;
+                    complex<T> u = out[j], t = wi*out[k];
+                    out[j] = u+t;
+                    out[k] = u-t;
                 }
             }
         }

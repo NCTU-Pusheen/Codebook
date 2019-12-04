@@ -27,7 +27,7 @@ struct SW { // O(V^3)
     }
     int solve() {
         int res = 2147483647;
-        for (int i=0,x,y; i<n-1; i++) {
+        for (int i=0, x, y; i<n-1; i++) {
             search(x,y);
             res = min(res,wei[y]);
             del[y] = 1;

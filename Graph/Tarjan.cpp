@@ -5,7 +5,6 @@
 -------------------------------------------------------
 橋
 一條無向邊 (u,v) 是橋 if and only if (u,v) 爲樹枝邊，且滿足 DFN(u) < Low(v)。
-
 // 0 base
 struct TarjanSCC{
     static const int MAXN = 1000006;

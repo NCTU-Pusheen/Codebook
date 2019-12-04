@@ -11,7 +11,6 @@ class BIT2D {
                 ret += a[i][j];
         return ret;
     }
-
    public:
     // 建立元素都是零的 R*C 大小的矩陣。
     BIT2D() { memset(a, 0, sizeof(a)); }

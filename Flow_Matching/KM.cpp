@@ -24,7 +24,6 @@ class KM {
         }
         return 0;
     }
-
    public:
     // 問最大匹配權重。
     ll max_weight() {
@@ -33,7 +32,6 @@ class KM {
                 if (e[i][j] == inf) continue;
                 wx[i] = max(wx[i], e[i][j]);
             }
-
         for (int i = 0; i < xx; i++) {
             while (1) {
                 z = inf, vx.assign(xx, 0), vy.assign(yy, 0);
@@ -44,13 +42,11 @@ class KM {
                     if (vy[j]) wy[j] += z;
             }
         }
-
         ll ans = 0;
         for (int i = 0; i < xx; i++)
             if (cx[i] != -1) ans += e[i][cx[i]];
         return ans;
     }
-
     // 給他 n * m 的權重表 (n <= m)，求最大完全匹配權重，權重可以
     // 是負數。注意 n > m 會導致無窮迴圈。
     KM(vector<vector<ll>>& e) : e(e) {

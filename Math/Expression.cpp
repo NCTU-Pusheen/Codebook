@@ -12,7 +12,6 @@ class Expr {
    private:
     deque<char> src;
     Expr(const string& s) : src(s.begin(), s.end()) {}
-
     inline char top() {
         return src.empty() ? '\0' : src.front();
     }
@@ -49,8 +48,7 @@ class Expr {
                 if (c == '/') ret /= t; else ret %= t;
             }
             c = top();
-        }
-        return ret;
+        } return ret;
     }
     ll expr(bool k) {
         ll ret = term();
@@ -60,7 +58,6 @@ class Expr {
         req(top() == (k ? ')' : '\0'));
         return ret;
     }
-
    public:
     // 給定數學運算的字串，求其值。若格式不合法，丟出錯誤。
     static ll eval(const string& s) {

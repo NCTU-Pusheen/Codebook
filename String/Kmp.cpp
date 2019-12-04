@@ -8,7 +8,6 @@ int* kmp_fail(string& s) {
     }
     return f;
 }
-
 // 問 sub 在 str 中出現幾次。
 int kmp_count(string& str, string& sub) {
     int* fail = kmp_fail(sub); int p = -1, ret = 0;
@@ -19,7 +18,6 @@ int kmp_count(string& str, string& sub) {
     }
     delete[] fail; return ret;
 }
-
 // 問 sub 在 str 第一次出現的開頭 index 。-1 表示找不到。
 int kmp(string& str, string& sub) {
     int* fail = kmp_fail(sub);

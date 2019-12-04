@@ -1,8 +1,6 @@
 const int maxn = 1e5 + 10, INF = 1e9;
 const long long INF64 = 1e18;
-struct edge{
-    int to, cap, rev;
-};
+struct edge{ int to, cap, rev; };
 vector<edge> G[maxn];
 int n, m, s, t, a, b, c;
 bool vis[maxn];

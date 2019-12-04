@@ -6,8 +6,7 @@ double mmc(int n){ //allow negative weight
     for(int t=0; t<n; ++t){
         memset(dp[t+1],0x3f,sizeof(dp[t+1]));
         for(const auto &e:edge) {
-            int u,v,w;
-            tie(u,v,w) = e;
+            int u, v, w; tie(u,v,w) = e;
             dp[t+1][v] = min(dp[t+1][v],dp[t][u]+w);
         }
     }
@@ -18,6 +17,5 @@ double mmc(int n){ //allow negative weight
         for(int t=0;t<n;++t)
             val = max(val,(dp[n][u]-dp[t][u])*1.0/(n-t));
         res = min(res,val);
-    }
-    return res;
+    } return res;
 }

@@ -1,16 +1,12 @@
-/**
- * 一般來說複雜度遠低於 O(EV^2) ， 二分圖約 O(E * sqrt(v)) 。
- * 0/1-based 都安全。
- */
+// 一般來說複雜度遠低於 O(EV^2) ， 二分圖約 O(E * sqrt(v)) 。
+// 0/1-based 都安全。
 class Dinic {
     struct edge {
         int d, r; ll c;
         edge(int d, ll c, int r) : d(d), c(c), r(r){};
     };
-
    private:
     vector<vector<edge>> adj; vector<int> lv, ve; int n;
-
     bool mklv(int s, int d) {
         lv.assign(n, -1); lv[s] = 0;
         queue<int> q; q.push(s);
@@ -23,7 +19,6 @@ class Dinic {
         }
         return lv[d] > 0;
     }
-
     ll aug(int v, ll f, int d) {
         if (v == d) return f;
         for (; ve[v] < adj[v].size(); ve[v]++) {
@@ -37,7 +32,6 @@ class Dinic {
         }
         return 0;
     }
-
    public:
     // 建立空圖， n 是節點 (包含 source, sink) 數量
     Dinic(int n) : n(n + 1) { clear(); }
@@ -49,7 +43,6 @@ class Dinic {
         edge dd(src, 0, adj[src].size());
         adj[src].push_back(ss), adj[dst].push_back(dd);
     }
-    // 問最大流數量
     ll max_flow(int s, int d) {
         ll ret = 0;
         while (mklv(s, d)) {

@@ -36,15 +36,13 @@ class RangeUpdateSegmentTree {
     void build(int l, int r, int i) {
         a[i].l = l, a[i].r = r;
         if (l == r) return;
-        int stt = (l + r) >> 1;
-        build(l, stt, ls), build(stt + 1, r, rs);
+        int mid = (l + r) >> 1;
+        build(l, mid, ls), build(mid + 1, r, rs);
     }
-
    public:
     RangeUpdateSegmentTree(int n) : a(n << 2) {
         build(1, n, 1);
     }
-    // 區間設值。注意只支援 1-based
     void set(int l, int r, ll val, int i = 1) {
         if (a[i].l >= l && a[i].r <= r) {
             a[i].s = val * (a[i].r - a[i].l + 1);
@@ -53,12 +51,11 @@ class RangeUpdateSegmentTree {
             return;
         }
         push(i);
-        int stt = (a[i].l + a[i].r) >> 1;
-        if (l <= stt) set(l, r, val, ls);
-        if (r > stt) set(l, r, val, rs);
+        int mid = (a[i].l + a[i].r) >> 1;
+        if (l <= mid) set(l, r, val, ls);
+        if (r > mid) set(l, r, val, rs);
         pull(i);
     }
-    // 區間增值。注意只支援 1-based
     void add(int l, int r, ll val, int i = 1) {
         if (a[i].l >= l && a[i].r <= r) {
             a[i].s += val * (a[i].r - a[i].l + 1);
@@ -67,30 +64,28 @@ class RangeUpdateSegmentTree {
             return;
         }
         push(i);
-        int stt = (a[i].l + a[i].r) >> 1;
-        if (l <= stt) add(l, r, val, ls);
-        if (r > stt) add(l, r, val, rs);
+        int mid = (a[i].l + a[i].r) >> 1;
+        if (l <= mid) add(l, r, val, ls);
+        if (r > mid) add(l, r, val, rs);
         pull(i);
     }
-    // 求區間最大值。注意只支援 1-based 。
     ll maxx(int l, int r, int i = 1) {
         if (l <= a[i].l && a[i].r <= r) return a[i].x;
         push(i);
         ll ret = -9e18;
-        int stt = (a[i].l + a[i].r) >> 1;
-        if (l <= stt) ret = max(ret, maxx(l, r, ls));
-        if (r > stt) ret = max(ret, maxx(l, r, rs));
+        int mid = (a[i].l + a[i].r) >> 1;
+        if (l <= mid) ret = max(ret, maxx(l, r, ls));
+        if (r > mid) ret = max(ret, maxx(l, r, rs));
         pull(i);
         return ret;
     }
-    // 求區間總和。注意只支援 1-based 。
     ll sum(int l, int r, int i = 1) {
         if (l <= a[i].l && a[i].r <= r) return a[i].s;
         push(i);
         ll ret = 0;
-        int stt = (a[i].l + a[i].r) >> 1;
-        if (l <= stt) ret += sum(l, r, ls);
-        if (r > stt) ret += sum(l, r, rs);
+        int mid = (a[i].l + a[i].r) >> 1;
+        if (l <= mid) ret += sum(l, r, ls);
+        if (r > mid) ret += sum(l, r, rs);
         pull(i);
         return ret;
     }

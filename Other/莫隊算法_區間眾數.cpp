@@ -1,8 +1,6 @@
 using namespace std;
 const int maxn = 1e6 + 10;
-struct query {
-    int id, bk, l, r;
-};
+struct query { int id, bk, l, r; };
 int arr[maxn], cnt[maxn], d[maxn], n, m, bk, mx;
 pair<int,int> ans[maxn];
 vector<query> q;
@@ -34,8 +32,7 @@ void mo(int n, int m) {
 int main(){
     cin >> n >> m;
     bk = (int)sqrt(n + 0.5);
-    for(int i = 1; i <= n; i++)
-        cin >> arr[i];
+    for(int i = 1; i <= n; i++) cin >> arr[i];
     q.resize(m);
     for(int i = 0; i < m; i++) {
         cin >> q[i].l >> q[i].r;

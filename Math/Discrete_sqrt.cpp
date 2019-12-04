@@ -1,4 +1,3 @@
-// 輔助函數，請照抄
 int order(ll b, ll p) {
     if (__gcd(b, p) != 1) return -1;
     int ret = 2;

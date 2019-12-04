@@ -2,11 +2,9 @@
 class MCMF {
    private:
     struct edge { int to, r; ll rest, c; };
-    int n;
+    int n; ll f = 0, c = 0;
     vector<vector<edge>> g;
-    ll f = 0, c = 0;
     vector<int> pre, prel;
-
     bool run(int s, int t) {
         vector<ll> dis(n, inf); vector<bool> vis(n);
         dis[s] = 0; queue<int> q; q.push(s);
@@ -35,7 +33,6 @@ class MCMF {
         c += tf * dis[t], f += tf;
         return 1;
     }
-
    public:
     // 建立空圖，n 是節點數量 (包含 source 和 sink)
     MCMF(int n)
@@ -45,9 +42,8 @@ class MCMF {
         g[u].push_back({v, (int)g[v].size(), cap, cost});
         g[v].push_back({u, (int)g[u].size() - 1, 0, -cost});
     }
-    // 問 {min cost, max flow}
     pair<ll, ll> query(int src, int sink) {
         while (run(src, sink));
-        return {f, c};
+        return {f, c};  //{min cost, max flow}
     }
 };

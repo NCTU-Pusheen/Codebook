@@ -1,4 +1,3 @@
-// https://github.com/voidrank/acm-icpc-library/blob/master/code/hopcroft-karp.cpp
 int n, m, vis[maxn], level[maxn], pr[maxn], pr2[maxn];
 vector<int> edge[maxn];  // for Left
 bool dfs(int u) {

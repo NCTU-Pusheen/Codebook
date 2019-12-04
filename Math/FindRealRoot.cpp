@@ -2,13 +2,11 @@
 int sign(double x){
 	return x < -eps ? -1 : x > eps;
 }
-
 double get(const vector<double>&coef, double x){
 	double e = 1, s = 0;
 	for(auto i : coef) s += i*e, e *= x;
 	return s;
 }
-
 double find(const vector<double>&coef, int n, double lo, double hi){
 	double sign_lo, sign_hi;
 	if( !(sign_lo = sign(get(coef,lo))) ) return lo;
@@ -23,7 +21,6 @@ double find(const vector<double>&coef, int n, double lo, double hi){
 	}
 	return (lo+hi)/2.0;
 }
-
 vector<double> cal(vector<double>coef, int n){
 	vector<double>res;
 	if(n == 1){
@@ -41,7 +38,6 @@ vector<double> cal(vector<double>coef, int n){
 	}
 	return res;
 }
-
 int main () {
 	vector<double>ve;
 	vector<double>ans = cal(ve, n);

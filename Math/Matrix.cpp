@@ -1,9 +1,7 @@
 struct Matrix {
     int r, c;
     vector<vector<ll>> m;
-    Matrix(int r, int c)
-        : r(r), c(c), m(r, vector<ll>(c)) {}
-    // 以下基本矩陣運算
+    Matrix(int r, int c): r(r), c(c), m(r, vector<ll>(c)) {}
     vector<ll> &operator[](int i) { return m[i]; }
     Matrix operator+(const Matrix &a) {
         Matrix rev(r, c);

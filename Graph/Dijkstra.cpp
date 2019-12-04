@@ -14,6 +14,5 @@ vector<ll> dijkstra(int src, vector<vector<pii>>& edge) {
         for (auto& e : edge[v])
             if (sum[e.second] == -1)
                 q.emplace(d + e.first, e.second);
-    }
-    return sum;
+    } return sum;
 }

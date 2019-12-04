@@ -1,11 +1,10 @@
-#define radix_sort(x,y){\
-	for(i=0;i<A;++i)c[i]=0;\
-	for(i=0;i<n;++i)c[x[y[i]]]++;\
-	for(i=1;i<A;++i)c[i]+=c[i-1];\
-	for(i=n-1;~i;--i)sa[--c[x[y[i]]]]=y[i];\
+#define radix_sort(x,y){
+	for(i=0;i<A;++i) c[i] = 0;
+	for(i=0;i<n;++i) c[x[y[i]]]++;
+	for(i=1;i<A;++i) c[i] += c[i-1];
+	for(i=n-1;~i;--i) sa[--c[x[y[i]]]] = y[i];
 }
-#define AC(r,a,b)\
-	r[a]!=r[b]||a+k>=n||r[a+k]!=r[b+k]
+#define AC(r,a,b) r[a]!=r[b]||a+k>=n||r[a+k]!=r[b+k]
 void suffix_array(const char *s,int n,int *sa,int *rank,int *tmp,int *c){
 	int A='z'+1,i,k,id=0;
 	for(i=0; i<n; ++i)rank[tmp[i]=i]=s[i];

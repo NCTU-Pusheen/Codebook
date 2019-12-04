@@ -1,7 +1,3 @@
-#ifndef SUNMOON_NTT
-#define SUNMOON_NTT
-#include<vector>
-#include<algorithm>
 template<typename T,typename VT=std::vector<T> >
 struct NTT{
 	const T P,G;
@@ -19,8 +15,7 @@ struct NTT{
 		for(n=(n>=m?n%m:n);k;k>>=1){
 			if(k&1)ans=ans*n%m;
 			n=n*n%m;
-		}
-		return ans;
+		} return ans;
 	}
 	inline void ntt(bool is_inv,VT &in,VT &out,int N){
 		int bitlen=std::__lg(N);
@@ -30,13 +25,13 @@ struct NTT{
 			const int mh=step>>1;
 			for(int i=0;i<mh;++i){
 				for(int j=i;j<N;j+=step){
-					u=out[j],t=wi*out[j+mh]%P;
-					out[j]=u+t;
-					out[j+mh]=u-t;
+					u = out[j], t = wi*out[j+mh]%P;
+					out[j] = u+t;
+					out[j+mh] = u-t;
 					if(out[j]>=P)out[j]-=P;
 					if(out[j+mh]<0)out[j+mh]+=P;
 				}
-				wi=wi*wn%P;
+				wi = wi*wn%P;
 			}
 		}
 		if(is_inv){

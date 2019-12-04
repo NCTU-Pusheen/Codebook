@@ -1,13 +1,10 @@
 typedef pair<ll, ll> pii;
 #define x first
 #define y second
-
-// helper functions ，照抄
 ll dd(const pii& a, const pii& b) {
     ll dx = a.x - b.x, dy = a.y - b.y;
     return dx * dx + dy * dy;
 }
-
 const ll inf = 1e18;
 ll dac(vector<pii>& p, int l, int r) {
     if (l >= r) return inf;
@@ -27,7 +24,6 @@ ll dac(vector<pii>& p, int l, int r) {
             d = min(d, dd(t[i], t[i + j]));
     return d;
 }
-
 // 給一堆點，求最近點對的距離「的平方」。
 ll closest_pair(vector<pii>& pp) {
     sort(pp.begin(), pp.end());

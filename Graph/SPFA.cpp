@@ -1,11 +1,8 @@
-vector<pii> G[maxn];
-int dis[maxn];
-void SPFA(int n,int s) //O(kE) k~2.
-{
+vector<pii> G[maxn]; int dis[maxn];
+void SPFA(int n,int s) { //O(kE) k~2.
     for(int i=1; i<=n; i++) dis[i] = INF;
     dis[s] = 0;
-    queue<int> q;
-    q.push(s);
+    queue<int> q; q.push(s);
     bool inque[maxn] = {};
     while(!q.empty()) {
         int u = q.front(); q.pop();

@@ -50,9 +50,9 @@ class MaxSumSegmentTree {
         build(1, 1, n);
     }
     // 單點設值。限定 1-based 。
-    void set(int i, ll v) { set(1, 1, n, i, v); }
+    inline void set(int i, ll v) { set(1, 1, n, i, v); }
     // 問必區間 [l, r] 的最大子區間連續和。限定 1-based 。
-    ll query(int l, int r) {
+    inline ll query(int l, int r) {
         return query(1, 1, n, l, r).ans;
     }
 };
