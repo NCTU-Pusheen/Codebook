@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  14 NOV 2019 09:45
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  4 DEC 2019 22:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -820,35 +820,34 @@ LaTeX Font Warning: Font shape `TU/PingFangTC-Regular(0)/m/it' undefined
 (./Data_Structure/SegmentTree.cpp [1
 
 ]) (./Data_Structure/MaxSumSegmentTree.cpp) (./Data_Structure/RangeUpdateSegmen
-tTree.cpp [2])
-(./Data_Structure/PersistentSegmentTree.cpp) (./Data_Structure/Treap.cpp
-[3]) (./Data_Structure/Dynamic_KD_tree.cpp [4])
-(./Data_Structure/HeavyLight.cpp) (./Data_Structure/link_cut_tree.cpp [5])
-(./DP/LCIS.cpp) (./DP/Bounded_Knapsack.cpp [6]) (./DP/DP_1D1D.cpp)
-(./Graph/Dijkstra.cpp) (./Graph/BellmanFord.cpp) (./Graph/SPFA.cpp)
-(./Graph/Kruskal.cpp [7]) (./Graph/Prim.cpp) (./Graph/MahattanMST.cpp)
-(./Graph/LCA.cpp [8]) (./Graph/Tarjan.cpp) (./Graph/BCC_edge.cpp [9])
-(./Graph/MinMeanCycle.cpp) (./Graph/Two_SAT.cpp)
-(./Graph/KirchhoffMatrixTree.cpp) (./Flow_Matching/Dinic.cpp [10])
+tTree.cpp) [2]
+(./Data_Structure/PersistentSegmentTree.cpp) (./Data_Structure/Treap.cpp)
+(./Data_Structure/Dynamic_KD_tree.cpp [3]) (./Data_Structure/HeavyLight.cpp
+[4]) (./Data_Structure/link_cut_tree.cpp [5]) (./DP/LCIS.cpp)
+(./DP/Bounded_Knapsack.cpp) (./DP/DP_1D1D.cpp) [6] (./Graph/Dijkstra.cpp)
+(./Graph/BellmanFord.cpp) (./Graph/SPFA.cpp) (./Graph/Prim.cpp)
+(./Graph/MahattanMST.cpp) (./Graph/LCA.cpp [7]) (./Graph/Tarjan.cpp [8])
+(./Graph/BCC_edge.cpp) (./Graph/MinMeanCycle.cpp) (./Graph/Two_SAT.cpp)
+(./Graph/KirchhoffMatrixTree.cpp) (./Flow_Matching/Dinic.cpp [9])
 (./Flow_Matching/Min_Cost_Max_Flow.cpp) (./Flow_Matching/Ford_Fulkerson.cpp)
-(./Flow_Matching/KM.cpp [11]) (./Flow_Matching/Hopcroft_Karp.cpp)
+(./Flow_Matching/KM.cpp [10]) (./Flow_Matching/Hopcroft_Karp.cpp)
 (./Flow_Matching/SW_MinCut.cpp) (./Flow_Matching/Stable_Marriage.cpp)
-(./Math/FastPow.cpp) (./Math/ModInv.cpp [12]) (./Math/Discrete_sqrt.cpp)
-(./Math/外星模運算.cpp) (./Math/SG.cpp) (./Math/Matrix.cpp [13])
+(./Math/FastPow.cpp) [11] (./Math/ModInv.cpp) (./Math/Discrete_sqrt.cpp)
+(./Math/外星模運算.cpp) (./Math/SG.cpp) (./Math/Matrix.cpp [12])
 (./Math/Karatsuba.cpp) (./Math/EulerFunction.cpp) (./Math/MillerRabin.cpp)
-(./Math/質因數分解.cpp [14]) (./Math/PrimeList.cpp) (./Math/FindRealRoot.cpp)
-(./Math/FFT.cpp) (./Math/NTT.cpp [15]) (./Math/Simplex.cpp)
-(./Math/Expression.cpp) [16] (./String/RollHash.cpp) (./String/Trie.cpp)
+(./Math/質因數分解.cpp [13]) (./Math/PrimeList.cpp) (./Math/FindRealRoot.cpp)
+(./Math/FFT.cpp) (./Math/NTT.cpp [14]) (./Math/Simplex.cpp)
+(./Math/Expression.cpp) (./String/RollHash.cpp) (./String/Trie.cpp [15])
 (./String/AC自動機.cpp
 Missing character: There is no ∩ in font Consolas/OT:script=latn;language=DFLT;
 !
- [17]) (./String/Kmp.cpp) (./String/Z.cpp) (./String/BWT.cpp) (./String/suffix_
-array_lcp.cpp) (./String/LPS.cpp [18])
-(./String/Edit_Distance.cpp) (./Geometry/Geometry.cpp [19] [20])
-(./Geometry/旋轉卡尺.cpp [21]) (./Geometry/ClosestPair.cpp)
-(./Geometry/SmallestCircle.cpp) (./Geometry/Rectangle_Union_Area.cpp [22])
-(./Other/BuiltIn.cpp) (./Other/莫隊算法_區間眾數.cpp) (./Other/CNF.cpp)
-(./Other/Reminder.cpp [23])) [24] (./Codebook.toc
+) (./String/Kmp.cpp [16]) (./String/Z.cpp) (./String/BWT.cpp) (./String/suffix_
+array_lcp.cpp) (./String/LPS.cpp)
+(./String/Edit_Distance.cpp [17]) (./Geometry/Geometry.cpp [18] [19])
+(./Geometry/旋轉卡尺.cpp [20]) (./Geometry/ClosestPair.cpp)
+(./Geometry/SmallestCircle.cpp) (./Geometry/Rectangle_Union_Area.cpp)
+(./Other/pbds.cpp) (./Other/BuiltIn.cpp [21]) (./Other/莫隊算法_區間眾數.cpp)
+(./Other/CNF.cpp) (./Other/Reminder.cpp [22])) [23] (./Codebook.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 2.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -862,19 +861,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write3
 \openout3 = `Codebook.toc'.
 
- [25]
+ [24]
 (./Codebook.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21307 strings out of 492916
- 419617 string characters out of 6133344
- 1460883 words of memory out of 5000000
- 24965 multiletter control sequences out of 15000+600000
+ 21314 strings out of 492916
+ 421228 string characters out of 6133344
+ 1493883 words of memory out of 5000000
+ 24972 multiletter control sequences out of 15000+600000
  534221 words of font info for 55 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 40i,12n,67p,337b,2125s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,67p,337b,2148s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Codebook.pdf (25 pages).
+Output written on Codebook.pdf (24 pages).

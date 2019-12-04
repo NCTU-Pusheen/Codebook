@@ -12,68 +12,68 @@
 \contentsline {subsection}{\numberline {2.7}持久化線段樹}{3}% 
 \contentsline {subsection}{\numberline {2.8}Treap}{3}% 
 \contentsline {subsection}{\numberline {2.9}Dynamic\_KD\_tree}{4}% 
-\contentsline {subsection}{\numberline {2.10}Heavy\ Light}{5}% 
+\contentsline {subsection}{\numberline {2.10}Heavy\ Light}{4}% 
 \contentsline {subsection}{\numberline {2.11}Link\ Cut\ Tree}{5}% 
 \contentsline {section}{\numberline {3}DP}{6}% 
 \contentsline {subsection}{\numberline {3.1}LCIS}{6}% 
 \contentsline {subsection}{\numberline {3.2}Bounded\_Knapsack}{6}% 
-\contentsline {subsection}{\numberline {3.3}1D1D}{7}% 
+\contentsline {subsection}{\numberline {3.3}1D1D}{6}% 
 \contentsline {section}{\numberline {4}Graph}{7}% 
 \contentsline {subsection}{\numberline {4.1}Dijkstra}{7}% 
 \contentsline {subsection}{\numberline {4.2}Bellman\ Ford}{7}% 
 \contentsline {subsection}{\numberline {4.3}SPFA}{7}% 
-\contentsline {subsection}{\numberline {4.4}Kruskal}{7}% 
-\contentsline {subsection}{\numberline {4.5}Prim}{8}% 
-\contentsline {subsection}{\numberline {4.6}Mahattan\ MST}{8}% 
-\contentsline {subsection}{\numberline {4.7}LCA}{8}% 
-\contentsline {subsection}{\numberline {4.8}Tarjan}{9}% 
-\contentsline {subsection}{\numberline {4.9}BCC\_edge}{9}% 
-\contentsline {subsection}{\numberline {4.10}最小平均環}{10}% 
-\contentsline {subsection}{\numberline {4.11}2-SAT}{10}% 
-\contentsline {subsection}{\numberline {4.12}生成樹數量}{10}% 
-\contentsline {section}{\numberline {5}Flow\_Matching}{10}% 
-\contentsline {subsection}{\numberline {5.1}Dinic}{10}% 
-\contentsline {subsection}{\numberline {5.2}Min\ Cost\ Max\ Flow}{11}% 
-\contentsline {subsection}{\numberline {5.3}Ford\ Fulkerson}{11}% 
-\contentsline {subsection}{\numberline {5.4}KM}{11}% 
-\contentsline {subsection}{\numberline {5.5}Hopcroft\ Karp}{12}% 
-\contentsline {subsection}{\numberline {5.6}SW-MinCut}{12}% 
-\contentsline {subsection}{\numberline {5.7}Stable\ Marriage}{12}% 
-\contentsline {section}{\numberline {6}Math}{12}% 
-\contentsline {subsection}{\numberline {6.1}快速羃}{12}% 
-\contentsline {subsection}{\numberline {6.2}模逆元}{13}% 
-\contentsline {subsection}{\numberline {6.3}離散根號}{13}% 
-\contentsline {subsection}{\numberline {6.4}外星模運算}{13}% 
-\contentsline {subsection}{\numberline {6.5}SG}{13}% 
-\contentsline {subsection}{\numberline {6.6}Matrix}{13}% 
-\contentsline {subsection}{\numberline {6.7}Karatsuba}{14}% 
-\contentsline {subsection}{\numberline {6.8}Euler\ Function}{14}% 
-\contentsline {subsection}{\numberline {6.9}Miller\ Rabin}{14}% 
-\contentsline {subsection}{\numberline {6.10}質因數分解}{14}% 
-\contentsline {subsection}{\numberline {6.11}質數}{15}% 
-\contentsline {subsection}{\numberline {6.12}實根}{15}% 
-\contentsline {subsection}{\numberline {6.13}FFT}{15}% 
-\contentsline {subsection}{\numberline {6.14}NTT}{15}% 
-\contentsline {subsection}{\numberline {6.15}Simplex}{16}% 
-\contentsline {subsection}{\numberline {6.16}Expression}{16}% 
-\contentsline {section}{\numberline {7}String}{17}% 
-\contentsline {subsection}{\numberline {7.1}Rolling\ Hash}{17}% 
-\contentsline {subsection}{\numberline {7.2}Trie}{17}% 
-\contentsline {subsection}{\numberline {7.3}AC自動機}{17}% 
-\contentsline {subsection}{\numberline {7.4}KMP}{18}% 
-\contentsline {subsection}{\numberline {7.5}Z}{18}% 
-\contentsline {subsection}{\numberline {7.6}BWT}{18}% 
-\contentsline {subsection}{\numberline {7.7}Suffix\_Array\_LCP}{18}% 
-\contentsline {subsection}{\numberline {7.8}LPS}{18}% 
-\contentsline {subsection}{\numberline {7.9}Edit\ Distance}{19}% 
-\contentsline {section}{\numberline {8}Geometry}{19}% 
-\contentsline {subsection}{\numberline {8.1}Geometry}{19}% 
-\contentsline {subsection}{\numberline {8.2}旋轉卡尺}{21}% 
-\contentsline {subsection}{\numberline {8.3}最近點對}{22}% 
-\contentsline {subsection}{\numberline {8.4}最小覆蓋圓}{22}% 
-\contentsline {subsection}{\numberline {8.5}Rectangle\ Union\ Area}{22}% 
-\contentsline {section}{\numberline {9}Other}{23}% 
-\contentsline {subsection}{\numberline {9.1}BuiltIn}{23}% 
-\contentsline {subsection}{\numberline {9.2}莫隊算法-區間眾數}{23}% 
-\contentsline {subsection}{\numberline {9.3}CNF}{23}% 
-\contentsline {subsection}{\numberline {9.4}提醒事項}{23}% 
+\contentsline {subsection}{\numberline {4.4}Prim}{7}% 
+\contentsline {subsection}{\numberline {4.5}Mahattan\ MST}{7}% 
+\contentsline {subsection}{\numberline {4.6}LCA}{8}% 
+\contentsline {subsection}{\numberline {4.7}Tarjan}{8}% 
+\contentsline {subsection}{\numberline {4.8}BCC\_edge}{9}% 
+\contentsline {subsection}{\numberline {4.9}最小平均環}{9}% 
+\contentsline {subsection}{\numberline {4.10}2-SAT}{9}% 
+\contentsline {subsection}{\numberline {4.11}生成樹數量}{9}% 
+\contentsline {section}{\numberline {5}Flow\_Matching}{9}% 
+\contentsline {subsection}{\numberline {5.1}Dinic}{9}% 
+\contentsline {subsection}{\numberline {5.2}Min\ Cost\ Max\ Flow}{10}% 
+\contentsline {subsection}{\numberline {5.3}Ford\ Fulkerson}{10}% 
+\contentsline {subsection}{\numberline {5.4}KM}{10}% 
+\contentsline {subsection}{\numberline {5.5}Hopcroft\ Karp}{11}% 
+\contentsline {subsection}{\numberline {5.6}SW-MinCut}{11}% 
+\contentsline {subsection}{\numberline {5.7}Stable\ Marriage}{11}% 
+\contentsline {section}{\numberline {6}Math}{11}% 
+\contentsline {subsection}{\numberline {6.1}快速羃}{11}% 
+\contentsline {subsection}{\numberline {6.2}模逆元}{12}% 
+\contentsline {subsection}{\numberline {6.3}離散根號}{12}% 
+\contentsline {subsection}{\numberline {6.4}外星模運算}{12}% 
+\contentsline {subsection}{\numberline {6.5}SG}{12}% 
+\contentsline {subsection}{\numberline {6.6}Matrix}{12}% 
+\contentsline {subsection}{\numberline {6.7}Karatsuba}{13}% 
+\contentsline {subsection}{\numberline {6.8}Euler\ Function}{13}% 
+\contentsline {subsection}{\numberline {6.9}Miller\ Rabin}{13}% 
+\contentsline {subsection}{\numberline {6.10}質因數分解}{13}% 
+\contentsline {subsection}{\numberline {6.11}質數}{14}% 
+\contentsline {subsection}{\numberline {6.12}實根}{14}% 
+\contentsline {subsection}{\numberline {6.13}FFT}{14}% 
+\contentsline {subsection}{\numberline {6.14}NTT}{14}% 
+\contentsline {subsection}{\numberline {6.15}Simplex}{15}% 
+\contentsline {subsection}{\numberline {6.16}Expression}{15}% 
+\contentsline {section}{\numberline {7}String}{15}% 
+\contentsline {subsection}{\numberline {7.1}Rolling\ Hash}{15}% 
+\contentsline {subsection}{\numberline {7.2}Trie}{16}% 
+\contentsline {subsection}{\numberline {7.3}AC自動機}{16}% 
+\contentsline {subsection}{\numberline {7.4}KMP}{16}% 
+\contentsline {subsection}{\numberline {7.5}Z}{17}% 
+\contentsline {subsection}{\numberline {7.6}BWT}{17}% 
+\contentsline {subsection}{\numberline {7.7}Suffix\_Array\_LCP}{17}% 
+\contentsline {subsection}{\numberline {7.8}LPS}{17}% 
+\contentsline {subsection}{\numberline {7.9}Edit\ Distance}{17}% 
+\contentsline {section}{\numberline {8}Geometry}{18}% 
+\contentsline {subsection}{\numberline {8.1}Geometry}{18}% 
+\contentsline {subsection}{\numberline {8.2}旋轉卡尺}{20}% 
+\contentsline {subsection}{\numberline {8.3}最近點對}{21}% 
+\contentsline {subsection}{\numberline {8.4}最小覆蓋圓}{21}% 
+\contentsline {subsection}{\numberline {8.5}Rectangle\ Union\ Area}{21}% 
+\contentsline {section}{\numberline {9}Other}{21}% 
+\contentsline {subsection}{\numberline {9.1}pbds}{21}% 
+\contentsline {subsection}{\numberline {9.2}BuiltIn}{21}% 
+\contentsline {subsection}{\numberline {9.3}莫隊算法-區間眾數}{22}% 
+\contentsline {subsection}{\numberline {9.4}CNF}{22}% 
+\contentsline {subsection}{\numberline {9.5}提醒事項}{22}% 
