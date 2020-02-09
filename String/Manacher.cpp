@@ -1,5 +1,5 @@
 // Longest Palindromic Substring
-int manacher (char *str) {
+int manacher (char *str) { // O(n)
 	int len = (strlen(str) << 1) | 1;
 	int *z = new int[len](); // 以s[i]為軸的最大對稱半徑
 	char *s = new char[len];

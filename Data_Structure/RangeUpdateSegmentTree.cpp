@@ -9,7 +9,7 @@ class RangeUpdateSegmentTree {
     // 程式碼重複性略高 (已盡力)。若不需要區間和，刪除所有含有 .s
     // 的行；若不需要 max ，刪除所有含有 .x 的行。
     struct node {
-        int l, r, adt = 0, stt = rr; ll s = 0, x = 0;
+        int l, r; ll adt = 0, stt = rr, s = 0, x = 0;
     };
     vector<node> a; // 萬萬不可以用普通陣列，要用 vector
     void push(int i) {
