@@ -1,57 +1,87 @@
-/** 二分圖最大權值匹配 KM 演算法，複雜度 O(n^3)*/
-#define inf 5e18
+const ll INF = 5e18;
+const int N = ?;  // max n
+int n;            // count of vertex (one side)
+ll g[N][N];       // weights
 class KM {
    private:
-    const vector<vector<ll>>& e;
-    int xx, yy;
-    vector<ll> cx, cy, wx, wy;
-    vector<bool> vx, vy;
-    ll z;
+    ll lx[N], ly[N], s[N];
+    int px[N], py[N], m[N], p[N];
+    
+    void adj(int y) {  // 把增廣路上所有邊反轉
+        m[y] = py[y];
+        if (px[m[y]] != -2)
+            adj(px[m[y]]);
+    }
+    bool dfs(int x) {  // DFS找增廣路
 
-    bool dfs(int u) {
-        vx[u] = 1;
-        for (int v = 0; v < yy; v++) {
-            if (vy[v] || e[u][v] == inf) continue;
-            ll t = wx[u] + wy[v] - e[u][v];
+        for (int y = 0; y < n; ++y) {
+            if (py[y] != -1) continue;
+            ll t = lx[x] + ly[y] - g[x][y];
             if (t == 0) {
-                vy[v] = 1;
-                if (cy[v] == -1 || dfs(cy[v])) {
-                    cx[u] = v, cy[v] = u;
+                py[y] = x;
+                if (m[y] == -1) {
+                    adj(y);
                     return 1;
                 }
-            } else if (t > 0)
-                z = min(z, t);
+                if (px[m[y]] != -1) continue;
+                px[m[y]] = y;
+                if (dfs(m[y])) return 1;
+            } else if (s[y] > t) {
+                s[y] = t;
+                p[y] = x;
+            }
         }
         return 0;
     }
+
    public:
-    // 問最大匹配權重。
     ll max_weight() {
-        for (int i = 0; i < xx; i++)
-            for (int j = 0; j < yy; j++) {
-                if (e[i][j] == inf) continue;
-                wx[i] = max(wx[i], e[i][j]);
+        memset(ly, 0, sizeof(ly));
+        memset(m, -1, sizeof(m));
+        for (int x = 0; x < n; ++x) {
+            lx[x] = -INF;
+            for (int y = 0; y < n; ++y) {
+                lx[x] = max(lx[x], g[x][y]);
             }
-        for (int i = 0; i < xx; i++) {
-            while (1) {
-                z = inf, vx.assign(xx, 0), vy.assign(yy, 0);
-                if (dfs(i)) break;
-                for (int j = 0; j < xx; j++)
-                    if (vx[j]) wx[j] -= z;
-                for (int j = 0; j < yy; j++)
-                    if (vy[j]) wy[j] += z;
+        }
+        for (int x = 0; x < n; ++x) {
+            for (int y = 0; y < n; ++y) s[y] = INF;
+            memset(px, -1, sizeof(px));
+            memset(py, -1, sizeof(py));
+            px[x] = -2;
+            if (dfs(x)) continue;
+            bool flag = 1;
+            while (flag) {
+                ll cut = INF;
+                for (int y = 0; y < n; ++y)
+                    if (py[y] == -1 && cut > s[y]) cut = s[y];
+                for (int j = 0; j < n; ++j) {
+                    if (px[j] != -1) lx[j] -= cut;
+                    if (py[j] != -1)
+                        ly[j] += cut;
+                    else
+                        s[j] -= cut;
+                }
+                for (int y = 0; y < n; ++y) {
+                    if (py[y] == -1 && s[y] == 0) {
+                        py[y] = p[y];
+                        if (m[y] == -1) {
+                            adj(y);
+                            flag = 0;
+                            break;
+                        }
+                        px[m[y]] = y;
+                        if (dfs(m[y])) {
+                            flag = 0;
+                            break;
+                        }
+                    }
+                }
             }
         }
         ll ans = 0;
-        for (int i = 0; i < xx; i++)
-            if (cx[i] != -1) ans += e[i][cx[i]];
+        for (int y = 0; y < n; ++y)
+            if (g[m[y]][y] != -INF) ans += g[m[y]][y];
         return ans;
-    }
-    // 給他 n * m 的權重表 (n <= m)，求最大完全匹配權重，權重可以
-    // 是負數。注意 n > m 會導致無窮迴圈。
-    KM(vector<vector<ll>>& e) : e(e) {
-        xx = e.size(), yy = e[0].size();  // xx 要 <= yy !!
-        cx.assign(xx, -1), cy.assign(yy, -1);
-        wx.assign(xx, 0), wy.assign(yy, 0);
     }
 };
