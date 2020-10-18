@@ -1,3 +1,9 @@
+/*
+時間複雜度 O(N^3)
+求完美匹配中的最大權匹配
+如果不存在完美匹配，求最大匹配
+如果存在數個最大匹配，求數個最大匹配當中最大權匹配
+*/
 const ll INF = 5e18;
 const int N = ?;  // max n
 int n;            // count of vertex (one side)

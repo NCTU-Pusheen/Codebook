@@ -1,3 +1,8 @@
+/*
+等價於匈牙利算法，只是匈牙利算法的優化，都是做二分圖最大匹配。
+時間複雜度為 O(E√V)
+*/
+
 int n, m, vis[maxn], level[maxn], pr[maxn], pr2[maxn];
 vector<int> edge[maxn];  // for Left
 bool dfs(int u) {

@@ -1,5 +1,10 @@
-// 一般來說複雜度遠低於 O(EV^2) ， 二分圖約 O(E * sqrt(v)) 。
-// 0/1-based 都安全。
+/*
+一般來說複雜度遠低於 O(EV^2)
+特殊情況：
+ 	Bipartite 約 O(E * sqrt(v)) 
+	Unit network 約 O(E * min(V√V,√E))
+0/1-based 都安全。
+*/
 class Dinic {
     struct edge {
         int d, r; ll c;

@@ -1,3 +1,6 @@
+/*
+時間複雜度 O(VE)
+*/
 const int INF = 2e9;
 const int N = ? ;       // 男女總人數；女性 index 0 ~ p ，男性 index p+1 ~ N-1
 int vis[N], rnd, m[N];  // 跑完匈牙利之後配對結果儲存於此， -1 表示人醜
