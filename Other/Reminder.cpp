@@ -4,6 +4,7 @@ Debug List:
 3. connected / unconnected
 4. 範圍看清楚
 5. eps夠小嗎！！
+6. 浮點數的輸出用 printf("%.5lf", x); 其中.5 代表小數點後第五位
 -------------------------------------------------------
 Lucas's Theorem
     For non-negative integer n,m and prime P,
