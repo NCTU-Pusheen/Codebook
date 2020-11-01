@@ -1,0 +1,240 @@
+%\documentclass[a4paper,10pt,oneside]{article}
+%\usepackage{xeCJK}
+%\setCJKmainfont{PingFangTC-Regular}
+%\begin{document}
+
+\subsubsection{Complexity}
+
+\begin{enumerate}\itemsep = -5pt
+
+\item LCA
+\begin{tabbing}
+Method........ \= Time..................... \= Space............ \=  離線\\
+SsadpTarjan  \> $O(N + Q)$          \> $O(N ^ 2)$      \>  不須離線\\
+OfflineTarjan \> $O(N + Q)$           \> $O(N + Q)$    \>  須離線  \\
+SparseTable \> $O(N + Q \log N)$ \> $O(N \log N)$ \>不須離線
+\end{tabbing}
+
+\item Dinic
+\begin{tabbing}
+Graph.......... \= Space........ \= Time\\
+Gernal          \> $O(V+E)$ \> $O(EV^2)$  \\
+Bipartite        \> $O(V+E)$ \> $O(E\sqrt V)$ \\
+UnitNetwork  \> $O(V+E)$ \> $O(E \min(V^{1.5}, \sqrt E))$
+\end{tabbing}
+
+\end{enumerate}
+
+
+\subsubsection{Pick公式}
+給定頂點坐標均是整點的簡單多邊形，面積=內部格點數+邊上格點數/2-1
+
+\subsubsection{圖論}
+
+\begin{enumerate}\itemsep = -5pt
+\item For planner graph，$F=E-V+C+1$，C是連通分量數
+\item For planner graph，$E\leq 3V-6$
+\item 對於連通圖G，最大獨立點集的大小設為I(G)，最大匹配大小設為M(G)，最小點覆蓋設為Cv(G)，最小邊覆蓋設為Ce(G)。
+對於任意連通圖：
+	\begin{enumerate}\itemsep = -3pt
+	\item $I(G)+Cv(G)=|V|$
+	\item $M(G)+Ce(G)=|V|$
+	\end{enumerate}
+\item 對於連通二分圖：
+	\begin{enumerate}\itemsep = -3pt
+	\item $I(G)=Cv(G)$
+	\item $M(G)=Ce(G)$
+	\end{enumerate}
+\item 最大權閉合圖：
+	\begin{enumerate}\itemsep = -3pt
+	\item $C(u,v)=\infty ,(u,v)\in E$
+	\item $C(S,v)=W_v ,W_v>0$
+	\item $C(v,T)=-W_v ,W_v<0$
+	\item ans=$\sum_{W_v>0} W_v-flow(S,T)$
+	\end{enumerate}
+\item 最大密度子圖：
+	\begin{enumerate}\itemsep = -1pt
+	\item 求$max\left(\frac{W_e+W_v}{|V'|}\right),e \in E',v \in V'$
+	\item $U=\sum_{v \in V}2W_v+\sum_{e \in E} W_e$
+	\item $C(u,v)=W_{(u,v)} ,(u,v)\in E$，雙向邊
+	\item $C(S,v)=U ,v \in V$
+	\item $D_u=\sum_{(u,v) \in E} W_{(u,v)}$
+	\item $C(v,T)=U+2g-D_v-2W_v ,v \in V$
+	\item 二分搜$g$：\\$l=0,r=U,eps=1/n^2$\\if($(U\times|V|-flow(S,T))/2>0$) $l=mid$\\else $r=mid$
+	\item ans=$min\_cut(S,T)$
+	\item $|E|=0$要特殊判斷
+	\end{enumerate}
+\item 弦圖：
+	\begin{enumerate}\itemsep = -3pt
+	\item 點數大於3的環都要有一條弦
+	\item 完美消除序列從後往前依次給每個點染色，給每個點染上可以染的最小顏色
+	\item 最大團大小=色數
+	\item 最大獨立集:完美消除序列從前往後能選就選
+	\item 最小團覆蓋:最大獨立集的點和他延伸的邊構成
+	\item 區間圖是弦圖
+	\item 區間圖的完美消除序列:將區間按造又端點由小到大排序
+	\item 區間圖染色:用線段樹做
+	\end{enumerate}
+\end{enumerate}
+
+\subsubsection{0-1分數規劃}
+$x_i=\{0,1\}$，$x_i$可能會有其他限制，求$max\left(\frac{\sum B_ix_i}{\sum C_ix_i}\right)$
+\begin{enumerate}\itemsep = -1pt
+\item $D(i,g)=B_i-g\times C_i$
+\item $f(g)=\sum D(i,g)x_i$
+\item $f(g)=0$時$g$為最佳解，$f(g)<0$沒有意義
+\item 因為$f(g)$單調可以二分搜$g$
+\item 或用Dinkelbach通常比較快
+\end{enumerate}
+\begin{lstlisting}[language=C++]
+binary_search(){
+	while(r-l>eps){
+		g=(l+r)/2;
+		for(i:所有元素)D[i]=B[i]-g*C[i];//D(i,g) 
+		找出一組合法x[i]使f(g)最大;
+		if(f(g)>0) l=g;
+		else r=g;
+	}
+	Ans = r;
+}
+Dinkelbach(){
+	g=任意狀態(通常設為0);
+	do{
+		Ans=g;
+		for(i:所有元素)D[i]=B[i]-g*C[i];//D(i,g) 
+		找出一組合法x[i]使f(g)最大;
+		p=0,q=0;
+		for(i:所有元素)
+			if(x[i])p+=B[i],q+=C[i];
+		g=p/q;//更新解，注意q=0的情況 
+	}while(abs(Ans-g)>EPS);
+	return Ans;
+}
+\end{lstlisting}
+
+\subsubsection{Math}
+\begin{enumerate}\itemsep = -3pt
+\item $\sum_{d|n} \phi(n) = n$
+\item $\text{Harmonic series } H_n = \ln(n) + \gamma + 1/(2n) - 1/(12n^2) + 1/(120n^4)$
+\item Gray Code $=n\oplus (n>>1)$
+\item $SG(A+B)=SG(A)\oplus SG(B)$
+\item Rotate Matrix $M(\theta)= \left( \begin{array}{ccc}
+cos\theta & -sin\theta \\ 
+sin\theta &  cos\theta
+\end{array} \right)$
+\item $\sum_{d|n} \mu (n)=[n==1]$
+\item $g(m)=\sum_{d|m}f(d)\Leftrightarrow f(m)=\sum_{d|m}\mu (d) \times g(m/d)$
+\item $\sum_{i=1}^n\sum_{j=1}^m$互質數量$=\sum \mu (d)\left \lfloor \frac{n}{d} \right \rfloor \left \lfloor \frac{m}{d} \right \rfloor$
+\item $\sum_{i=1}^n\sum_{j=1}^nlcm(i,j)=n\sum_{d|n} d \times \phi (d)$
+\item Josephus Problem\\
+$f(1,k) = 0, f(n, k) = (f(n-1,k)+k) \% n$
+\item Mobius\\
+$u(n) = \begin{cases}
+1 &, n = 1\\
+(-1)^m &, n = p_1 p_2 p_3 \dots p_k, n \text{無平方數因數}\\
+0
+\end{cases}$\\
+$u(ab) = u(a)u(b), \sum_{d | n} u(d) = [n == 1]$
+\item Mobius Inversion\\
+$f(m)=\sum_{d|n}g(d)\Leftrightarrow g(n)=\sum_{d|n} u(d) \times f(n/d) = \sum_{d|n} u(n/d) \times f(d) $
+
+\item {排組公式}
+\begin{enumerate}
+\itemsep = -3pt
+\item n-Catalan $C_0 = 1$，$C_{n+1} = \frac{2(2n+1)C_n}{n+2}$
+\item kn-Catalan $\frac{C_{n}^{kn}}{n(k-1)+1}$，$C_{m}^{n}=\frac{n!}{m!(n-m)!}$
+\item Stirling number of $2^{nd}$,$n$人分$k$組方法數目
+	\begin{enumerate}\itemsep = -2pt
+		\item $S(0,0)=S(n,n)=1$
+		\item $S(n,0)=0$
+		\item $S(n,k)=kS(n-1,k)+S(n-1,k-1)$
+	\end{enumerate}
+\item Bell number,$n$人分任意多組方法數目
+	\begin{enumerate}\itemsep = -2pt
+		\item $B_0=1$
+		\item $B_n=\sum_{i=0}^nS(n,i)$
+		\item $B_{n+1}=\sum_{k=0}^{n} C_k^n B_k$
+		\item $B_{p+n}\equiv B{_n}+B_{n+1} mod p$, p is prime
+		\item $B_{p^m+n}\equiv mB{_n}+B_{n+1} mod p$, p is prime
+		\item From $B_0: 1,1,2,5,15,52,\\203,877,4140,21147,115975$
+	\end{enumerate}
+\item Derangement,錯排,沒有人在自己位置上
+	\begin{enumerate}\itemsep = -2pt
+		\item $D_n=n!(1-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}\ldots +(-1)^n\frac{1}{n!})$
+		\item $D_n=(n-1)(D_{n-1}+D_{n-2}),D_0=1,D_1=0$
+		\item From $D_0: 1,0,1,2,9,44,\\265,1854,14833,133496$
+	\end{enumerate}
+\item Binomial\ Equality
+	\begin{enumerate}\itemsep = -2pt
+	    \item $\sum_k \binom{r}{m + k} \binom{s}{n - k} = \binom{r + s}{m + n}$
+         \item $\sum_k \binom{l}{m + k} \binom{s}{n + k} = \binom{l + s}{l -m + n}$		
+         \item $\sum_k \binom{l}{m + k} \binom{s + k}{n}(-1)^k = (-1)^{l + m} \binom{s - m}{n - l}$
+		\item $\sum_{k\leq l} \binom{l - k}{m} \binom{s}{k - n}(-1)^k = (-1)^{l + m} \binom{s - m - 1}{l - n - m}$
+		\item $\sum_{0 \leq k \leq l} \binom{l - k}{m} \binom{q + k}{n} = \binom{l + q + 1}{m + n + 1}$
+		\item $\binom{r}{k} = (-1)^k\binom{k - r - 1}{k}$
+		\item $\binom{r}{m} \binom{m}{k} = \binom{r}{k} \binom{r - k}{m - k}$
+		\item $\sum_{k\leq n} \binom{r + k}{k} = \binom{r + n + 1}{n}$
+		\item $\sum_{0\leq k \leq n} \binom{k}{m} = \binom{n + 1}{m + 1}$
+		\item $\sum_{k\leq m}\binom{m + r}{k}x^ky^k = \sum_{k\leq m}\binom{-r}{k}(-x)^k (x+y)^{m-k}$	
+	\end{enumerate}
+\end{enumerate}
+	
+\item {LinearAlgebra}
+\begin{enumerate} \itemsep = -3pt
+\item $tr(A) = \sum_{i} A_{i, i}$
+\item eigen vector: $(A - cI) x = 0$ 
+\end{enumerate}
+
+\item{冪次,冪次和}
+\begin{enumerate}\itemsep = -3pt
+	\item $a^b\%P=a^{b\% \varphi (p)+\varphi (p)},b\geq \varphi (p)$
+	\item $1^3+2^3+3^3+\ldots +n^3=\frac{n^4}{4}+\frac{n^3}{2}+\frac{n^2}{4}$
+	\item $1^4+2^4+3^4+\ldots +n^4=\frac{n^5}{5}+\frac{n^4}{2}+\frac{n^3}{3}-\frac{n}{30}$
+	\item $1^5+2^5+3^5+\ldots +n^5=\frac{n^6}{6}+\frac{n^5}{2}+\frac{5n^4}{12}-\frac{n^2}{12}$
+	\item $0^k+1^k+2^k+\ldots +n^k = P(k),P(k)=\frac{(n+1)^{k+1}-\sum_{i=0}^{k-1}C_i^{k+1}P(i)}{k+1},P(0)=n+1$
+	\item $\sum_{k=0}^{m-1}k^n=\frac{1}{n+1}\sum_{k=0}^{n}C_k^{n+1}B_km^{n+1-k}$
+	\item $\sum_{j=0}^{m}C_j^{m+1}B_j=0,B_0=1$
+	\item 除了$B_1=-1/2$，剩下的奇數項都是$0$
+	\item $B_2=1/6,B_4=-1/30,B_6=1/42,B_8=-1/30,B_{10}=5/66,B_{12}=-691/2730,B_{14}=7/6,B_{16}=-3617/510,B_{18}=43867/798,B_{20}=-174611/330,$
+\end{enumerate}
+
+\item{Chinese Remainder Theorem}
+\begin{enumerate}\itemsep = -3pt
+\item $gcd(m_i, m_j) = 1$
+\item
+$x \% m_1 = a_1$\\
+$x \% m_2 = a_2$\\
+$\vdots$ \\
+$x \% m_n = a_n$
+\item $M = m_1 m_2 \dots m_n, M_i = M / m_i$
+\item $t_i m_i = 1 (\mod m_i)$
+\item $x = a_1 t_1 * M_1 + \dots + a_n t_n * M_n + k M, k \in N$
+\end{enumerate}
+
+\end{enumerate}
+
+
+\subsubsection{Burnside's lemma}
+\begin{enumerate}\itemsep = -3pt
+	\item $|X/G| = \frac{1}{|G|}\sum_{g \in G}|X^g|$
+	\item $X^g=t^{c(g)}$
+	\item $G$表示有幾種轉法，$X^g$表示在那種轉法下，有幾種是會保持對稱的，$t$是顏色數，$c(g)$是循環節不動的面數。
+	\item 正立方體塗三顏色，轉0有$3^6$ 個元素不變，轉90有6種，每種有$3^3$不變，180有$3\times 3^4$，120(角)有$8\times 3^2$，180(邊)有$6\times 3^3$，全部$\frac{1}{24}\left(3^6+6\times 3^3 + 3 \times 3^4 + 8 \times 3^2 + 6 \times 3^3 \right) = 57$
+\end{enumerate}
+
+\subsubsection{Count on a tree}
+\begin{enumerate}\itemsep = -3pt
+	\item Rooted tree: $s_{n+1}=\frac{1}{n}\sum_{i=1}^{n}(i\times a_i\times \sum_{j=1}^{\left \lfloor  n/i\right \rfloor} a_{n+1-i\times j})$
+	\item Unrooted tree: 
+	\begin{enumerate}\itemsep = -2pt
+		\item Odd:$a_n-\sum_{i=1}^{n/2}a_ia_{n-i}$
+		\item Even:$Odd+\frac{1}{2}a_{n/2}(a_{n/2}+1)$
+	\end{enumerate}
+	\item Spanning Tree
+	\begin{enumerate}\itemsep = -2pt
+		\item Cayley: $n^{n-2}$ (Complete Graph)
+		\item Kirchhoff: $M[i][i]=\deg(V_i)$,$M[i][j]= E(i,j) ? -1 : 0$. delete any one row and col in $A$, $ans = det(A)$
+	\end{enumerate}
+\end{enumerate}
+
+%\end{document}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  2 NOV 2020 01:06
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  2 NOV 2020 03:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -839,41 +839,54 @@ LaTeX Font Warning: Font shape `TU/PingFangTC-Regular(0)/m/it' undefined
 [17]) (./Math/PrimeList.cpp) (./Math/Matrix.cpp) (./Math/SG.cpp)
 (./Math/ModInv.cpp [18]) (./Math/外星模運算.cpp) (./Math/ax+by=gcd(a,b).cpp)
 (./Math/Expression.cpp) (./Math/NTT.cpp [19]) (./Math/EulerFunction.cpp)
-(./Other/莫隊算法_區間眾數.cpp) (./Other/CNF.cpp) (./Other/pbds.cpp [20])
-(./Other/BuiltIn.cpp) (./Other/Reminder.cpp) (./String/Manacher.cpp)
-(./String/Edit_Distance.cpp) (./String/RollHash.cpp [21]) (./String/LPS.cpp)
-(./String/Trie.cpp) (./String/Kmp.cpp) (./String/AC自動機.cpp [22]
-Missing character: There is no ∩ in font Consolas/OT:script=latn;language=DFLT;
-!
-)
-(./String/BWT.cpp) (./String/Z.cpp) (./String/suffix_array.cpp [23])
-(./Surroudings/bashrc.cpp)) [24] (./Codebook.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 2.
+(./Other/Reminder.tex
+LaTeX Font Info:    Try loading font information for U+msa on input line 13.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 2.
+LaTeX Font Info:    Try loading font information for U+msb on input line 13.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+) [20]
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
+[]$\OT1/cmr/m/n/7 0[] + 1[] + 2[] + [] + \OML/cmm/m/it/7 n[] \OT1/cmr/m/n/7 = \
+OML/cmm/m/it/7 P\OT1/cmr/m/n/7 (\OML/cmm/m/it/7 k\OT1/cmr/m/n/7 )\OML/cmm/m/it/
+7 ; P\OT1/cmr/m/n/7 (\OML/cmm/m/it/7 k\OT1/cmr/m/n/7 ) =
+ []
+
+
+Underfull \hbox (badness 7777) in paragraph at lines 198--199
+[]$\OML/cmm/m/it/7 B[] \OT1/cmr/m/n/7 = 1/6\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7
+ = \OMS/cmsy/m/n/7 ^^@\OT1/cmr/m/n/7 1/30\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7 =
+ 1/42\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7 =
+ []
+
+) (./Other/莫隊算法_區間眾數.cpp) (./Other/CNF.cpp [21]) (./Other/BuiltIn.cpp)
+(./String/Manacher.cpp) (./String/Edit_Distance.cpp) (./String/RollHash.cpp)
+(./String/LPS.cpp) (./String/Trie.cpp [22]) (./String/Kmp.cpp)
+(./String/AC自動機.cpp
+Missing character: There is no ∩ in font Consolas/OT:script=latn;language=DFLT;
+!
+ [23]) (./String/BWT.cpp) (./String/Z.cpp)
+(./String/suffix_array.cpp) [24] (./Surroudings/bashrc.cpp)) [25]
+(./Codebook.toc)
 \tf@toc=\write3
 \openout3 = `Codebook.toc'.
 
- [25]
-(./Codebook.aux)
+ [26] (./Codebook.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21114 strings out of 492916
- 419982 string characters out of 6133344
+ 20952 strings out of 492916
+ 420018 string characters out of 6133344
  1498883 words of memory out of 5000000
- 24766 multiletter control sequences out of 15000+600000
- 534221 words of font info for 55 fonts, out of 8000000 for 9000
+ 24605 multiletter control sequences out of 15000+600000
+ 534237 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 40i,12n,67p,337b,2123s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,67p,358b,2150s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Codebook.pdf (25 pages).
+Output written on Codebook.pdf (26 pages).
