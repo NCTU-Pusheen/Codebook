@@ -4,7 +4,7 @@ namespace Two_Sat {
 vector<int> a[N], b[N], stk;
 int vis[N], res[N];
 
-int dfs(int u, vector<int>* g, int sc) {
+void dfs(int u, vector<int>* g, int sc) {
     vis[u] = 1, res[u] = sc;
     for (int v : g[u]) if (!vis[v]) dfs(v, g, sc);
     if (g == a) stk.push_back(u);
