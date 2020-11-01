@@ -13,6 +13,8 @@ struct vec {
     T x, y;
     vec operator+(vec o) { return {x + o.x, y + o.y}; }
     vec operator-(vec o) { return {x - o.x, y - o.y}; }
+    vec operator*(T o) { return {x * o, y * o}; }
+    vec operator/(T o) { return {x / o, y / o}; }
     T operator%(vec o) { return x * o.x + y * o.y; }      // 內積
     T operator*(vec o) { return x * o.y - y * o.x; }      // 外積
     T abs() { return x * x + y * y; }                     // 絕對值平方
@@ -60,6 +62,9 @@ struct line {
     point intersect(line o) {
         return {(c * o.b - b * o.c) / (a * o.b - b * o.a),
                 (a * o.c - c * o.a) / (a * o.b - b * o.a)};
+    }
+    double cosangle(line o) {  // 兩直線夾角之 cos 值
+        return (d % o.d) / (sqrt(d.abs() * o.d.abs()));
     }
 };
 
@@ -121,4 +126,28 @@ struct circle {
         double d1 = (r12 - r22 + dd) / (2 * d), d2 = d - d1;
         return r12 * acos(d1 / r1) - d1 * sqrt(r12 - d1 * d1) + r22 * acos(d2 / r2) - d2 * sqrt(r22 - d2 * d2);
     }
+};
+
+double len(point a, point b) { return sqrt((a - b).abs()); }
+struct tri {
+    point a, b, c;
+    T area2() { return abs((b - a) * (c - a)); }                            // 求面積之兩倍 (可保證整數性質)
+    point barycenter() { return (a + b + c) / 3; }                          // 重心
+    point perpencenter() { return barycenter() * 3 - circumcenter() * 2; }  // 垂心
+    point circumcenter() {                                                  // 外心
+        point p1 = (a + b) / 2, p2 = {p1.x - a.y + b.y, p1.y + a.x - b.x};
+        line u = {p1, p2};
+        p1 = (a + c) / 2, p2 = {p1.x - a.y + c.y, p1.y + a.x - c.x};
+        line v = {p1, p2};
+        return u.intersect(v);
+    }
+    point incentre() {  // 內心
+        T A = len(b, c), B = len(a, c), C = len(a, b);
+        point p = {A * a.x + B * b.x + C * c.x, A * a.y + B * b.y + C * c.y};
+        return p / (A + B + C);
+    }
+    // 費馬點
+    // 若有一角 >= 120 (cos(x) <= -0.5) ，費馬點為該角對應的點
+    // 否則三角型三條邊對外做正三角形，得到三個頂點 A', B', C'
+    // 費馬點為 AA' BB' CC' 三線之交點
 };
