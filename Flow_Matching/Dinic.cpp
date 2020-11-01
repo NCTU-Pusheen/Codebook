@@ -1,10 +1,3 @@
-/*
-一般來說複雜度遠低於 O(EV^2)
-特殊情況：
- 	Bipartite 約 O(E * sqrt(v)) 
-	Unit network 約 O(E * min(V√V,√E))
-0/1-based 都安全。
-*/
 class Dinic {
     struct edge {
         int d, r; ll c;
@@ -21,8 +14,7 @@ class Dinic {
                 if (e.c == 0 || lv[e.d] != -1) continue;
                 lv[e.d] = lv[v] + 1, q.push(e.d);
             }
-        }
-        return lv[d] > 0;
+        } return lv[d] > 0;
     }
     ll aug(int v, ll f, int d) {
         if (v == d) return f;
@@ -34,13 +26,11 @@ class Dinic {
                 e.c -= sent, adj[e.d][e.r].c += sent;
                 return sent;
             }
-        }
-        return 0;
+        } return 0;
     }
    public:
-    // 建立空圖， n 是節點 (包含 source, sink) 數量
+    // 建空圖， n 節點數 (含 source, sink)
     Dinic(int n) : n(n + 1) { clear(); }
-    // 清空整個圖，這需要重複使用 dinic 時 (如二分搜) 很方便
     void clear() { adj.assign(n, vector<edge>()); }
     // 加有向邊 src->dst ，cap 是容量
     void add_edge(int src, int dst, ll cap) {
@@ -53,7 +43,6 @@ class Dinic {
         while (mklv(s, d)) {
             ve.assign(n, 0);
             while (ll f = aug(s, 9e18, d)) ret += f;
-        }
-        return ret;
+        } return ret;
     }
 };

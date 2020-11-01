@@ -29,7 +29,7 @@ struct Matrix {
                     rev.m[i][j] += m[i][k] * tmp[j][k];
         return rev;
     }
-    // 回傳反矩陣。注意這是 const 方法所以原矩陣不受影響。
+    // 回傳反矩陣。注意這是 const 方法所以原矩陣不受影響
     Matrix inverse() const {
         Matrix t(r, r + c);
         for (int y = 0; y < r; y++) {
@@ -43,8 +43,8 @@ struct Matrix {
                 ret[y][x] = t.m[y][c + x] / t.m[y][y];
         return ret;
     }
-    // 做高斯消去 (最高次係數應置於最左，常數應置於最右) 並回傳 det
-    // 行列式值。複雜度 O(n^3)。如果不是方陣，回傳值無意義。
+    // 做高斯消去 (最高次係數應置於最左，常數應置於最右) 
+    // 回傳 det。O(n^3)。如果不是方陣，回傳值無意義。
     ll gauss() {
         vector<ll> lazy(r, 1);
         bool sign = false;

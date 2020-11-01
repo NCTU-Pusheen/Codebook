@@ -1,8 +1,7 @@
-// qsort suffix array, 0-based only, O(T * log^2 T) 略慢但是好寫
+// qsort suffix array, 0-based only, O(T * log^2 T)
 const int N = ? ;  // 字串最大長度
 namespace SA {
 int sa[N], t0[N], t1[N];
-
 struct CMP {
     int *r, n, X;
     bool operator()(int i, int j) {
@@ -12,7 +11,6 @@ struct CMP {
         return a < b;
     }
 };
-
 // str = 字串，可為 vector 或 string 或 char[] 等
 // n = 字串長(含$)
 // 結果存在 SA::sa
@@ -36,13 +34,11 @@ void build(const T &str) {
 }
 }  // namespace SA
 
-
 // 卦長的 IS suffix array ，0-based only
 // N = 字串最大長度 , A = 最大字元 ascii
 // 複雜度 O(N+A)
 const int N = ?, A = ?;
 namespace SA {
-
 #define pushS(x) sa[--b[s[x]]] = x
 #define pushL(x) sa[b[s[x]]++] = x
 #define induce_sort(v)                                    \
@@ -57,7 +53,6 @@ namespace SA {
         for (i = n - 1; ~i; --i)                          \
             if (sa[i] && t[sa[i] - 1]) pushS(sa[i] - 1);  \
     }
-
 template <typename T>
 void sais(const T s, int n, int *sa, int *bb, int *p, bool *t, int A) {
     int *r = p + n, *s1 = p + n / 2, *b = bb + A;
@@ -78,17 +73,14 @@ void sais(const T s, int n, int *sa, int *bb, int *p, bool *t, int A) {
     for (i = 0; i < n1; ++i) s1[i] = p[sa[i]];
     induce_sort(s1);
 }
-
 int sa[N];
 int b[N + A], p[N * 2];
 bool t[N * 2];
-
 // 計算 suffix array ，字串須為 char[] 或 int[]， 不可為 string 或 vector
 // s = 字串
 // n = 字串長度(含$)
 // 結果存在 SA::sa
 template <typename T>
 void build(const T s, int n) { sais(s, n, sa, b, p, t, A); }
-
 }  // namespace SA
 

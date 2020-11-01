@@ -1,5 +1,4 @@
-/** Min cost max flow 。0/1-based 都安全。 **/
-class MCMF {
+class MCMF { //0/1-based
    private:
     struct edge { int to, r; ll rest, c; };
     int n; ll f = 0, c = 0;
@@ -13,8 +12,7 @@ class MCMF {
             for (int i = 0; i < g[u].size(); i++) {
                 int v = g[u][i].to; ll w = g[u][i].c;
                 if (g[u][i].rest <= 0 ||
-                    dis[v] <= dis[u] + w)
-                    continue;
+                    dis[v] <= dis[u] + w) continue;
                 pre[v] = u, prel[v] = i;
                 dis[v] = dis[u] + w;
                 if (!vis[v]) vis[v] = 1, q.push(v);
@@ -34,8 +32,7 @@ class MCMF {
         return 1;
     }
    public:
-    // 建立空圖，n 是節點數量 (包含 source 和 sink)
-    MCMF(int n)
+    MCMF(int n) // 建空圖，n 節點數 (含 src 和 sink)
         : n(n + 1), g(n + 1), pre(n + 1), prel(n + 1) {}
     // 加有向邊 u->v ，cap 容量 cost 成本
     void add_edge(int u, int v, ll cap, ll cost) {

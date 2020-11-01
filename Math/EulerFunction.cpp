@@ -10,17 +10,15 @@ int phi(int x) {
     if (x > 1) r -= r / x;
     return r;
 }
-// 查詢所有 phi(x) ，且 x in [0, n) 。注意右開區間，回傳陣列。
+// 查詢所有 phi(x)，x in [0, n)  回傳陣列。
 vector<int> phi_in(int n) {
     vector<bool> p(n, 1); vector<int> r(n);
-    p[0] = p[1] = 0;
     for (int i = 0; i < n; i++) r[i] = i;
+    r[1] = p[0] = p[1] = 0;
     for (int i = 2; i < n; i++) {
         if (!p[i]) continue;
         r[i]--;
         for (int j = i * 2; j < n; j += i)
             p[j] = 0, r[j] = r[j] / i * (i - 1);
-    }
-    r[1] = 0;
-    return r;
+    } return r;
 }

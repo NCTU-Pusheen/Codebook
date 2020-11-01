@@ -1,14 +1,10 @@
-/**
- * 修改功能最強的線段樹，但只能查詢區間和以及極值，所有區間操作都
- * 是閉區間。只支援 1-based 。 **/
+//閉區間，1-based
 #define ls i << 1
 #define rs i << 1 | 1
 const ll rr = 0x6891139;  // 亂數，若跟題目碰撞會吃 WA 或 RE
 class RangeUpdateSegmentTree {
    private:
-    // 程式碼重複性略高 (已盡力)。若不需要區間和，刪除所有含有 .s
-    // 的行；若不需要 max ，刪除所有含有 .x 的行。
-    struct node {
+    struct node { //s : sum, x : max
         int l, r; ll adt = 0, stt = rr, s = 0, x = 0;
     };
     vector<node> a; // 萬萬不可以用普通陣列，要用 vector

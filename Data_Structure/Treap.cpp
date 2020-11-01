@@ -1,13 +1,10 @@
-// 支援區間加值、區間反轉、區間 rotate 、區間刪除、插入元素、求區間
-// 最小值的元素的 Treap。使用前建議 srand(time(0)); 除了 size()
-// 方法以外，所有操作都是 O(log N) 。所有 public 方法各自獨立，請
-// 斟酌要使用到哪些方法，有需要的才抄。
+// 區間加值、反轉、rotate、刪除、插入元素、求區間
+// srand(time(0))
 class Treap {
    private:
     struct Node {
         int pri = rand(), size = 1;
-        ll val, mn, inc = 0;
-        bool rev = 0;
+        ll val, mn, inc = 0; bool rev = 0;
         Node *lc = 0, *rc = 0;
         Node(ll v) { val = mn = v; }
     };
@@ -31,8 +28,7 @@ class Treap {
         if (t->lc) t->mn = min(t->mn, t->lc->mn);
         if (t->rc) t->mn = min(t->mn, t->rc->mn);
     }
-    // 看你要不要釋放記憶體
-    void discard(Node* t) {
+    void discard(Node* t) { // 看要不要釋放記憶體
         if (!t) return;
         discard(t->lc), discard(t->rc);
         delete t;
@@ -93,12 +89,10 @@ class Treap {
         split(d, e, f, len - k);
         root = merge(merge(c, merge(f, e)), b);
     }
-    // 插入一個元素 val 使其 index = i
-    // 注意 i <= size
+    // 插入一個元素 val 使其 index = i <= size
     void insert(int i, ll val) {
         if (i == size() + 1) {
-            push_back(val);
-            return;
+            push_back(val); return;
         }
         assert(i <= size());
         Node *a, *b;

@@ -1,25 +1,21 @@
-/*
-時間複雜度 O(N^3)
+/* 時間複雜度 O(N^3)
 求完美匹配中的最大權匹配
 如果不存在完美匹配，求最大匹配
-如果存在數個最大匹配，求數個最大匹配當中最大權匹配
-*/
+如果存在數個最大匹配，求數個最大匹配當中最大權匹配 */
 const ll INF = 5e18;
-const int N = ?;  // max n
+const int N = ?;  // maxn
 int n;            // count of vertex (one side)
 ll g[N][N];       // weights
 class KM {
    private:
     ll lx[N], ly[N], s[N];
     int px[N], py[N], m[N], p[N];
-    
     void adj(int y) {  // 把增廣路上所有邊反轉
         m[y] = py[y];
         if (px[m[y]] != -2)
             adj(px[m[y]]);
     }
     bool dfs(int x) {  // DFS找增廣路
-
         for (int y = 0; y < n; ++y) {
             if (py[y] != -1) continue;
             ll t = lx[x] + ly[y] - g[x][y];
@@ -33,8 +29,7 @@ class KM {
                 px[m[y]] = y;
                 if (dfs(m[y])) return 1;
             } else if (s[y] > t) {
-                s[y] = t;
-                p[y] = x;
+                s[y] = t, p[y] = x;
             }
         }
         return 0;
@@ -46,9 +41,8 @@ class KM {
         memset(m, -1, sizeof(m));
         for (int x = 0; x < n; ++x) {
             lx[x] = -INF;
-            for (int y = 0; y < n; ++y) {
+            for (int y = 0; y < n; ++y)
                 lx[x] = max(lx[x], g[x][y]);
-            }
         }
         for (int x = 0; x < n; ++x) {
             for (int y = 0; y < n; ++y) s[y] = INF;
@@ -63,10 +57,8 @@ class KM {
                     if (py[y] == -1 && cut > s[y]) cut = s[y];
                 for (int j = 0; j < n; ++j) {
                     if (px[j] != -1) lx[j] -= cut;
-                    if (py[j] != -1)
-                        ly[j] += cut;
-                    else
-                        s[j] -= cut;
+                    if (py[j] != -1) ly[j] += cut;
+                    else s[j] -= cut;
                 }
                 for (int y = 0; y < n; ++y) {
                     if (py[y] == -1 && s[y] == 0) {
