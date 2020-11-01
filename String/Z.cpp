@@ -1,4 +1,4 @@
-void z_build(string &s, int *z) {
+void z_build(string &s, vector<int> &z) {
     int bst = z[0] = 0;
     for (int i = 1; s[i]; i++) {
         if (z[bst] + bst < i) z[i] = 0;
@@ -11,7 +11,7 @@ void z_build(string &s, int *z) {
 int z_match(string &s, string &t) {
     int ans = 0;
     int lens = s.length(), lent = t.length();
-    int z[lens + lent + 5];
+    vector<int> z(lens + lent + 1);
     string st = s + "$" + t;
     z_build(st, z);
     for (int i = lens + 1; i <= lens + lent; i++)
