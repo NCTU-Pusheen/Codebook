@@ -1,7 +1,6 @@
-/** 0/1-based 安全， n 是節點數量 (必須剛好) 。 edge 格式為
- * {cost, dest} ，回傳 -1 表示圖不連通。**/
+// 0/1-based n(必須剛好) edge:{cost, dest} 
 typedef pair<ll, int> pii;
-ll minpath(vector<vector<pii>>& edge, int n) {
+ll MST(vector<vector<pii>>& edge, int n) {
     vector<bool> vis(n + 1);
     priority_queue<pii, vector<pii>, greater<pii>> q;
     q.emplace(0, 1);
@@ -14,5 +13,5 @@ ll minpath(vector<vector<pii>>& edge, int n) {
         if (++nvis == n) return ret;
         for (auto& e : edge[v])
             if (!vis[e.second]) q.push(e);
-    } return -1;
+    } return -1; // unconnected
 }

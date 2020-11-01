@@ -1,11 +1,9 @@
-/** 問某點到所有圖上的點的最短距離。0/1-based 都安全。 edge 要
- * 是 {cost，dest} 格式。回傳的陣列若含有 -1 表示 src 到該位置
- * 不連通 **/
+// 0/1-based, edge = {cost，dest}, -1 : unconnected
 typedef pair<ll, int> pii;
-vector<ll> dijkstra(int src, vector<vector<pii>>& edge) {
+vector<ll> dijkstra (int s, vector<vector<pii>>& edge) {
     vector<ll> sum(edge.size(), -1);
     priority_queue<pii, vector<pii>, greater<pii>> q;
-    q.emplace(0, src);
+    q.emplace(0, s);
     while (q.size()) {
         int v = q.top().second; ll d = q.top().first;
         q.pop();
