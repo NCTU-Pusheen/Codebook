@@ -1,48 +1,40 @@
-const int MAXN = 2020;
-struct TwoSAT{
-    static const int MAXv = 2*MAXN;
-    vector<int> GO[MAXv],BK[MAXv],stk;
-    bool vis[MAXv];
-    int SC[MAXv];
-    void imply(int u,int v){ // u imply v
-        GO[u].push_back(v);
-        BK[v].push_back(u);
-    }
-    int dfs(int u,vector<int>*G,int sc){
-        vis[u]=1, SC[u]=sc;
-        for (int v:G[u])if (!vis[v])
-            dfs(v,G,sc);
-        if　(G==GO)　stk.push_back(u);
-    }
-    int scc(int n=MAXv){
-        memset(vis,0,sizeof(vis));
-        for (int i=0; i<n; i++)
-            if (!vis[i])　dfs(i,GO,-1);
-        memset(vis,0,sizeof(vis));
-        int sc=0;
-        while (!stk.empty()){
-            if (!vis[stk.back()])
-                dfs(stk.back(),BK,sc++);
-            stk.pop_back();
-        }
-    }
-}　SAT;
-int main(){
-    SAT.scc(2*n);
-    bool ok　=　1;
-    for (int i=0; i<n; i++){
-        if (SAT.SC[2*i]==SAT.SC[2*i+1])　ok　=　0;
-    }
-    if (ok) {
-        for (int i=0; i<n; i++)
-            if (SAT.SC[2*i]>SAT.SC[2*i+1])
-                cout << i << endl;
-    }
-    else puts("NO");
+const int N = 5010 * 2;  // 變數最大數量的兩倍
+namespace Two_Sat {
+
+vector<int> a[N], b[N], stk;
+int vis[N], res[N];
+
+void dfs(int u, vector<int>* g, int sc) {
+    vis[u] = 1, res[u] = sc;
+    for (int v : g[u]) if (!vis[v]) dfs(v, g, sc);
+    if (g == a) stk.push_back(u);
 }
-void warshall(){
-    bitset<2003> d[2003]; 
-    for (int k=0; k<n; k++)
-        for (int i=0; i<n; i++) 
-            if (d[i][k]) d[i] |= d[k];
+
+// 先呼叫 imply 來設定約束，然後呼叫 scc 跑分析。
+// var[x] 的真值對應 i = x * 2 ； var[x] 的假值對應 i = x * 2 + 1
+// e.g. 若 var[3] 為真則 var[6] 必為假，則呼叫 imply(6, 13)
+void imply(int u, int v) {  // if u then v
+    a[u].push_back(v), b[v].push_back(u);
 }
+
+// 跑 two_sat ，回傳 true 表示有解。解答存於 Two_Sat::res
+// e.g. 若 res[13] == 1 表 var[6] 必為假
+// e.g. 若 res[0] == 1 且 res[1] == 1 ，表 var[0] 必為真且必為假，矛盾，無解。
+int scc(int n /*變數實際數量的兩倍*/) {
+    memset(vis, 0, sizeof(vis));
+    for (int i = 0; i < n; i++) if (!vis[i]) dfs(i, a, -1);
+    memset(vis, 0, sizeof(vis));
+    int sc = 0;
+    while (!stk.empty()) {
+        if (!vis[stk.back()]) dfs(stk.back(), b, sc++);
+        stk.pop_back();
+    }
+    for (int i = 0; i < n; i += 2) {
+        if (res[i] == res[i + 1]) return 0;
+        if (res[i] > res[i + 1]) res[i] = 1, res[i + 1] = 0;
+        else res[i] = 0, res[i + 1] = 1;
+    }
+    return 1;
+}
+
+}  // namespace Two_Sat
