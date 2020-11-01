@@ -11,10 +11,10 @@ priority_queue<int, greater<int>, TAG> Q;
 /*
 Tag                 | push  | pop   | join  | modify |
 pairing_heap_tag    | O(1)  | O(lgN)| O(1)  | O(lgN) |
-thin_heap_tag       | O(lgN)| O(lgN)| 慢    | 慢      |
+binary_heap_tag     | O(lgN)| O(lgN)| 慢    | 慢      |
 binomial_heap_tag   | O(1)  | O(lgN)| O(lgN)| O(lgN) |
 rc_binomial_heap_tag| O(1)  | O(lgN)| O(lgN)| O(lgN) |
-binary_heap_tag     | O(1)  | O(lgN)| 慢    | O(lgN) |
+thin_heap_tag       | O(1)  | O(lgN)| 慢    | O(lgN) |
 */   //可以用迭代器遍歷
 Q.push(x); Q.pop(); Q.top();
 Q.join(b); //merge two heap
