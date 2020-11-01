@@ -10,7 +10,7 @@ inline bool eq(long long a, long long b) { return a == b; }
 
 #define point vec
 struct vec {
-    T x, y;
+    T x, y; // 向量的 x, y 或座標的 x,y
     vec operator+(vec o) { return {x + o.x, y + o.y}; }
     vec operator-(vec o) { return {x - o.x, y - o.y}; }
     vec operator*(T o) { return {x * o, y * o}; }
@@ -24,11 +24,11 @@ vec makevec(point src, point dst) { return {dst.x - src.x, dst.y - src.y}; }
 
 #define seg line
 struct line {
-    point s, t;
+    point s, t; // 此直線經過 s,t 獲此線段為始於 s 止於 t
     vec d;      // 此直線的向量
     T a, b, c;  // ax+by=c
 
-    line(point p, point q) {
+    line(point p, point q) { // 此直線經過 p,q 獲此線段為始於 p 止於 q
         s = p, t = q, d = makevec(p, q);
         a = p.y - q.y, b = q.x - p.x, c = a * p.x + b * p.y;
     }
