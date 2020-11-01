@@ -10,7 +10,7 @@ inline bool eq(long long a, long long b) { return a == b; }
 
 #define point vec
 struct vec {
-    T x, y; // 向量的 x, y 或座標的 x,y
+    T x, y;  // 向量或坐標的x,y值
     vec operator+(vec o) { return {x + o.x, y + o.y}; }
     vec operator-(vec o) { return {x - o.x, y - o.y}; }
     vec operator*(T o) { return {x * o, y * o}; }
@@ -24,18 +24,17 @@ vec makevec(point src, point dst) { return {dst.x - src.x, dst.y - src.y}; }
 
 #define seg line
 struct line {
-    point s, t; // 此直線經過 s,t 獲此線段為始於 s 止於 t
-    vec d;      // 此直線的向量
-    T a, b, c;  // ax+by=c
+    point s, t;  // 此直線經過s,t；或此線段始於s且止於t
+    vec d;       // 此直線的向量
+    T a, b, c;   // ax+by=c
 
-    line(point p, point q) { // 此直線經過 p,q 獲此線段為始於 p 止於 q
+    line(point p, point q) {  // 此直線經過p,q；或此線段為始於p且止於q
         s = p, t = q, d = makevec(p, q);
         a = p.y - q.y, b = q.x - p.x, c = a * p.x + b * p.y;
     }
     // 點是否在直線上
     bool passLine(point p) { return d.samedir(p - s); }
-    // 點是否在線段上
-    bool passSeg(point p) {
+    bool passSeg(point p) { // 點是否在線段上
         vec ap = makevec(s, p), bp = makevec(t, p);
         return passLine(p) && ap % bp < 0;
     }
@@ -43,8 +42,7 @@ struct line {
     bool sameLine(line o) { return d.samedir(o.d) && passLine(o.s); }
     // 兩直線是否平行且不重合
     bool para(line o) { return d.samedir(o.d) && !passLine(o.s); }
-    // 求某點在此直線上的投影座標
-    point proj(point p) {
+    point proj(point p) {  // 求某點在此直線上的投影座標
         vec e = {p - s};
         T t = e % d / d.abs();
         vec dst = {d.x * t, d.y * t};
@@ -58,8 +56,7 @@ struct line {
     bool split(point p, point q) { return (a * p.x + b * p.y < 0) != (a * q.x + b * q.y < 0); }
     // 兩非平行線段是否相交
     bool meet(seg o) { return split(o.s, o.t) && o.split(s, t); }
-    // 兩非平行直線相交座標
-    point intersect(line o) {
+    point intersect(line o) {  // 兩非平行直線相交座標
         return {(c * o.b - b * o.c) / (a * o.b - b * o.a),
                 (a * o.c - c * o.a) / (a * o.b - b * o.a)};
     }
@@ -69,7 +66,7 @@ struct line {
 };
 
 #define rr (r * r)  // 半徑平方
-#define usevars                                            \
+#define usevars                                            \ //打字加速
     double x1 = c.x, x2 = o.c.x, y1 = c.y, y2 = o.c.y;     \
     double r1 = r, r2 = o.r, r12 = r1 * r1, r22 = r2 * r2; \
     double dx = x2 - x1, dy = y2 - y1, dd = dx * dx + dy * dy, d = sqrt(dd);
@@ -77,14 +74,7 @@ const double PI = acos(-1);
 struct circle {
     point c;   // 圓心
     double r;  // 半徑
-
-    // 點是否落於圓內 -1 在圓內 0 在圓上 1 在圓外
-    int contains(point p) {
-        double dx = p.x - c.x, dy = p.y - c.y, d = dx * dx + dy * dy;
-        if (eq(d, rr)) return 0;
-        return d < rr ? -1 : 1;
-    }
-    // 求直線與圓的交點，回傳交點數量。若有兩交點，存於 ans1 與 ans2，若有一交點，ans1 。
+    // 求直線與圓的交點並回傳交點數量。若有兩點，存於ans1與ans2，若有一點，存於ans1。
     int meetLine(line l, point& ans1, point& ans2) {
         double d2 = l.dist2(c);
         if (eq(d2, rr)) return ans1 = l.proj(c), 1;  // 交於一點
@@ -96,14 +86,14 @@ struct circle {
         ans1 = ans1 + c, ans2 = ans2 + c;
         return 2;
     }
-    // 求線段與圓的交點，回傳交點數量。若有兩交點，存於 ans1 與 ans2，若有一交點，ans1 。
+    // 求線段與圓的交點並回傳交點數量。
     int meetSeg(seg l, point& ans1, point& ans2) {
         int res = meetLine(l, ans1, ans2);
         if (res == 0) return 0;
         if (res == 1) return l.passSeg(ans1);
         return (int)l.passSeg(ans1) + l.passSeg(ans2);
     }
-    // 求圓與圓的交點，回傳交點數量。若有兩交點，存於 ans1 與 ans2，若有一交點，ans1 。
+    // 求圓與圓的交點並回傳交點數量。
     int meetCircle(circle o, point& ans1, point& ans2) {
         usevars;
         if (d > r1 + r2) return 0;       // 互斥
@@ -117,8 +107,7 @@ struct circle {
         ans1 = A + B + C, ans2 = A + B - C;
         return eq(d, r1 + r2) ? 1 : 2;
     }
-    // 求兩圓重疊部分面積
-    double coverArea(circle o) {
+    double coverArea(circle o) { // 求兩圓重疊部分面積
         if (r < o.r) return o.coverArea(*this);
         usevars;
         if (d > r1 + r2) return 0;                  // 互斥
@@ -128,13 +117,13 @@ struct circle {
     }
 };
 
-double len(point a, point b) { return sqrt((a - b).abs()); }
+double len(point a, point b) { return sqrt((a - b).abs()); } // 打字加速
 struct tri {
     point a, b, c;
-    T area2() { return abs((b - a) * (c - a)); }                            // 求面積之兩倍 (可保證整數性質)
-    point barycenter() { return (a + b + c) / 3; }                          // 重心
-    point perpencenter() { return barycenter() * 3 - circumcenter() * 2; }  // 垂心
-    point circumcenter() {                                                  // 外心
+    T area2() { return abs((b - a) * (c - a)); }  // 求面積之兩倍
+    point barycenter() { return (a + b + c) / 3; }  // 重心
+    point perpencenter() { return barycenter() * 3 - circumcenter() * 2; } // 垂心
+    point circumcenter() {  // 外心
         point p1 = (a + b) / 2, p2 = {p1.x - a.y + b.y, p1.y + a.x - b.x};
         line u = {p1, p2};
         p1 = (a + c) / 2, p2 = {p1.x - a.y + c.y, p1.y + a.x - c.x};
