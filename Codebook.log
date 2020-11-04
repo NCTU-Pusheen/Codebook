@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  2 NOV 2020 03:52
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  4 NOV 2020 14:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -849,21 +849,21 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 13.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [19]
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
 []$\OT1/cmr/m/n/7 0[] + 1[] + 2[] + [] + \OML/cmm/m/it/7 n[] \OT1/cmr/m/n/7 = \
 OML/cmm/m/it/7 P\OT1/cmr/m/n/7 (\OML/cmm/m/it/7 k\OT1/cmr/m/n/7 )\OML/cmm/m/it/
 7 ; P\OT1/cmr/m/n/7 (\OML/cmm/m/it/7 k\OT1/cmr/m/n/7 ) =
  []
 
 
-Underfull \hbox (badness 7777) in paragraph at lines 198--199
+Underfull \hbox (badness 7777) in paragraph at lines 210--211
 []$\OML/cmm/m/it/7 B[] \OT1/cmr/m/n/7 = 1/6\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7
  = \OMS/cmsy/m/n/7 ^^@\OT1/cmr/m/n/7 1/30\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7 =
  1/42\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7 =
  []
 
-) (./Other/莫隊算法_區間眾數.cpp [20]) (./Other/CNF.cpp) (./Other/BuiltIn.cpp)
-(./String/Manacher.cpp) (./String/Edit_Distance.cpp) [21]
+) [20] (./Other/莫隊算法_區間眾數.cpp) (./Other/CNF.cpp) (./Other/BuiltIn.cpp)
+(./String/Manacher.cpp) (./String/Edit_Distance.cpp [21])
 (./String/RollHash.cpp) (./String/LPS.cpp) (./String/Trie.cpp)
 (./String/Kmp.cpp) (./String/AC自動機.cpp [22]
 Missing character: There is no ∩ in font Consolas/OT:script=latn;language=DFLT;
@@ -886,6 +886,6 @@ Here is how much of TeX's memory you used:
  24597 multiletter control sequences out of 15000+600000
  534237 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 40i,12n,67p,358b,2162s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,67p,358b,2164s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Codebook.pdf (25 pages).
