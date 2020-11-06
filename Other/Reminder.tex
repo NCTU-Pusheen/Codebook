@@ -143,8 +143,8 @@ $f(1,k) = 0, f(n, k) = (f(n-1,k)+k) \% n$
 \item Mobius\\
 $u(n) = \begin{cases}
 1 &, n = 1\\
-(-1)^m &, n = p_1 p_2 p_3 \dots p_k, n \text{無平方數因數}\\
-0
+0 &, n \text{有平方數因數}\\
+(-1)^k &, n = p_1 p_2 p_3 \dots p_k
 \end{cases}$\\
 $u(ab) = u(a)u(b), \sum_{d | n} u(d) = [n == 1]$
 \item Mobius Inversion\\
@@ -234,7 +234,7 @@ $x \% m_n = a_n$
 	\item 正立方體塗三顏色，轉0有$3^6$ 個元素不變，轉90有6種，每種有$3^3$不變，180有$3\times 3^4$，120(角)有$8\times 3^2$，180(邊)有$6\times 3^3$，全部$\frac{1}{24}\left(3^6+6\times 3^3 + 3 \times 3^4 + 8 \times 3^2 + 6 \times 3^3 \right) = 57$
 \end{enumerate}
 
-\subsubsection{Count on a tree}
+\subsubsection{Tree Counting}
 \begin{enumerate}\itemsep = -3pt
 	\item Rooted tree: $s_{n+1}=\frac{1}{n}\sum_{i=1}^{n}(i\times a_i\times \sum_{j=1}^{\left \lfloor  n/i\right \rfloor} a_{n+1-i\times j})$
 	\item Unrooted tree: 

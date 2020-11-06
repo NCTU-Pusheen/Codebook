@@ -1,4 +1,4 @@
-class MCMF { //0/1-based
+class MCMF { // 0/1-based
    private:
     struct edge { int to, r; ll rest, c; };
     int n; ll f = 0, c = 0;
