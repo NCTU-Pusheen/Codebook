@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  4 NOV 2020 14:11
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  6 NOV 2020 14:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -800,45 +800,50 @@ Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 (xeCJK)                
 (xeCJK)                Try to use `\setCJKmonofont[...]{...}' to define it.
 
-(./DP/Bounded_Knapsack.cpp
+(./Surroudings/bashrc.cpp
 
 LaTeX Font Warning: Font shape `TU/Consolas(0)/bx/n' undefined
-(Font)              using `TU/Consolas(0)/m/n' instead on input line 1.
+(Font)              using `TU/Consolas(0)/m/n' instead on input line 5.
 
 
 LaTeX Font Warning: Font shape `TU/Consolas(0)/m/it' undefined
-(Font)              using `TU/Consolas(0)/m/n' instead on input line 37.
+(Font)              using `TU/Consolas(0)/m/n' instead on input line 6.
 
-) (./DP/DP_1D1D.cpp) (./DP/LCIS.cpp) (./Data_Structure/Dynamic_KD_tree.cpp
+) (./Data_Structure/RangeUpdateSegmentTree.cpp
 
 LaTeX Font Warning: Font shape `TU/PingFangTC-Regular(0)/m/it' undefined
 (Font)              using `TU/PingFangTC-Regular(0)/m/n' instead on input line 
 1.
 
-[1
+) (./Data_Structure/MaxSumSegmentTree.cpp)
+(./Data_Structure/PersistentSegmentTree.cpp [1
 
-]) (./Data_Structure/HeavyLight.cpp [2]) (./Data_Structure/SegmentTree.cpp)
-(./Data_Structure/MaxSumSegmentTree.cpp) (./Data_Structure/FenwickTree2D.cpp)
-(./Data_Structure/PersistentSegmentTree.cpp [3])
-(./Data_Structure/RangeUpdateSegmentTree.cpp) (./Data_Structure/Treap.cpp
-[4]) (./Data_Structure/link_cut_tree.cpp [5]) (./Data_Structure/SparseTable.cpp
-) (./Data_Structure/FenwickTree.cpp) (./Flow_Matching/KM.cpp [6])
-(./Flow_Matching/Min_Cost_Max_Flow.cpp) (./Flow_Matching/Ford_Fulkerson.cpp)
-(./Flow_Matching/Hungarian.cpp) (./Flow_Matching/Hopcroft_Karp.cpp [7])
-(./Flow_Matching/SW_MinCut.cpp) (./Flow_Matching/Dinic.cpp)
-(./Geometry/Geometry.cpp [8] [9] [10]) (./Geometry/SmallestCircle.cpp)
-(./Geometry/Rectangle_Union_Area.cpp) (./Geometry/旋轉卡尺.cpp [11])
-(./Geometry/MinRect.cpp) (./Geometry/ClosestPair.cpp) (./Graph/Dijkstra.cpp)
-(./Graph/MahattanMST.cpp [12]) (./Graph/LCA.cpp) (./Graph/BCC_edge.cpp [13])
-(./Graph/SPFA.cpp) (./Graph/Tarjan.cpp) (./Graph/BellmanFord.cpp)
-(./Graph/KirchhoffMatrixTree.cpp) (./Graph/Two_SAT.cpp [14])
-(./Graph/MinMeanCycle.cpp) (./Graph/Prim.cpp) (./Math/Simplex.cpp)
-(./Math/Fraction.cpp [15]) (./Math/FFT.cpp) (./Math/FindRealRoot.cpp)
-(./Math/質因數分解.cpp) (./Math/Karatsuba.cpp [16]) (./Math/FastPow.cpp)
-(./Math/MillerRabin.cpp) (./Math/Discrete_sqrt.cpp) (./Math/PrimeList.cpp)
-(./Math/Matrix.cpp [17]) (./Math/SG.cpp) (./Math/ModInv.cpp) (./Math/外星模運算.cpp)
-(./Math/ax+by=gcd(a,b).cpp) (./Math/Expression.cpp [18]) (./Math/NTT.cpp)
-(./Math/EulerFunction.cpp) (./Other/Reminder.tex
+]) (./Data_Structure/Treap.cpp)
+(./Data_Structure/SparseTable.cpp) (./Data_Structure/FenwickTree.cpp [2])
+(./Data_Structure/FenwickTree2D.cpp) (./Data_Structure/Dynamic_KD_tree.cpp
+[3]) (./Data_Structure/HeavyLight.cpp) (./Data_Structure/Link_Cut_Tree.cpp
+[4]) (./Graph/LCA.cpp [5]) (./Graph/BCC_edge.cpp) (./Graph/Tarjan.cpp)
+(./Graph/Two_SAT.cpp) (./Graph/MinMeanCycle.cpp) [6] (./Graph/MahattanMST.cpp)
+(./Flow_Matching/KM.cpp) (./Flow_Matching/Min_Cost_Max_Flow.cpp [7])
+(./Flow_Matching/Ford_Fulkerson.cpp) (./Flow_Matching/Hungarian.cpp)
+(./Flow_Matching/Hopcroft_Karp.cpp) (./Flow_Matching/SW_MinCut.cpp [8])
+(./Flow_Matching/Dinic.cpp) (./Geometry/Geometry.cpp [9] [10] [11])
+(./Geometry/ClosestPair.cpp) (./Geometry/SmallestCircle.cpp)
+(./Geometry/旋轉卡尺.cpp) (./Geometry/MinRect.cpp [12])
+(./Geometry/Rectangle_Union_Area.cpp) (./Math/ModInv.cpp)
+(./Math/EulerFunction.cpp) (./Math/ax+by=gcd(a,b).cpp [13])
+(./Math/MillerRabin.cpp) (./Math/質因數分解.cpp) (./Math/PrimeList.cpp)
+(./Math/Matrix.cpp [14]) (./Math/Simplex.cpp) (./Math/Fraction.cpp)
+(./Math/Expression.cpp [15]) (./Math/FFT.cpp) (./Math/NTT.cpp)
+(./Math/FindRealRoot.cpp [16]) (./Math/Karatsuba.cpp) (./Math/Discrete_sqrt.cpp
+) (./Math/SG.cpp) (./Math/外星模運算.cpp) [17] (./String/RollHash.cpp)
+(./String/Trie.cpp) (./String/Z.cpp) (./String/Kmp.cpp) (./String/AC自動機.cpp
+[18]
+Missing character: There is no ∩ in font Consolas/OT:script=latn;language=DFLT;
+!
+) (./String/suffix_array.cpp) (./String/BWT.cpp [19])
+(./String/Manacher.cpp) (./String/LPS.cpp) (./DP/DP_1D1D.cpp)
+(./DP/Bounded_Knapsack.cpp [20]) (./DP/LCIS.cpp) (./Other/Reminder.tex
 LaTeX Font Info:    Try loading font information for U+msa on input line 13.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -848,7 +853,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 13.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [19]
+) [21]
 Underfull \hbox (badness 10000) in paragraph at lines 206--207
 []$\OT1/cmr/m/n/7 0[] + 1[] + 2[] + [] + \OML/cmm/m/it/7 n[] \OT1/cmr/m/n/7 = \
 OML/cmm/m/it/7 P\OT1/cmr/m/n/7 (\OML/cmm/m/it/7 k\OT1/cmr/m/n/7 )\OML/cmm/m/it/
@@ -862,30 +867,23 @@ Underfull \hbox (badness 7777) in paragraph at lines 210--211
  1/42\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7 =
  []
 
-) [20] (./Other/莫隊算法_區間眾數.cpp) (./Other/CNF.cpp) (./Other/BuiltIn.cpp)
-(./String/Manacher.cpp) (./String/Edit_Distance.cpp [21])
-(./String/RollHash.cpp) (./String/LPS.cpp) (./String/Trie.cpp)
-(./String/Kmp.cpp) (./String/AC自動機.cpp [22]
-Missing character: There is no ∩ in font Consolas/OT:script=latn;language=DFLT;
-!
-) (./String/BWT.cpp) (./String/Z.cpp) (./String/suffix_array.cpp [23]) (./Surro
-udings/bashrc.cpp)) [24]
-(./Codebook.toc)
+) (./Other/莫隊算法_區間眾數.cpp) [22] (./Other/CNF.cpp) (./Other/BuiltIn.cpp))
+[23] (./Codebook.toc)
 \tf@toc=\write3
 \openout3 = `Codebook.toc'.
 
- [25] (./Codebook.aux)
+ [24] (./Codebook.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20944 strings out of 492916
- 419449 string characters out of 6133344
- 1482883 words of memory out of 5000000
- 24597 multiletter control sequences out of 15000+600000
+ 20904 strings out of 492916
+ 418832 string characters out of 6133344
+ 1443883 words of memory out of 5000000
+ 24581 multiletter control sequences out of 15000+600000
  534237 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 40i,12n,67p,358b,2164s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,67p,358b,2069s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Codebook.pdf (25 pages).
+Output written on Codebook.pdf (24 pages).
