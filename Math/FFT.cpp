@@ -2,7 +2,7 @@
 template <typename T, typename VT = vector<complex<T>>>
 struct FFT {
     const T pi;
-    FFT(const T pi = acos((T)-1)) : pi(pi) {}
+    FFT(const T pi = acos((T)-1.0)) : pi(pi) {}
     unsigned bit_reverse (unsigned a, int len) {
         a = ((a&0x55555555U)<<1)  | ((a&0xAAAAAAAAU)>>1);
         a = ((a&0x33333333U)<<2)  | ((a&0xCCCCCCCCU)>>2);
@@ -28,3 +28,16 @@ struct FFT {
             out[i] /= N;
     }
 };
+int main () { // polynomial multiplication
+	FFT<double> F; int n = 4;
+	vector<complex<double>> a = {1, 2, 0, 0};
+	vector<complex<double>> b = {2, 3, 0, 0};
+	vector<complex<double>> a_fft(n), b_fft(n), ab_fft(n), ab(n);
+	F.fft(0, a, a_fft, 4), F.fft(0, b, b_fft, 4);
+	for (int i = 0; i < n; i++)
+		ab_fft[i] = a_fft[i] * b_fft[i];
+	F.fft(1, ab_fft, ab, n);
+	for (auto p : ab)
+		cout << int(p.real() + 1e-6) << " ";
+	return 0;
+}
