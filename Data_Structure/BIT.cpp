@@ -1,16 +1,19 @@
 // 區間加值 BIT 只支援 1-based ，左閉右閉
 namespace RangeUpdateBIT { // O(log N)
-ll d[maxn], dd[maxn];
+ll d[N], dd[N];
 ll sum(int i) {
     ll s = 0, ss = 0;
     int c = i + 1;
     while (i > 0) s += d[i], ss += dd[i], i -= i & -i;
     return c * s - ss;
 }
-void add(int i, ll v) { // O(log N)
+void add(int i, ll val) { // O(log N)
     int c = i;
-    while (i < maxn)
-        d[i] += v, dd[i] += c * v, i += i & -i;
+    while (i < N)
+        d[i] += val, dd[i] += c * val, i += i & -i;
+}
+void add (int l, int r, ll val) {
+    add(l, val), add(r + 1, -val);
 }
 }  // namespace RangeUpdateBIT
 
