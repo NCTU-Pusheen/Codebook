@@ -13,6 +13,7 @@ void add(int i, ll val) { // O(log N)
         d[i] += val, dd[i] += c * val, i += i & -i;
 }
 void add (int l, int r, ll val) {
+    if (!l) l++;
     add(l, val), add(r + 1, -val);
 }
 }  // namespace RangeUpdateBIT
@@ -21,14 +22,15 @@ void add (int l, int r, ll val) {
 namespace RangeUpdateBit2D {
 
 ll d[N][N];
-ll sum(int x, int y) {  // O(log^2 N)
+ll sum(int x, int y) { // sum in range [1:x][1:y], O(log^2 N)
+    if(!x || !y) return 0;
     ll ret = 0;
     for (int i = x; i; i -= i & -i)
         for (int j = y; j; j -= j & -j)
             ret += d[i][j];
     return ret;
 }
-void add(int x, int y, ll val) {  // O(log^2 N)
+void add(int x, int y, ll val) { // add at [x][y], O(log^2 N)
     for (int i = x; i < N; i += i & -i)
         for (int j = y; j < N; j += j & -j)
             d[i][j] += val;
