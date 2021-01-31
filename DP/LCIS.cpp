@@ -17,7 +17,8 @@ vector<int> LCIS(vector<int> a, vector<int> b) {
         if(dp[n][j]>len) len = dp[n][j], p = j;
     vector<int> ans;
     for(int i=n; i>=1; i--) {
-        if(a[i-1]==b[p-1]) ans.push_back(b[p-1]);
+        if(a[i-1]==b[p-1] && p!=pre[i][p])
+            ans.push_back(b[p-1]);
         p = pre[i][p];
     }
     reverse(ans.begin(), ans.end());
