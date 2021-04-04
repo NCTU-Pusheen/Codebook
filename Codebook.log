@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  6 NOV 2020 14:14
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.11.12)  5 APR 2021 06:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -802,47 +802,49 @@ Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 
 (./Surroudings/bashrc.cpp
 
-LaTeX Font Warning: Font shape `TU/Consolas(0)/bx/n' undefined
-(Font)              using `TU/Consolas(0)/m/n' instead on input line 5.
-
-
 LaTeX Font Warning: Font shape `TU/Consolas(0)/m/it' undefined
-(Font)              using `TU/Consolas(0)/m/n' instead on input line 6.
+(Font)              using `TU/Consolas(0)/m/n' instead on input line 2.
 
-) (./Data_Structure/RangeUpdateSegmentTree.cpp
+) (./Data_Structure/Dynamic_KD_tree.cpp
+
+LaTeX Font Warning: Font shape `TU/Consolas(0)/bx/n' undefined
+(Font)              using `TU/Consolas(0)/m/n' instead on input line 1.
+
 
 LaTeX Font Warning: Font shape `TU/PingFangTC-Regular(0)/m/it' undefined
 (Font)              using `TU/PingFangTC-Regular(0)/m/n' instead on input line 
 1.
 
-) (./Data_Structure/MaxSumSegmentTree.cpp)
-(./Data_Structure/PersistentSegmentTree.cpp [1
+) [1
 
-]) (./Data_Structure/Treap.cpp)
-(./Data_Structure/SparseTable.cpp) (./Data_Structure/FenwickTree.cpp [2])
-(./Data_Structure/FenwickTree2D.cpp) (./Data_Structure/Dynamic_KD_tree.cpp
-[3]) (./Data_Structure/HeavyLight.cpp) (./Data_Structure/Link_Cut_Tree.cpp
-[4]) (./Graph/LCA.cpp [5]) (./Graph/BCC_edge.cpp) (./Graph/Tarjan.cpp)
-(./Graph/Two_SAT.cpp) (./Graph/MinMeanCycle.cpp) [6] (./Graph/MahattanMST.cpp)
-(./Flow_Matching/KM.cpp) (./Flow_Matching/Min_Cost_Max_Flow.cpp [7])
-(./Flow_Matching/Ford_Fulkerson.cpp) (./Flow_Matching/Hungarian.cpp)
-(./Flow_Matching/Hopcroft_Karp.cpp) (./Flow_Matching/SW_MinCut.cpp [8])
-(./Flow_Matching/Dinic.cpp) (./Geometry/Geometry.cpp [9] [10] [11])
-(./Geometry/HyperbolaGeometry.cpp) [12] (./Geometry/ClosestPair.cpp)
-(./Geometry/SmallestCircle.cpp) (./Geometry/旋轉卡尺.cpp) (./Geometry/MinRect.cpp
-[13]) (./Geometry/Rectangle_Union_Area.cpp) (./Math/ModInv.cpp)
-(./Math/EulerFunction.cpp) (./Math/ax+by=gcd(a,b).cpp) (./Math/MillerRabin.cpp
-[14]) (./Math/質因數分解.cpp) (./Math/PrimeList.cpp) (./Math/Matrix.cpp [15])
-(./Math/Simplex.cpp) (./Math/Expression.cpp) (./Math/FFT.cpp [16])
-(./Math/NTT.cpp) (./Math/FindRealRoot.cpp) (./Math/Karatsuba.cpp)
-(./Math/Discrete_sqrt.cpp) [17] (./Math/SG.cpp) (./Math/外星模運算.cpp)
-(./String/RollHash.cpp) (./String/Trie.cpp) (./String/Z.cpp [18])
-(./String/Kmp.cpp) (./String/AC自動機.cpp
+] (./Data_Structure/FenwickTree.cpp) (./Data_Structure/FenwickTree2D.cpp)
+(./Data_Structure/HeavyLight.cpp) (./Data_Structure/Link_Cut_Tree.cpp [2])
+(./Data_Structure/MaxSumSegmentTree.cpp)
+(./Data_Structure/PersistentSegmentTree.cpp [3])
+(./Data_Structure/RangeUpdateSegmentTree.cpp) (./Data_Structure/SparseTable.cpp
+) (./Data_Structure/Treap.cpp [4]) (./Flow_Matching/Dinic.cpp)
+(./Flow_Matching/Ford_Fulkerson.cpp) (./Flow_Matching/Hopcroft_Karp.cpp
+[5]) (./Flow_Matching/Hungarian.cpp) (./Flow_Matching/KM.cpp)
+(./Flow_Matching/Min_Cost_Max_Flow.cpp [6]) (./Flow_Matching/SW_MinCut.cpp)
+(./Geometry/ClosestPair.cpp) (./Geometry/Geometry.cpp [7] [8] [9])
+(./Geometry/HyperbolaGeometry.cpp [10]) (./Geometry/MinRect.cpp)
+(./Geometry/Rectangle_Union_Area.cpp) (./Geometry/SmallestCircle.cpp)
+(./Geometry/旋轉卡尺.cpp [11]) (./Graph/BCC_edge.cpp) (./Graph/LCA.cpp [12])
+(./Graph/MahattanMST.cpp) (./Graph/MinMeanCycle.cpp) (./Graph/Tarjan.cpp
+[13]) (./Graph/Two_SAT.cpp) (./Math/ax+by=gcd(a,b).cpp)
+(./Math/Discrete_sqrt.cpp) (./Math/EulerFunction.cpp) (./Math/Expression.cpp
+[14]) (./Math/FFT.cpp) (./Math/FindRealRoot.cpp) (./Math/Fraction.cpp [15])
+(./Math/Karatsuba.cpp) (./Math/Matrix.cpp) (./Math/MillerRabin.cpp [16])
+(./Math/ModInv.cpp) (./Math/NTT.cpp) (./Math/PrimeList.cpp) (./Math/SG.cpp)
+(./Math/Simplex.cpp [17]) (./Math/外星模運算.cpp) (./Math/質因數分解.cpp)
+(./String/AC自動機.cpp [18]
 Missing character: There is no ∩ in font Consolas/OT:script=latn;language=DFLT;
 !
-) (./String/suffix_array.cpp [19])
-(./String/BWT.cpp) (./String/Manacher.cpp) (./String/LPS.cpp [20])
-(./DP/DP_1D1D.cpp) (./DP/Bounded_Knapsack.cpp) (./DP/LCIS.cpp) [21]
+) (./String/BWT.cpp) (./String/Kmp.cpp)
+(./String/LPS.cpp [19]) (./String/Manacher.cpp) (./String/RollHash.cpp)
+(./String/suffix_array.cpp) [20] (./String/Trie.cpp) (./String/Z.cpp)
+(./DP/Bounded_Knapsack.cpp) (./DP/DP_1D1D.cpp [21]) (./DP/LCIS.cpp)
+(./Other/BuiltIn.cpp) (./Other/CNF.cpp) (./Other/HeapsAlgo.cpp [22])
 (./Other/Reminder.tex
 LaTeX Font Info:    Try loading font information for U+msa on input line 13.
 
@@ -860,30 +862,29 @@ OML/cmm/m/it/7 P\OT1/cmr/m/n/7 (\OML/cmm/m/it/7 k\OT1/cmr/m/n/7 )\OML/cmm/m/it/
 7 ; P\OT1/cmr/m/n/7 (\OML/cmm/m/it/7 k\OT1/cmr/m/n/7 ) =
  []
 
-[22]
+[23]
 Underfull \hbox (badness 7777) in paragraph at lines 210--211
 []$\OML/cmm/m/it/7 B[] \OT1/cmr/m/n/7 = 1/6\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7
  = \OMS/cmsy/m/n/7 ^^@\OT1/cmr/m/n/7 1/30\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7 =
  1/42\OML/cmm/m/it/7 ; B[] \OT1/cmr/m/n/7 =
  []
 
-) (./Other/莫隊算法_區間眾數.cpp) (./Other/BuiltIn.cpp)) [23] (./Codebook.toc)
+) (./Other/莫隊算法_區間眾數.cpp)) [24] (./Codebook.toc)
 \tf@toc=\write3
 \openout3 = `Codebook.toc'.
 
- [24]
-(./Codebook.aux)
+ [25] (./Codebook.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20920 strings out of 492916
- 419065 string characters out of 6133344
- 1526883 words of memory out of 5000000
- 24600 multiletter control sequences out of 15000+600000
+ 20955 strings out of 492916
+ 419473 string characters out of 6133344
+ 1531883 words of memory out of 5000000
+ 24626 multiletter control sequences out of 15000+600000
  534237 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 40i,12n,67p,358b,2061s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,12n,67p,358b,2095s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Codebook.pdf (24 pages).
+Output written on Codebook.pdf (25 pages).
