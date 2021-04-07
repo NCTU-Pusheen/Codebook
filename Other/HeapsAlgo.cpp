@@ -6,8 +6,8 @@ void heaps(int k, vector<int> &s, int n) {
 	}
 	for (int i = 0; i < k - 1; ++i) {
 		heaps(k - 1, s, n);
-		if (k & 1) swap(s[i], s[k - 1]);
-		else swap(s[0], s[k - 1]);
+		if (k & 1) swap(s[0], s[k - 1]);
+		else swap(s[i], s[k - 1]);
 	}
 	heaps(k - 1, s, n);
 }
