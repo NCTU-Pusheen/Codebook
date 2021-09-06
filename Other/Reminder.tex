@@ -234,6 +234,24 @@ $x \% m_n = a_n$
 	\item 正立方體塗三顏色，轉0有$3^6$ 個元素不變，轉90有6種，每種有$3^3$不變，180有$3\times 3^4$，120(角)有$8\times 3^2$，180(邊)有$6\times 3^3$，全部$\frac{1}{24}\left(3^6+6\times 3^3 + 3 \times 3^4 + 8 \times 3^2 + 6 \times 3^3 \right) = 57$
 \end{enumerate}
 
+\subsubsection{Probability}
+\begin{enumerate}\itemsep = -3pt
+	\item $e^x (1 - x^2) \leq 1 + x \leq e^x$
+	\item $n! \leq en^{\frac{1}{2}} (\frac{n}{e})^n$
+	\item $Pr[X \geq a] \leq \displaystyle\frac{E[X]}{a}, X \le 0, a > 0$
+	\item $\text{Cov}[X, Y] = E[(X - E[X])(Y - E[Y])] = E[XY] - E[X]E[Y]$
+	\item $\displaystyle \text{Var}[\sum_j X_j] = (\sum_j\text{Var}[X_j]) + 2\sum_{i < j}  \text{Cov}[X_i, X_j]$
+	\item $Pr[X \leq a] \leq \displaystyle \min_{t < 0} \frac{E[e^{tX}]}{e^{ta}}$
+	\item $M_X(t) = E[e^{tX}]$
+	\item $Pr[X \geq a] \leq \displaystyle \min_{t > 0} \frac{E[e^{tX}]}{e^{ta}}$
+	\item $Pr[X \leq a] \leq \displaystyle \min_{t < 0} \frac{E[e^{tX}]}{e^{ta}}$
+	\item $\forall \delta > 0, Pr[X \geq (1 + \delta) \mu] \leq \displaystyle(\frac{e^{\delta}}{(1 + \delta)^{(1 + \delta)}})^\mu$
+	\item $\forall 0 < \delta \leq 1, Pr[X \geq (1 + \delta) \mu] \leq  e^{\frac{-\mu\delta^2}{3}}$
+	\item $R \geq 6\mu, Pr[X \geq R] \leq 2^{-R}$
+	\item $0 < \delta < 1, Pr[X \leq (1 - \delta) \mu] \leq  (\frac{e^{-\delta}}{(1 - \delta)^{(1 - \delta)}})^{\mu}$
+	\item $0 < \delta \le 1, Pr[X \leq (1 - \delta) \mu] \leq  e^{\frac{-\mu\delta^2}{2}}$
+\end{enumerate}
+
 \subsubsection{Tree Counting}
 \begin{enumerate}\itemsep = -3pt
 	\item Rooted tree: $s_{n+1}=\frac{1}{n}\sum_{i=1}^{n}(i\times a_i\times \sum_{j=1}^{\left \lfloor  n/i\right \rfloor} a_{n+1-i\times j})$
