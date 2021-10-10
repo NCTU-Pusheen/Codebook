@@ -4,7 +4,7 @@ class SsadpTarjan {
    private:
     int n;
     vector<int> par, dep; vector<vector<int>> ca;
-    int dfs(int u, vector<vector<int>>& edge, int d) {
+    void dfs(int u, vector<vector<int>>& edge, int d) {
         dep[u] = d;
         for (int a = 0; a < n; a++)
             if (dep[a] != -1)
