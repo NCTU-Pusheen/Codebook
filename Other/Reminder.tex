@@ -44,6 +44,15 @@ UnitNetwork  \> $O(V+E)$ \> $O(E \min(V^{1.5}, \sqrt E))$
 \subsubsection{圖論}
 
 \begin{enumerate}\itemsep = -5pt
+\item 中國郵差問題
+	\begin{enumerate} \itemsep = -3pt
+	\item 先判斷整張圖是否為一個強連通分量，否則無解。
+	\item 找出圖上所有奇點，一定是偶數個。
+	\item 找出所有奇點點對之間的最短路徑長度。
+	\item 把這些奇點做最小權匹配，權重採用剛才算的最短路徑長度。
+	\item 把匹配邊加在原圖上，再找歐拉環，即得中國郵差路徑之權重。
+	\item 將匹配邊改成其代表的最短路徑，即得中國郵差路徑。
+	\end{enumerate}
 \item For planner graph，$F=E-V+C+1$，C是連通分量數
 \item For planner graph，$E\leq 3V-6$
 \item 對於連通圖G，最大獨立點集的大小設為I(G)，最大匹配大小設為M(G)，最小點覆蓋設為Cv(G)，最小邊覆蓋設為Ce(G)。
